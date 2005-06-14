@@ -3,7 +3,7 @@
 <title>Introduction for the Experienced - GNU Source Installer, a graphical installer for source packages</title>
 <meta http-equiv="Content-Type" content="text/html">
 <meta name="description" content="GNU Source Installer, a graphical installer for source packages">
-<meta name="generator" content="makeinfo 4.8">
+<meta name="generator" content="makeinfo 4.7">
 <link title="Top" rel="start" href="index.html#Top">
 <link rel="prev" href="Introduction-for-Beginners.html#Introduction-for-Beginners" title="Introduction for Beginners">
 <link rel="next" href="Invoking.html#Invoking" title="Invoking">
@@ -16,25 +16,23 @@
   pre.smallformat  { font-family:inherit; font-size:smaller }
   pre.smallexample { font-size:smaller }
   pre.smalllisp    { font-size:smaller }
-  span.sc    { font-variant:small-caps }
-  span.roman { font-family:serif; font-weight:normal; } 
-  span.sansserif { font-family:sans-serif; font-weight:normal; } 
+  span.sc { font-variant:small-caps }
+  span.roman { font-family: serif; font-weight: normal; } 
 --></style>
 </head>
 <body>
 <div class="node">
 <p>
-<a name="Introduction-for-the-Experienced"></a>
-Next:&nbsp;<a rel="next" accesskey="n" href="Invoking.html#Invoking">Invoking</a>,
+<a name="Introduction-for-the-Experienced"></a>Next:&nbsp;<a rel="next" accesskey="n" href="Invoking.html#Invoking">Invoking</a>,
 Previous:&nbsp;<a rel="previous" accesskey="p" href="Introduction-for-Beginners.html#Introduction-for-Beginners">Introduction for Beginners</a>,
 Up:&nbsp;<a rel="up" accesskey="u" href="index.html#Top">Top</a>
-<hr>
+<hr><br>
 </div>
 
 <h2 class="chapter">2 Introduction for the Experienced</h2>
 
 <p><a name="index-Introduction-for-the-Experienced-4"></a>
-Source Installer (<samp><span class="command">sourceinstall</span></samp>) is a program that offers a graphical interface to source package configuration, installation, tracking and removal.
+Source Installer (<span class="command">sourceinstall</span>) is a program that offers a graphical interface to source package configuration, installation, tracking and removal.
 
    <p>It is intended to work on Unix-like systems (with <code>GNU/Linux</code> as a primary target).
 
@@ -45,14 +43,14 @@ Source Installer (<samp><span class="command">sourceinstall</span></samp>) is a 
 <h3 class="section">2.1 Why should you use this program?</h3>
 
 <p><a name="index-Why-should-you-use-this-program_003f-5"></a>
-If you already build most of the software on your system from source code, you might try <samp><span class="command">sourceinstall</span></samp> as a way to centralize and better organize your interactive source installs. Here is what this software offers to the experienced user:
+If you already build most of the software on your system from source code, you might try <span class="command">sourceinstall</span> as a way to centralize and better organize your interactive source installs. Here is what this software offers to the experienced user:
 
      <dl>
 <dt>better integration with your GUI programs.<dd>The mozilla people for example, could easily implement an additional download action that is available for .tar.gz files which look like source packages (other than Open, Remove): Install.
 
      <p>This would be possible by interfacing at the simplest level (the executable level), by running <code>sourceinstall mypackage-1.0.1.tar.gz</code> for example.
 
-     <p>Another item in the wishlist is the drag-and-drop of source packages to the <samp><span class="command">sourceinstall</span></samp> gui.
+     <p>Another item in the wishlist is the drag-and-drop of source packages to the <span class="command">sourceinstall</span> gui.
 
      <br><dt>tracking of all currently installed source packages,<dd>with info about install size, source size, and all files relevant to each package.
 
@@ -70,11 +68,11 @@ If you already build most of the software on your system from source code, you m
 The following is a critique against this tool, that shows what you lose, or do not gain in contrast to relying on the good old command line:
 
      <dl>
-<dt>you can lose time.<dd><samp><span class="command">sourceinstall</span></samp> basically installs two times (however, the install process is generally not so time-consuming, for example in contrast to the compile process). It makes a test installation first (if <code>DESTDIR</code> is supported), and gets a lot of info from the test installation. This has an impact on total installation time.
+<dt>you can lose time.<dd><span class="command">sourceinstall</span> basically installs two times (however, the install process is generally not so time-consuming, for example in contrast to the compile process). It makes a test installation first (if <code>DESTDIR</code> is supported), and gets a lot of info from the test installation. This has an impact on total installation time.
 
-     <br><dt>it is not scriptable.<dd><samp><span class="command">sourceinstall</span></samp> can be called with filename parameters, but during installation dialogs can be popped up if decisions have to be taken. This is a tool tought for interactive use, so if total automation is your goal, <samp><span class="command">sourceinstall</span></samp> is not for you.
+     <br><dt>it is not scriptable.<dd><span class="command">sourceinstall</span> can be called with filename parameters, but during installation dialogs can be popped up if decisions have to be taken. This is a tool tought for interactive use, so if total automation is your goal, <span class="command">sourceinstall</span> is not for you.
 
-     <br><dt>some packages might not work.<dd><samp><span class="command">sourceinstall</span></samp> has to make some generalizations and will not be able to install difficult packages. An experienced user or developer can quickly go through a broken or sketched <code>Makefile</code> and fix things for his system, but <samp><span class="command">sourceinstall</span></samp> can not. On the other hand, if enough people use this tool, this could force developers towards the autotools and to create better packages in general.
+     <br><dt>some packages might not work.<dd><span class="command">sourceinstall</span> has to make some generalizations and will not be able to install difficult packages. An experienced user or developer can quickly go through a broken or sketched <code>Makefile</code> and fix things for his system, but <span class="command">sourceinstall</span> can not. On the other hand, if enough people use this tool, this could force developers towards the autotools and to create better packages in general.
 
      <br><dt>no package dependency tracking, no repository, no metainfo.<dd>If your package blocks during configuration, for example, you still look at that damned error message in the pseudo-console and act consequently (generally this involves browsing for that missing file/package, install that, rinse and repeat).
 

@@ -3,7 +3,7 @@
 <title>Usage for the Experienced - GNU Source Installer, a graphical installer for source packages</title>
 <meta http-equiv="Content-Type" content="text/html">
 <meta name="description" content="GNU Source Installer, a graphical installer for source packages">
-<meta name="generator" content="makeinfo 4.8">
+<meta name="generator" content="makeinfo 4.7">
 <link title="Top" rel="start" href="index.html#Top">
 <link rel="prev" href="Usage-for-Beginners.html#Usage-for-Beginners" title="Usage for Beginners">
 <link rel="next" href="Reporting-Bugs.html#Reporting-Bugs" title="Reporting Bugs">
@@ -16,19 +16,17 @@
   pre.smallformat  { font-family:inherit; font-size:smaller }
   pre.smallexample { font-size:smaller }
   pre.smalllisp    { font-size:smaller }
-  span.sc    { font-variant:small-caps }
-  span.roman { font-family:serif; font-weight:normal; } 
-  span.sansserif { font-family:sans-serif; font-weight:normal; } 
+  span.sc { font-variant:small-caps }
+  span.roman { font-family: serif; font-weight: normal; } 
 --></style>
 </head>
 <body>
 <div class="node">
 <p>
-<a name="Usage-for-the-Experienced"></a>
-Next:&nbsp;<a rel="next" accesskey="n" href="Reporting-Bugs.html#Reporting-Bugs">Reporting Bugs</a>,
+<a name="Usage-for-the-Experienced"></a>Next:&nbsp;<a rel="next" accesskey="n" href="Reporting-Bugs.html#Reporting-Bugs">Reporting Bugs</a>,
 Previous:&nbsp;<a rel="previous" accesskey="p" href="Usage-for-Beginners.html#Usage-for-Beginners">Usage for Beginners</a>,
 Up:&nbsp;<a rel="up" accesskey="u" href="index.html#Top">Top</a>
-<hr>
+<hr><br>
 </div>
 
 <h2 class="chapter">5 Usage for the Experienced</h2>
@@ -52,7 +50,7 @@ be preserved, you will not need to pass through the configuration window anymore
 <h3 class="section">5.1 Consistency checks</h3>
 
 <p><a name="index-Consistency-checks-22"></a>
-Another service that <samp><span class="command">sourceinstall</span></samp> silently offers is a simple set of consistency check for existing installations. 
+Another service that <span class="command">sourceinstall</span> silently offers is a simple set of consistency check for existing installations. 
 Selecting a package from the list at any time will show all available information about the installed package, and a check will be performed to see if the install looks ok. If some of the files required by the program are missing, you will find a notice and all the missing files will be highlighted in red and marked with an asterisk (*). 
 At this point you can correct the problem by restoring the missing files yourself (for example, you might have accidentally moved them for arcane reasons), or
 just perform a <code>Reinstall</code> action for the package. 
@@ -78,7 +76,7 @@ It is highy probable that you will have many different tools that provide packag
 For example, if you are running a GNU/Linux distribution, you probably have your distribution-specific way to handle binary (or even source) packages. 
 What I suggest here is to make a clean separation between your distribution-provided packages (along with any additional packages installed using your distribution-specific tools), and the source packages installed using the distribution-independent GNU Source Installer. 
 One good way to obtain this, is to use different prefixes for each package management system you use. 
-Suppose your distribution-handled packages are in <samp><span class="file">/usr</span></samp>, then your source packages managed by GNU Source Installer (or by yourself) can be prefixed using <samp><span class="file">/usr/local</span></samp> (this is the initial value). 
+Suppose your distribution-handled packages are in <span class="file">/usr</span>, then your source packages managed by GNU Source Installer (or by yourself) can be prefixed using <span class="file">/usr/local</span> (this is the initial value). 
 This way you ensure that file dependancy checks are not tainted by other packages managed by other tools.
 
 <h3 class="section">5.4 Users</h3>
@@ -86,26 +84,26 @@ This way you ensure that file dependancy checks are not tainted by other package
 <p><a name="index-Users-25"></a>
 GNU Source Installer configuration and packages always refer to the particular user that runs it. What follows is a list of possible setups.
 
-   <p>As the first example, suppose user Pip wants to install his private packages. He chooses to install in <samp><span class="file">/home/pip/usr</span></samp>, at the same time allowing user Merlin to install his own packages in <samp><span class="file">/home/merlin/usr</span></samp>. Of course, in this case no one steps on anybody's toes and everything runs smooth.
+   <p>As the first example, suppose user Pip wants to install his private packages. He chooses to install in <span class="file">/home/pip/usr</span>, at the same time allowing user Merlin to install his own packages in <span class="file">/home/merlin/usr</span>. Of course, in this case no one steps on anybody's toes and everything runs smooth.
 
-   <p>On another system, user Robert is the system administrator, and personally deals with all system-wide package installations. Thus, he logs in using his <code>robert</code> account, then runs <samp><span class="command">sourceinstall</span></samp> and uses the default prefix value, which is <samp><span class="file">/usr/local</span></samp> to install new programs. When requested by the system, he is asked for the root password. This is ideal for one-user systems.
+   <p>On another system, user Robert is the system administrator, and personally deals with all system-wide package installations. Thus, he logs in using his <code>robert</code> account, then runs <span class="command">sourceinstall</span> and uses the default prefix value, which is <span class="file">/usr/local</span> to install new programs. When requested by the system, he is asked for the root password. This is ideal for one-user systems.
 
-   <p>On another system, both Bertor and Torber deal with system administration. They get along well, and both deal with system-wide package installations. Thus, they decide to both install packages logging in using the privileged <code>root</code> account, and then install using <samp><span class="command">sourceinstall</span></samp>. They will both see the same packages, because they are logging in as the same user (<code>root</code>). However, only one of the two admins will be able to install software at the exact same time, because to prevent corruption of package data each user is entitled to a single running instance of GNU Source Installer. If Bertor tries to start sourceinstall while Torber is already installing something, Bertor gets an error message about a file lock, so he waits until Torber ends his work, and then retries.
+   <p>On another system, both Bertor and Torber deal with system administration. They get along well, and both deal with system-wide package installations. Thus, they decide to both install packages logging in using the privileged <code>root</code> account, and then install using <span class="command">sourceinstall</span>. They will both see the same packages, because they are logging in as the same user (<code>root</code>). However, only one of the two admins will be able to install software at the exact same time, because to prevent corruption of package data each user is entitled to a single running instance of GNU Source Installer. If Bertor tries to start sourceinstall while Torber is already installing something, Bertor gets an error message about a file lock, so he waits until Torber ends his work, and then retries.
 
-   <p>On another cursed system, Azatoth and Marduk both deal with system administration. They do not care to read documentation (and everyone knows they don't get along very well) so they both login using their regular accounts, and install using the default system-wide prefix, <samp><span class="file">/usr/local</span></samp>. This is BAD and can really screw up things.
+   <p>On another cursed system, Azatoth and Marduk both deal with system administration. They do not care to read documentation (and everyone knows they don't get along very well) so they both login using their regular accounts, and install using the default system-wide prefix, <span class="file">/usr/local</span>. This is BAD and can really screw up things.
 
 <h3 class="section">5.5 Files and Directories</h3>
 
 <p><a name="index-Files-and-Directories-26"></a>
 If you want to dwell on the internals of sourceinstall, this is an interesting chapter. We will look at all files and directories that together make sourceinstall work.
 
-   <p>The <samp><span class="command">sourceinstall</span></samp> executable is in fact a symbolic link to the implementation in use. For example:
+   <p>The <span class="command">sourceinstall</span> executable is in fact a symbolic link to the implementation in use. For example:
 
 <pre class="example">     $ ls -l /usr/bin/sourceinstall*
      lrwxrwxrwx  1 root root     11 Jun  3 03:15 sourceinstall -&gt; sourceinstall.tcl
      -rwxr-xr-x  1 root root  87019 Jun  3 03:15 sourceinstall.tcl
 </pre>
-   <p>Currently there is only a tcl implementation, but in the future this system will be used to make different implementations of <samp><span class="command">sourceinstall</span></samp> coesist.
+   <p>Currently there is only a tcl implementation, but in the future this system will be used to make different implementations of <span class="command">sourceinstall</span> coesist.
 
    <p>I have some indistinct ideas about how it could be possible, at configure time, to determine the best supported implementation, and by default make the link point at that.
 
@@ -113,8 +111,8 @@ If you want to dwell on the internals of sourceinstall, this is an interesting c
 
    <p>The per user configuration directory is another story:
 
-   <p>each user that runs <samp><span class="command">sourceinstall</span></samp> gets a .sourceinstall directory created in his
-<samp><span class="env">HOME</span></samp>. This is for example a directory tree:
+   <p>each user that runs <span class="command">sourceinstall</span> gets a .sourceinstall directory created in his
+<span class="env">HOME</span>. This is for example a directory tree:
 
 <pre class="verbatim">
 $ tree ~/.sourceinstall
@@ -133,19 +131,19 @@ $ tree ~/.sourceinstall
 </pre>
 
    <p>If sourceinstall were running, you would see another file,
-<samp><span class="file">~/.sourceinstall/.sourceinstall_lock</span></samp>, containing the process id of the running sourceinstall process.
+<span class="file">~/.sourceinstall/.sourceinstall_lock</span>, containing the process id of the running sourceinstall process.
 
-   <p>In this case there are only three packages installed. Each package has a file name entry with the same name in the <samp><span class="file">packages</span></samp> directory. That file contains all information on that package.
+   <p>In this case there are only three packages installed. Each package has a file name entry with the same name in the <span class="file">packages</span> directory. That file contains all information on that package.
 
-   <p>The source for all three packaged has been archived in the <samp><span class="file">src</span></samp> directory.
+   <p>The source for all three packaged has been archived in the <span class="file">src</span> directory.
 
-   <p>The <samp><span class="file">install-destdir</span></samp> directory is used during the test installation, and then it is cleared.
+   <p>The <span class="file">install-destdir</span> directory is used during the test installation, and then it is cleared.
 
-   <p>The <samp><span class="file">build</span></samp> directory is used only while building packages, and then it is cleared.
+   <p>The <span class="file">build</span> directory is used only while building packages, and then it is cleared.
 
    <p>Do not store anything in these directories yourself, because they will be regularily emptied.
 
-   <p>The <samp><span class="file">sourceinstallrc</span></samp> file contains the current user preferences. These are the same options that can be tweaked from the <code>Preferences</code> in the <code>Edit</code> Menu.
+   <p>The <span class="file">sourceinstallrc</span> file contains the current user preferences. These are the same options that can be tweaked from the <code>Preferences</code> in the <code>Edit</code> Menu.
 
    </body></html>
 

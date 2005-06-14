@@ -3,7 +3,7 @@
 <title>Introduction for Beginners - GNU Source Installer, a graphical installer for source packages</title>
 <meta http-equiv="Content-Type" content="text/html">
 <meta name="description" content="GNU Source Installer, a graphical installer for source packages">
-<meta name="generator" content="makeinfo 4.8">
+<meta name="generator" content="makeinfo 4.7">
 <link title="Top" rel="start" href="index.html#Top">
 <link rel="prev" href="index.html#Top" title="Top">
 <link rel="next" href="Introduction-for-the-Experienced.html#Introduction-for-the-Experienced" title="Introduction for the Experienced">
@@ -16,44 +16,34 @@
   pre.smallformat  { font-family:inherit; font-size:smaller }
   pre.smallexample { font-size:smaller }
   pre.smalllisp    { font-size:smaller }
-  span.sc    { font-variant:small-caps }
-  span.roman { font-family:serif; font-weight:normal; } 
-  span.sansserif { font-family:sans-serif; font-weight:normal; } 
+  span.sc { font-variant:small-caps }
+  span.roman { font-family: serif; font-weight: normal; } 
 --></style>
 </head>
 <body>
 <div class="node">
 <p>
-<a name="Introduction-for-Beginners"></a>
-Next:&nbsp;<a rel="next" accesskey="n" href="Introduction-for-the-Experienced.html#Introduction-for-the-Experienced">Introduction for the Experienced</a>,
+<a name="Introduction-for-Beginners"></a>Next:&nbsp;<a rel="next" accesskey="n" href="Introduction-for-the-Experienced.html#Introduction-for-the-Experienced">Introduction for the Experienced</a>,
 Previous:&nbsp;<a rel="previous" accesskey="p" href="index.html#Top">Top</a>,
 Up:&nbsp;<a rel="up" accesskey="u" href="index.html#Top">Top</a>
-<hr>
+<hr><br>
 </div>
 
 <h2 class="chapter">1 Introduction for Beginners</h2>
 
 <p><a name="index-Introduction-for-Beginners-1"></a>
-Welcome to GNU Source Installer!
+This is an introduction for real beginners. If you are already somewhat experienced with UNIX-like systems and GNU install procedures, you should skip this chapter, otherwise
 
-   <p><samp><span class="command">sourceinstall</span></samp> automates configuration, compilation, installation and removal of source packages, using the common procedures used to install Unix
-software.
+   <p>Welcome!
 
-   <p>Provided your system meets the requirements, and thus you manage to have a working installation of <samp><span class="command">sourceinstall</span></samp> itself, you will be shortly able to install new software from its source code by:
+   <p><span class="command">sourceinstall</span> will try to make configuration, compilation, installation and removal of source packages easier for you as a beginner, but instead of hiding information and operations, everything that happens will be available for you to see, so you can hopefully understand basic concepts by just using this program.
 
-     <ol type=1 start=1>
-<li>surfing the web
-<li>identifying a Free program you like
-<li>downloading its SOURCE package (in .tar.gz, .tar.bz2, or other formats)
-<li>feeding it to GNU Source Installer (<samp><span class="command">sourceinstall</span></samp>)
-        </ol>
+   <p>Provided your system meets the requirements, and thus you manage to have a working installation of <span class="command">sourceinstall</span> itself, you will be shortly able to install new software from its source code by surfing the web, identifying a Free Software you like, downloading its SOURCE package, and feeding it to GNU Installer.
 
 <h3 class="section">1.1 Installing the Installer</h3>
 
 <p><a name="index-Installing-the-Installer-2"></a>
-If you reached this manual, you probably already have a working, maybe minimal system and a browser.
-
-   <p>Proceed to download sourceinstall-0.1-cvs.tar.gz, and mark where the file will be placed (the &ldquo;folder&rdquo;, or in more proper language a <dfn>directory</dfn>). For example, we will assume that you are downloading to
+Proceed to download sourceinstall-0.1-cvs.tar.gz, and mark where the file will be placed (the &ldquo;folder&rdquo;, the <dfn>directory</dfn>). For example, we will assume that you are downloading to
 
 <pre class="example">     /home/user/downloads
 </pre>
@@ -68,7 +58,7 @@ If you reached this manual, you probably already have a working, maybe minimal s
    <p>If you get an error message, double check your command for typos. 
 If things are going well, you will know because you will get nothing else than another $ ended message (a <dfn>prompt</dfn>)
 
-   <p>At this point enter the following command (this assumes you have the GNU version of <samp><span class="command">tar</span></samp>):
+   <p>At this point enter the following command (this assumes you have the GNU version of <span class="command">tar</span>):
 
 <pre class="example">     $ tar -zxvf sourceinstall-0.1-cvs.tar.gz
 </pre>
@@ -99,19 +89,18 @@ The # character before <code>make install</code> denotes the fact that after <co
 
 <pre class="example">     sourceinstall
 </pre>
-   <p>To run it from the graphical environment, you should create a link to the program on your desktop or in your program menus. The program to link is
-<samp><span class="file">/usr/local/bin/sourceinstall</span></samp>
+   <p>To run it from the graphical environment, you should create some kind of &ldquo;shortcut&rdquo; or &ldquo;link&rdquo; to the program on your desktop or in your program menus. The program to launch is (assuming default values) <span class="file">/usr/local/bin/sourceinstall</span> .
 
-   <p>If you experience errors, or behaviour not described correctly by this manual, the next section tries to deal with these cases.
-
-   <p>If you read this section and the next one, and still cannot follow these instructions, there is probably nothing GNU Source Installer can do for you, and you should stop reading here.
+   <p>If you experience errors that prevent the correct installation and execution of the program, the next section tries to deal with these cases.
 
    <p>At the end of the procedure you will get the following files installed:
 
-   <p><samp><span class="file">/usr/local/bin/sourceinstall</span></samp>                (link to the program)
-<samp><span class="file">/usr/local/bin/sourceinstall.tcl</span></samp>            (the program)
-<samp><span class="file">/usr/local/info/sourceinstall.info</span></samp>          (texinfo manual)
-<samp><span class="file">/usr/local/man/man1/sourceinstall.man</span></samp>       (man page)
+     <ol type=1 start=1>
+<li><span class="file">/usr/local/bin/sourceinstall</span>                (link to the program)
+<li><span class="file">/usr/local/bin/sourceinstall.tcl</span>            (the program)
+<li><span class="file">/usr/local/info/sourceinstall.info</span>          (texinfo manual)
+<li><span class="file">/usr/local/man/man1/sourceinstall.man</span>       (man page)
+        </ol>
 
    <p>To consult the GNU Source Installer manual type
 
@@ -121,14 +110,14 @@ The # character before <code>make install</code> denotes the fact that after <co
 
 <pre class="example">     $ man sourceinstall
 </pre>
-   <h3 class="section">1.2 Troubleshooting <samp><span class="command">sourceinstall</span></samp> Installation</h3>
+   <h3 class="section">1.2 Troubleshooting <span class="command">sourceinstall</span> Installation</h3>
 
 <p><a name="index-Troubleshooting-_0040command_007bsourceinstall_007d-Installation-3"></a>
 If you could not install GNU Source Installer, this is most likely because you do not have the required software in your system.
 
    <p>Look at the output of <code>./configure</code>, and you will see which programs have not been found on your system.
 
-   <p>The most blocking thing is if you miss <samp><span class="command">tclsh</span></samp>: in this case <code>./configure</code> will exit with an error, and <samp><span class="command">make</span></samp> will not be able to run.
+   <p>The most blocking thing is if you miss <span class="command">tclsh</span>: in this case <code>./configure</code> will exit with an error, and <span class="command">make</span> will not be able to run.
 
    <p>If this is your case, you will need to install tcl. If you have your OS installation disk(s), chances are that tcl is available there, and is installable using the OS specific installation system.
 
@@ -158,7 +147,7 @@ See the documentation provided by the tcl project to obtain a working tcl instal
 
    </dl>
 
-   <p>If you still have problems, you can write an email to the <samp><span class="command">sourceinstall</span></samp> users mailing list <a href="mailto:bug-sourceinstall@gnu.org">bug-sourceinstall@gnu.org</a> and ask for help. 
+   <p>If you still have problems, you can write an email to the <span class="command">sourceinstall</span> users mailing list <a href="mailto:bug-sourceinstall@gnu.org">bug-sourceinstall@gnu.org</a> and ask for help. 
 Feedback of any sort is also welcome.
 
    <p>Good luck, and I hope this helps :)

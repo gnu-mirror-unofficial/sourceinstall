@@ -3,7 +3,7 @@
 <title>Usage for Beginners - GNU Source Installer, a graphical installer for source packages</title>
 <meta http-equiv="Content-Type" content="text/html">
 <meta name="description" content="GNU Source Installer, a graphical installer for source packages">
-<meta name="generator" content="makeinfo 4.8">
+<meta name="generator" content="makeinfo 4.7">
 <link title="Top" rel="start" href="index.html#Top">
 <link rel="prev" href="Invoking.html#Invoking" title="Invoking">
 <link rel="next" href="Usage-for-the-Experienced.html#Usage-for-the-Experienced" title="Usage for the Experienced">
@@ -16,19 +16,17 @@
   pre.smallformat  { font-family:inherit; font-size:smaller }
   pre.smallexample { font-size:smaller }
   pre.smalllisp    { font-size:smaller }
-  span.sc    { font-variant:small-caps }
-  span.roman { font-family:serif; font-weight:normal; } 
-  span.sansserif { font-family:sans-serif; font-weight:normal; } 
+  span.sc { font-variant:small-caps }
+  span.roman { font-family: serif; font-weight: normal; } 
 --></style>
 </head>
 <body>
 <div class="node">
 <p>
-<a name="Usage-for-Beginners"></a>
-Next:&nbsp;<a rel="next" accesskey="n" href="Usage-for-the-Experienced.html#Usage-for-the-Experienced">Usage for the Experienced</a>,
+<a name="Usage-for-Beginners"></a>Next:&nbsp;<a rel="next" accesskey="n" href="Usage-for-the-Experienced.html#Usage-for-the-Experienced">Usage for the Experienced</a>,
 Previous:&nbsp;<a rel="previous" accesskey="p" href="Invoking.html#Invoking">Invoking</a>,
 Up:&nbsp;<a rel="up" accesskey="u" href="index.html#Top">Top</a>
-<hr>
+<hr><br>
 </div>
 
 <h2 class="chapter">4 Usage for Beginners</h2>
@@ -41,11 +39,11 @@ Up:&nbsp;<a rel="up" accesskey="u" href="index.html#Top">Top</a>
 For beginners, a default setup known to work well for GNU Source Installer is the following:
 
      <ol type=1 start=1>
-<li>Your OS distribution provided programs are prefixed using <samp><span class="file">/usr</span></samp>. 
-GNU Source Installer itself is either prefixed using <samp><span class="file">/usr</span></samp> or <samp><span class="file">/usr/local</span></samp> (this means that the program executables are in <samp><span class="file">/usr/bin</span></samp> or <samp><span class="file">/usr/local/bin</span></samp> respectively. 
-<li>You login normally as you always do with your user name, then start the GNU Source Installer using command <samp><span class="command">sourceinstall</span></samp>. You do NOT login as root. 
+<li>Your OS distribution provided programs are prefixed using <span class="file">/usr</span>. 
+GNU Source Installer itself is either prefixed using <span class="file">/usr</span> or <span class="file">/usr/local</span> (this means that the program executables are in <span class="file">/usr/bin</span> or <span class="file">/usr/local/bin</span> respectively. 
+<li>You login normally as you always do with your user name, then start the GNU Source Installer using command <span class="command">sourceinstall</span>. You do NOT login as root. 
 At the appropriate times, during installation, you will be asked for the root password if necessary. 
-<li>The default prefix in your preferences is <samp><span class="file">/usr/local</span></samp>, and thus you install your source packages in <samp><span class="file">/usr/local</span></samp>
+<li>The default prefix in your preferences is <span class="file">/usr/local</span>, and thus you install your source packages in <span class="file">/usr/local</span>
 <li>You are the only one on the system that installs source packages, and always do that logging in as the same user.
         </ol>
 
@@ -60,7 +58,7 @@ First of all, think about a software you want. It is highly probable that such a
 You can also try the term &ldquo;Open Source&rdquo; (the Free Software movement generally despises the term, but it is less prone to sending you to a freeware or even commercial page than trying to enter &ldquo;Free Software&rdquo; in your engine).
 
    <p>You can choose another road, and use a Directory instead. 
-Good places to start are the Free Software Directory and Savannah (home to the <samp><span class="command">sourceinstall</span></samp> project development). Other good places to search are Freshmeat and Sourceforge, although you will find a lot of not really Free software there too.
+Good places to start are the Free Software Directory and Savannah (home to the <span class="command">sourceinstall</span> project development). Other good places to search are Freshmeat and Sourceforge, although you will find a lot of not really Free software there too.
 
    <p>Once you have found an interesting software, look for a SOURCE download (.tar.gz, .tar.bz2, ..) 
 Proceed with the download, and mark where the file will be downloaded.
@@ -68,7 +66,7 @@ Proceed with the download, and mark where the file will be downloaded.
 <h3 class="section">4.3 Adding a new source package</h3>
 
 <p><a name="index-Adding-a-new-source-package-17"></a>
-Once you have a new shiny source package, it is time to add it from the Source Installer. Run <samp><span class="command">sourceinstall</span></samp>, then press the <code>Add</code> button.
+Once you have a new shiny source package, it is time to add it from the Source Installer. Run <span class="command">sourceinstall</span>, then press the <code>Add</code> button.
 
    <p>In the <code>Add</code> dialog that appears, you can choose <code>Browse</code> to locate the package, and finally choose <code>Ok</code> to proceed. Let the other checkboxes be with their default values.
 
@@ -76,7 +74,7 @@ Once you have a new shiny source package, it is time to add it from the Source I
 
    <p>If you have no idea about what those options mean, at least take a look at the option descriptions. You can then try 'Auto' to go on with the defaults.
 
-   <p>The option <samp><span class="option">--prefix</span></samp> will be highlighted. This is because it's a very useful and important option, that lets you specify where your install tree should start.
+   <p>The option <span class="option">--prefix</span> will be highlighted. This is because it's a very useful and important option, that lets you specify where your install tree should start.
 
    <p>When you are satisfied with the options, choose <code>Ok</code> and wait for the software to be configured and compiled.
 
@@ -85,7 +83,7 @@ Once you have a new shiny source package, it is time to add it from the Source I
 <h3 class="section">4.4 Changing the Preferences</h3>
 
 <p><a name="index-Changing-the-Preferences-18"></a>
-The default prefix to use for your installs can be changed, like other options, in the <code>Preferences</code> from the <code>Edit</code> menu, and it is initially set to <samp><span class="file">/usr/local</span></samp>.
+The default prefix to use for your installs can be changed, like other options, in the <code>Preferences</code> from the <code>Edit</code> menu, and it is initially set to <span class="file">/usr/local</span>.
 
    <p>Here are the preferences you can change and their description:
 
@@ -102,7 +100,7 @@ These are the default values for the checkboxes when you trigger the <code>Add</
 
    <p>&ldquo;Strip binaries (not recommended)&rdquo;: this option should be off. It can cause a lot of trouble if you don't know what you are doing. It involves removing symbolic information from the installed programs.
 
-   <p>&ldquo;Default install prefix&rdquo;: this is the default prefix to use when installing software packages. Programs and data will generally be installed in a subtree of the specified directory. The default value is <samp><span class="file">/usr/local</span></samp> and is a good one for system-wide installs.
+   <p>&ldquo;Default install prefix&rdquo;: this is the default prefix to use when installing software packages. Programs and data will generally be installed in a subtree of the specified directory. The default value is <span class="file">/usr/local</span> and is a good one for system-wide installs.
 
    <p>&ldquo;Src compression&rdquo;: this is the compression format to use when archiving source packages. By default it is .bz2 (which provides very space-efficient compression), but if you have plenty of space in your disk and prefer quicker installs and uninstalls you can change it to .gz
 

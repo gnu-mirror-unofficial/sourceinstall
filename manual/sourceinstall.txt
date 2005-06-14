@@ -33,34 +33,30 @@ Unix software.
 1 Introduction for Beginners
 ****************************
 
-Welcome to GNU Source Installer!
+This is an introduction for real beginners. If you are already somewhat
+experienced with UNIX-like systems and GNU install procedures, you
+should skip this chapter, otherwise
 
-   `sourceinstall' automates configuration, compilation, installation
-and removal of source packages, using the common procedures used to
-install Unix software.
+   Welcome!
+
+   `sourceinstall' will try to make configuration, compilation,
+installation and removal of source packages easier for you as a
+beginner, but instead of hiding information and operations, everything
+that happens will be available for you to see, so you can hopefully
+understand basic concepts by just using this program.
 
    Provided your system meets the requirements, and thus you manage to
 have a working installation of `sourceinstall' itself, you will be
-shortly able to install new software from its source code by:
-
-  1. surfing the web
-
-  2. identifying a Free program you like
-
-  3. downloading its SOURCE package (in .tar.gz, .tar.bz2, or other
-     formats)
-
-  4. feeding it to GNU Source Installer (`sourceinstall')
+shortly able to install new software from its source code by surfing
+the web, identifying a Free Software you like, downloading its SOURCE
+package, and feeding it to GNU Installer.
 
 1.1 Installing the Installer
 ============================
 
-If you reached this manual, you probably already have a working, maybe
-minimal system and a browser.
-
-   Proceed to download sourceinstall-0.1-cvs.tar.gz, and mark where the
-file will be placed (the "folder", or in more proper language a
-"directory"). For example, we will assume that you are downloading to
+Proceed to download sourceinstall-0.1-cvs.tar.gz, and mark where the
+file will be placed (the "folder", the "directory"). For example, we
+will assume that you are downloading to
 
      /home/user/downloads
 
@@ -122,24 +118,25 @@ type:
 
      sourceinstall
 
-   To run it from the graphical environment, you should create a link
-to the program on your desktop or in your program menus. The program to
-link is `/usr/local/bin/sourceinstall'
+   To run it from the graphical environment, you should create some
+kind of "shortcut" or "link" to the program on your desktop or in your
+program menus. The program to launch is (assuming default values)
+`/usr/local/bin/sourceinstall' .
 
-   If you experience errors, or behaviour not described correctly by
-this manual, the next section tries to deal with these cases.
-
-   If you read this section and the next one, and still cannot follow
-these instructions, there is probably nothing GNU Source Installer can
-do for you, and you should stop reading here.
+   If you experience errors that prevent the correct installation and
+execution of the program, the next section tries to deal with these
+cases.
 
    At the end of the procedure you will get the following files
 installed:
 
-   `/usr/local/bin/sourceinstall'                (link to the program)
-`/usr/local/bin/sourceinstall.tcl'            (the program)
-`/usr/local/info/sourceinstall.info'          (texinfo manual)
-`/usr/local/man/man1/sourceinstall.man'       (man page)
+  1. `/usr/local/bin/sourceinstall'                (link to the program)
+
+  2. `/usr/local/bin/sourceinstall.tcl'            (the program)
+
+  3. `/usr/local/info/sourceinstall.info'          (texinfo manual)
+
+  4. `/usr/local/man/man1/sourceinstall.man'       (man page)
 
    To consult the GNU Source Installer manual type
 
@@ -1537,43 +1534,43 @@ Concept Index
 This is a general index of all issues discussed in this manual, with the
 exception of the `sourceinstall' commands and command-line options.
 
-Adding a new source package:                   See 4.3.      (line  409)
-Bugs, reporting:                               See 6.        (line  693)
-Changing the Preferences:                      See 4.4.      (line  438)
-Conforming and non-conforming packages:        See 5.2.      (line  547)
-Consistency checks:                            See 5.1.      (line  527)
-Copying:                                       See 7.        (line  700)
-FDL, GNU Free Documentation License:           See 7.2.      (line 1121)
-Files and Directories:                         See 5.5.      (line  624)
-GPL, GNU General Public License:               See 7.1.      (line  763)
-Installing the Installer:                      See 1.1.      (line   58)
+Adding a new source package:                   See 4.3.      (line  406)
+Bugs, reporting:                               See 6.        (line  690)
+Changing the Preferences:                      See 4.4.      (line  435)
+Conforming and non-conforming packages:        See 5.2.      (line  544)
+Consistency checks:                            See 5.1.      (line  524)
+Copying:                                       See 7.        (line  697)
+FDL, GNU Free Documentation License:           See 7.2.      (line 1118)
+Files and Directories:                         See 5.5.      (line  621)
+GPL, GNU General Public License:               See 7.1.      (line  760)
+Installing the Installer:                      See 1.1.      (line   57)
 Introduction for Beginners:                    See 1.        (line   36)
-Introduction for the Experienced:              See 2.        (line  226)
-Invoking:                                      See 3.        (line  326)
-Looking for the right package:                 See 4.2.      (line  383)
-no warranty:                                   See 7.1.      (line 1027)
-Options:                                       See 3.2.      (line  343)
-Other package management systems:              See 5.3.      (line  568)
-Querying package information:                  See 4.5.      (line  481)
-Removing a package:                            See 4.6.      (line  489)
-Synopsis:                                      See 3.1.      (line  335)
-The default setup:                             See 4.1.      (line  361)
-Troubleshooting sourceinstall Installation:    See 1.2.      (line  156)
-Usage for Beginners:                           See 4.        (line  358)
-Usage for the Experienced:                     See 5.        (line  501)
-Users:                                         See 5.4.      (line  586)
-Why should you avoid this program?:            See 2.2.      (line  285)
-Why should you use this program?:              See 2.1.      (line  243)
+Introduction for the Experienced:              See 2.        (line  223)
+Invoking:                                      See 3.        (line  323)
+Looking for the right package:                 See 4.2.      (line  380)
+no warranty:                                   See 7.1.      (line 1024)
+Options:                                       See 3.2.      (line  340)
+Other package management systems:              See 5.3.      (line  565)
+Querying package information:                  See 4.5.      (line  478)
+Removing a package:                            See 4.6.      (line  486)
+Synopsis:                                      See 3.1.      (line  332)
+The default setup:                             See 4.1.      (line  358)
+Troubleshooting sourceinstall Installation:    See 1.2.      (line  153)
+Usage for Beginners:                           See 4.        (line  355)
+Usage for the Experienced:                     See 5.        (line  498)
+Users:                                         See 5.4.      (line  583)
+Why should you avoid this program?:            See 2.2.      (line  282)
+Why should you use this program?:              See 2.1.      (line  240)
 Index
 *****
 
 This is an alphabetical list of all `sourceinstall' commands,
 command-line options, and environment variables.
 
---help:                                        See 3.2.      (line  343)
---version:                                     See 3.2.      (line  347)
--h:                                            See 3.2.      (line  343)
--V:                                            See 3.2.      (line  347)
+--help:                                        See 3.2.      (line  340)
+--version:                                     See 3.2.      (line  344)
+-h:                                            See 3.2.      (line  340)
+-V:                                            See 3.2.      (line  344)
 Table of Contents
 *****************
 
