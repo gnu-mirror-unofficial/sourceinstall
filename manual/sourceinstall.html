@@ -31,7 +31,7 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#dir">(dir)</a>
 
 <p><span class="command">sourceinstall</span> automates configuration, compilation, installation and removal of source packages, using the common procedures used to install Unix software.
 
-   <p>This document was produced for version 0.1-cvs of <span class="command">sourceinstall</span>.
+   <p>This document was produced for version 0.2-cvs of <span class="command">sourceinstall</span>.
 
 <ul class="menu">
 <li><a accesskey="1" href="#Introduction-for-Beginners">Introduction for Beginners</a>:   Introduction for the really novice user
@@ -68,7 +68,7 @@ This is an introduction for real beginners. If you are already somewhat experien
 <h3 class="section">1.1 Installing the Installer</h3>
 
 <p><a name="index-Installing-the-Installer-2"></a>
-Proceed to download sourceinstall-0.1-cvs.tar.gz, and mark where the file will be placed (the &ldquo;folder&rdquo;, the <dfn>directory</dfn>). For example, we will assume that you are downloading to
+Proceed to download sourceinstall-0.2-cvs.tar.gz, and mark where the file will be placed (the &ldquo;folder&rdquo;, the <dfn>directory</dfn>). For example, we will assume that you are downloading to
 
 <pre class="example">     /home/user/downloads
 </pre>
@@ -85,13 +85,13 @@ If things are going well, you will know because you will get nothing else than a
 
    <p>At this point enter the following command (this assumes you have the GNU version of <span class="command">tar</span>):
 
-<pre class="example">     $ tar -zxvf sourceinstall-0.1-cvs.tar.gz
+<pre class="example">     $ tar -zxvf sourceinstall-0.2-cvs.tar.gz
 </pre>
    <p>Note that you can use the tabulation (TAB) character to complete names. Experiment with pressing (TAB) around the middle of the file name.
 
    <p>All the files you'll see are being extracted from the archive, and a new directory is being created in the current one. At the end type:
 
-<pre class="example">     $ cd sourceinstall-0.1-cvs
+<pre class="example">     $ cd sourceinstall-0.2-cvs
      $ ./configure
 </pre>
    <p>A lot of output will be showing at this point. The software is being <dfn>configured</dfn> (adapted) for your system. If everything runs smooth, you will see at most WARNINGs but no ERRORs. After a while you will get the familiar dollar, and now you can write:
@@ -156,19 +156,19 @@ See the documentation provided by the tcl project to obtain a working tcl instal
    <p>This is a comprensive list of programs that GNU Source Installer uses, from the most important ones, to the really secondary:
 
      <dl>
-<dt>tclsh<dd>with the Tk and Expect tcl packages
+<dt><span class="samp">tclsh</span><dd>with the Tk and Expect tcl packages
 
-     <br><dt>sh, cp, mv, rm. du, su, rmdir<dd>these are part of every unix-like, you must have them
+     <br><dt><span class="samp">sh, cp, mv, rm. du, su, rmdir</span><dd>these are part of every unix-like, you must have them
 
-     <br><dt>tar<dd>this is necessary to extract the source .tar archive
+     <br><dt><span class="samp">tar</span><dd>this is necessary to extract the source .tar archive
 
-     <br><dt>bunzip2, bzip2<dd>these are necessary to uncompress .bz2 files and to compress the stored source using the very space efficient (but more time consuming) .bz2 compression. By default, the source is stored using this compression.
+     <br><dt><span class="samp">bunzip2, bzip2</span><dd>these are necessary to uncompress .bz2 files and to compress the stored source using the very space efficient (but more time consuming) .bz2 compression. By default, the source is stored using this compression.
 
-     <br><dt>gzip, gunzip<dd>these are necessary to uncompress .gz files and to compress the stored source using the quick but less-than-bz2 (but still good) space efficient .gz compression.
+     <br><dt><span class="samp">gzip, gunzip</span><dd>these are necessary to uncompress .gz files and to compress the stored source using the quick but less-than-bz2 (but still good) space efficient .gz compression.
 
-     <br><dt>unzip, zip<dd>these deal with .zip files. It is very unlikely that you will find Free Software source packages available only in .zip format so you can ignore this. Also, you do not want to compress your source using zip. I found both .gz and .bz2 to be much more efficient at least when dealing with source.
+     <br><dt><span class="samp">unzip, zip</span><dd>these deal with .zip files. It is very unlikely that you will find Free Software source packages available only in .zip format so you can ignore this. Also, you do not want to compress your source using zip. I found both .gz and .bz2 to be much more efficient at least when dealing with source.
 
-     <br><dt>compress<dd>this deals with .Z files, and only to create them to store source. Do you want to store source in .Z ? I think not. So if it is missing on your system, have a laugh and ignore it.
+     <br><dt><span class="samp">compress</span><dd>this deals with .Z files, and only to create them to store source. Do you want to store source in .Z ? I think not. So if it is missing on your system, have a laugh and ignore it.
 
    </dl>
 
@@ -202,19 +202,21 @@ Source Installer (<span class="command">sourceinstall</span>) is a program that 
 If you already build most of the software on your system from source code, you might try <span class="command">sourceinstall</span> as a way to centralize and better organize your interactive source installs. Here is what this software offers to the experienced user:
 
      <dl>
-<dt>better integration with your GUI programs.<dd>The mozilla people for example, could easily implement an additional download action that is available for .tar.gz files which look like source packages (other than Open, Remove): Install.
+<dt><span class="samp">better integration with your GUI programs.</span><dd>Other GUI programs could interface with GNU Source Installer and provide tigher integration if desired.
 
      <p>This would be possible by interfacing at the simplest level (the executable level), by running <code>sourceinstall mypackage-1.0.1.tar.gz</code> for example.
 
-     <p>Another item in the wishlist is the drag-and-drop of source packages to the <span class="command">sourceinstall</span> gui.
+     <p>Another item, this one in the wishlist yet, is the drag-and-drop of source packages to the <span class="command">sourceinstall</span> gui.
 
-     <br><dt>tracking of all currently installed source packages,<dd>with info about install size, source size, and all files relevant to each package.
+     <br><dt><span class="samp">tracking of all currently installed source packages,</span><dd>with info about install size, source size, and all files relevant to each package.
 
-     <br><dt>automatic quick check for broken installs.<dd>If you remove or rename a file associated with an installed package, then clicking on the package will prompt the problem, and mark the missing file in red. If you can not solve the issue yourself by restoring the file, you can click &ldquo;Reinstall&rdquo; and get a fresh reinstallation.
+     <br><dt><span class="samp">automatic quick check for broken installs.</span><dd>If you remove or rename a file associated with an installed package, then clicking on the package will prompt the problem, and mark the missing file in red. If you can not solve the issue yourself by restoring the file, you can click &ldquo;Reinstall&rdquo; and get a fresh reinstallation.
 
-     <br><dt>implicit check for reliable and gnu-conforming packages.<dd>The program will issue warnings if the package offers only a very spartane build system, or does not correctly honor common Makefile targets and features.
+     <br><dt><span class="samp">implicit check for reliable and gnu-conforming packages.</span><dd>The program will issue warnings if the package offers only a very spartane build system, or does not correctly honor common Makefile targets and features.
 
-     <br><dt>full debugging output.<dd>A pseudo-console with all the output is provided, so you will be able to get notified of warnings and errors from <code>./configure</code>, <code>make</code>, and all other programs.
+     <br><dt><span class="samp">full debugging output.</span><dd>A pseudo-console with all the output is provided, so you will be able to get notified of warnings and errors from <code>./configure</code>, <code>make</code>, and all other programs.
+
+     <br><dt><span class="samp">clean uninstallation</span><dd>The program performs crosschecks between make uninstall results and internal information available on individual packages (gathered during the install process). These checks can detect files left over by the make uninstall procedure, and if no other package claims them, they are suggested for removal.
 
    </dl>
 
@@ -224,15 +226,15 @@ If you already build most of the software on your system from source code, you m
 The following is a critique against this tool, that shows what you lose, or do not gain in contrast to relying on the good old command line:
 
      <dl>
-<dt>you can lose time.<dd><span class="command">sourceinstall</span> basically installs two times (however, the install process is generally not so time-consuming, for example in contrast to the compile process). It makes a test installation first (if <code>DESTDIR</code> is supported), and gets a lot of info from the test installation. This has an impact on total installation time.
+<dt><span class="samp">you can lose time.</span><dd><span class="command">sourceinstall</span> basically installs two times. However, the install process is generally not so time-consuming, for example in contrast to the compile process. The program makes a test installation first (if <code>DESTDIR</code> is supported), to make a final check and gather useful information. This has an impact on total installation time.
 
-     <br><dt>it is not scriptable.<dd><span class="command">sourceinstall</span> can be called with filename parameters, but during installation dialogs can be popped up if decisions have to be taken. This is a tool tought for interactive use, so if total automation is your goal, <span class="command">sourceinstall</span> is not for you.
+     <br><dt><span class="samp">it is not scriptable.</span><dd><span class="command">sourceinstall</span> can be called with filename parameters, but during installation dialogs can be popped up if decisions have to be taken. This is a tool tought for interactive use, so if total automation is your goal, <span class="command">sourceinstall</span> is not for you.
 
-     <br><dt>some packages might not work.<dd><span class="command">sourceinstall</span> has to make some generalizations and will not be able to install difficult packages. An experienced user or developer can quickly go through a broken or sketched <code>Makefile</code> and fix things for his system, but <span class="command">sourceinstall</span> can not. On the other hand, if enough people use this tool, this could force developers towards the autotools and to create better packages in general.
+     <br><dt><span class="samp">some packages might not work.</span><dd><span class="command">sourceinstall</span> has to make some generalizations and will not be able to install difficult packages. An experienced user or developer can quickly go through a broken or sketched <code>Makefile</code> and fix things for his system, but <span class="command">sourceinstall</span> can not. On the other hand, if enough people use this tool, this could further drive developers towards the autotools and to create better packages in general.
 
-     <br><dt>no package dependency tracking, no repository, no metainfo.<dd>If your package blocks during configuration, for example, you still look at that damned error message in the pseudo-console and act consequently (generally this involves browsing for that missing file/package, install that, rinse and repeat).
+     <br><dt><span class="samp">no package-level dependency tracking, no repository, nothing at all</span><dd>If your package blocks during configuration, for example, you still look at that damned error message in the pseudo-console and act consequently (generally this involves browsing for that missing file/package).
 
-     <br><dt>people who install everything from source might not give a damn.<dd>  After widespread adoption, however, even less experienced users could be able to approach the source packages (and hopefully become more experienced with time)
+     <br><dt><span class="samp">people who install everything from source might not give a damn.</span><dd>  After widespread adoption, however, even less experienced users could be able to approach the source packages (and hopefully become more experienced with time)
 
    </dl>
 
@@ -247,9 +249,7 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
 <h2 class="chapter">3 Invoking</h2>
 
 <p><a name="index-Invoking-7"></a>
-<span class="command">sourceinstall</span> can be invoked from the command line or by clicking some kind of &ldquo;shortcut&rdquo; in a graphical desktop environment.
-
-   <p>This chapter shows the options and parameters that <span class="command">sourceinstall</span> accepts.
+This chapter shows the options and parameters that <span class="command">sourceinstall</span> accepts.
 
 <h3 class="section">3.1 Synopsis</h3>
 
@@ -429,11 +429,11 @@ GNU Source Installer configuration and packages always refer to the particular u
 
    <p>As the first example, suppose user Pip wants to install his private packages. He chooses to install in <span class="file">/home/pip/usr</span>, at the same time allowing user Merlin to install his own packages in <span class="file">/home/merlin/usr</span>. Of course, in this case no one steps on anybody's toes and everything runs smooth.
 
-   <p>On another system, user Robert is the system administrator, and personally deals with all system-wide package installations. Thus, he logs in using his <code>robert</code> account, then runs <span class="command">sourceinstall</span> and uses the default prefix value, which is <span class="file">/usr/local</span> to install new programs. When requested by the system, he is asked for the root password. This is ideal for one-user systems.
+   <p>As the second example, user Merlin is the system administrator, and personally deals with all system-wide package installations. Thus, he logs in using his <code>merlin</code> account, then runs <span class="command">sourceinstall</span> and uses the default prefix value, which is <span class="file">/usr/local</span> to install new programs. When requested by the system, he is asked for the root password. This is ideal for one-user systems.
 
-   <p>On another system, both Bertor and Torber deal with system administration. They get along well, and both deal with system-wide package installations. Thus, they decide to both install packages logging in using the privileged <code>root</code> account, and then install using <span class="command">sourceinstall</span>. They will both see the same packages, because they are logging in as the same user (<code>root</code>). However, only one of the two admins will be able to install software at the exact same time, because to prevent corruption of package data each user is entitled to a single running instance of GNU Source Installer. If Bertor tries to start sourceinstall while Torber is already installing something, Bertor gets an error message about a file lock, so he waits until Torber ends his work, and then retries.
+   <p>As a third example, suppose both Pip and Merlin deal with system administration. They get along well, and both deal with system-wide package installations. Thus, they decide to both install packages logging in using the privileged <code>root</code> account, and then install using <span class="command">sourceinstall</span>. They will both see the same packages, because they are logging in as the same user (<code>root</code>). However, only one of the two admins will be able to install software at the exact same time, because to prevent corruption of package data each user is entitled to a single running instance of GNU Source Installer. When the program is already in use, <span class="command">sourceinstall</span> refuses to start and explains the error.
 
-   <p>On another cursed system, Azatoth and Marduk both deal with system administration. They do not care to read documentation (and everyone knows they don't get along very well) so they both login using their regular accounts, and install using the default system-wide prefix, <span class="file">/usr/local</span>. This is BAD and can really screw up things.
+   <p>As a last example, here's what not to do. Imagine both Pip and Merlin deal with system administration, like before, but since they don't read the docs, they login using their regular accounts, and perform installs using the default system-wide prefix, <span class="file">/usr/local</span>, providing the root password then needed. Even if they install at different times this is a bad thing to do: they will not be aware of each other's moves, file dependency tracking will be far less precise, and consequently uninstallation crosschecks will sometimes hint the wrong things.
 
 <h3 class="section">5.5 Files and Directories</h3>
 
@@ -448,7 +448,7 @@ If you want to dwell on the internals of sourceinstall, this is an interesting c
 </pre>
    <p>Currently there is only a tcl implementation, but in the future this system will be used to make different implementations of <span class="command">sourceinstall</span> coesist.
 
-   <p>I have some indistinct ideas about how it could be possible, at configure time, to determine the best supported implementation, and by default make the link point at that.
+   <p>I have some indistinct ideas about how it could be possible, at configure time, to determine the best supported implementation, and by default make the link point at that (of course the user will be able to choose his preferred version using a configure option).
 
    <p>All this is yet to come though, so for the moment this has no great impact on the universe.
 

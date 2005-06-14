@@ -28,7 +28,7 @@ GNU Source Installer
 removal of source packages, using the common procedures used to install
 Unix software.
 
-   This document was produced for version 0.1-cvs of `sourceinstall'.
+   This document was produced for version 0.2-cvs of `sourceinstall'.
 
 1 Introduction for Beginners
 ****************************
@@ -54,7 +54,7 @@ package, and feeding it to GNU Installer.
 1.1 Installing the Installer
 ============================
 
-Proceed to download sourceinstall-0.1-cvs.tar.gz, and mark where the
+Proceed to download sourceinstall-0.2-cvs.tar.gz, and mark where the
 file will be placed (the "folder", the "directory"). For example, we
 will assume that you are downloading to
 
@@ -80,7 +80,7 @@ else than another $ ended message (a "prompt")
    At this point enter the following command (this assumes you have the
 GNU version of `tar'):
 
-     $ tar -zxvf sourceinstall-0.1-cvs.tar.gz
+     $ tar -zxvf sourceinstall-0.2-cvs.tar.gz
 
    Note that you can use the tabulation (TAB) character to complete
 names. Experiment with pressing (TAB) around the middle of the file
@@ -89,7 +89,7 @@ name.
    All the files you'll see are being extracted from the archive, and a
 new directory is being created in the current one. At the end type:
 
-     $ cd sourceinstall-0.1-cvs
+     $ cd sourceinstall-0.2-cvs
      $ ./configure
 
    A lot of output will be showing at this point. The software is being
@@ -178,34 +178,34 @@ be shown).
    This is a comprensive list of programs that GNU Source Installer
 uses, from the most important ones, to the really secondary:
 
-tclsh
+`tclsh'
      with the Tk and Expect tcl packages
 
-sh, cp, mv, rm. du, su, rmdir
+`sh, cp, mv, rm. du, su, rmdir'
      these are part of every unix-like, you must have them
 
-tar
+`tar'
      this is necessary to extract the source .tar archive
 
-bunzip2, bzip2
+`bunzip2, bzip2'
      these are necessary to uncompress .bz2 files and to compress the
      stored source using the very space efficient (but more time
      consuming) .bz2 compression. By default, the source is stored
      using this compression.
 
-gzip, gunzip
+`gzip, gunzip'
      these are necessary to uncompress .gz files and to compress the
      stored source using the quick but less-than-bz2 (but still good)
      space efficient .gz compression.
 
-unzip, zip
+`unzip, zip'
      these deal with .zip files. It is very unlikely that you will find
      Free Software source packages available only in .zip format so you
      can ignore this. Also, you do not want to compress your source
      using zip. I found both .gz and .bz2 to be much more efficient at
      least when dealing with source.
 
-compress
+`compress'
      this deals with .Z files, and only to create them to store source.
      Do you want to store source in .Z ? I think not. So if it is
      missing on your system, have a laugh and ignore it.
@@ -242,38 +242,44 @@ code, you might try `sourceinstall' as a way to centralize and better
 organize your interactive source installs. Here is what this software
 offers to the experienced user:
 
-better integration with your GUI programs.
-     The mozilla people for example, could easily implement an
-     additional download action that is available for .tar.gz files
-     which look like source packages (other than Open, Remove): Install.
+`better integration with your GUI programs.'
+     Other GUI programs could interface with GNU Source Installer and
+     provide tigher integration if desired.
 
      This would be possible by interfacing at the simplest level (the
      executable level), by running `sourceinstall
      mypackage-1.0.1.tar.gz' for example.
 
-     Another item in the wishlist is the drag-and-drop of source
-     packages to the `sourceinstall' gui.
+     Another item, this one in the wishlist yet, is the drag-and-drop
+     of source packages to the `sourceinstall' gui.
 
-tracking of all currently installed source packages,
+`tracking of all currently installed source packages,'
      with info about install size, source size, and all files relevant
      to each package.
 
-automatic quick check for broken installs.
+`automatic quick check for broken installs.'
      If you remove or rename a file associated with an installed
      package, then clicking on the package will prompt the problem, and
      mark the missing file in red. If you can not solve the issue
      yourself by restoring the file, you can click "Reinstall" and get
      a fresh reinstallation.
 
-implicit check for reliable and gnu-conforming packages.
+`implicit check for reliable and gnu-conforming packages.'
      The program will issue warnings if the package offers only a very
      spartane build system, or does not correctly honor common Makefile
      targets and features.
 
-full debugging output.
+`full debugging output.'
      A pseudo-console with all the output is provided, so you will be
      able to get notified of warnings and errors from `./configure',
      `make', and all other programs.
+
+`clean uninstallation'
+     The program performs crosschecks between make uninstall results
+     and internal information available on individual packages
+     (gathered during the install process). These checks can detect
+     files left over by the make uninstall procedure, and if no other
+     package claims them, they are suggested for removal.
 
 
 2.2 Why should you avoid this program?
@@ -283,35 +289,36 @@ The following is a critique against this tool, that shows what you
 lose, or do not gain in contrast to relying on the good old command
 line:
 
-you can lose time.
-     `sourceinstall' basically installs two times (however, the install
+`you can lose time.'
+     `sourceinstall' basically installs two times. However, the install
      process is generally not so time-consuming, for example in
-     contrast to the compile process). It makes a test installation
-     first (if `DESTDIR' is supported), and gets a lot of info from the
-     test installation. This has an impact on total installation time.
+     contrast to the compile process. The program makes a test
+     installation first (if `DESTDIR' is supported), to make a final
+     check and gather useful information. This has an impact on total
+     installation time.
 
-it is not scriptable.
+`it is not scriptable.'
      `sourceinstall' can be called with filename parameters, but during
      installation dialogs can be popped up if decisions have to be
      taken. This is a tool tought for interactive use, so if total
      automation is your goal, `sourceinstall' is not for you.
 
-some packages might not work.
+`some packages might not work.'
      `sourceinstall' has to make some generalizations and will not be
      able to install difficult packages. An experienced user or
      developer can quickly go through a broken or sketched `Makefile'
      and fix things for his system, but `sourceinstall' can not. On the
-     other hand, if enough people use this tool, this could force
-     developers towards the autotools and to create better packages in
-     general.
+     other hand, if enough people use this tool, this could further
+     drive developers towards the autotools and to create better
+     packages in general.
 
-no package dependency tracking, no repository, no metainfo.
+`no package-level dependency tracking, no repository, nothing at all'
      If your package blocks during configuration, for example, you
      still look at that damned error message in the pseudo-console and
      act consequently (generally this involves browsing for that
-     missing file/package, install that, rinse and repeat).
+     missing file/package).
 
-people who install everything from source might not give a damn.
+`people who install everything from source might not give a damn.'
      After widespread adoption, however, even less experienced users
      could be able to approach the source packages (and hopefully
      become more experienced with time)
@@ -320,10 +327,7 @@ people who install everything from source might not give a damn.
 3 Invoking
 **********
 
-`sourceinstall' can be invoked from the command line or by clicking
-some kind of "shortcut" in a graphical desktop environment.
-
-   This chapter shows the options and parameters that `sourceinstall'
+This chapter shows the options and parameters that `sourceinstall'
 accepts.
 
 3.1 Synopsis
@@ -589,14 +593,14 @@ allowing user Merlin to install his own packages in `/home/merlin/usr'.
 Of course, in this case no one steps on anybody's toes and everything
 runs smooth.
 
-   On another system, user Robert is the system administrator, and
+   As the second example, user Merlin is the system administrator, and
 personally deals with all system-wide package installations. Thus, he
-logs in using his `robert' account, then runs `sourceinstall' and uses
+logs in using his `merlin' account, then runs `sourceinstall' and uses
 the default prefix value, which is `/usr/local' to install new
 programs. When requested by the system, he is asked for the root
 password. This is ideal for one-user systems.
 
-   On another system, both Bertor and Torber deal with system
+   As a third example, suppose both Pip and Merlin deal with system
 administration. They get along well, and both deal with system-wide
 package installations. Thus, they decide to both install packages
 logging in using the privileged `root' account, and then install using
@@ -604,16 +608,18 @@ logging in using the privileged `root' account, and then install using
 logging in as the same user (`root'). However, only one of the two
 admins will be able to install software at the exact same time, because
 to prevent corruption of package data each user is entitled to a single
-running instance of GNU Source Installer. If Bertor tries to start
-sourceinstall while Torber is already installing something, Bertor gets
-an error message about a file lock, so he waits until Torber ends his
-work, and then retries.
+running instance of GNU Source Installer. When the program is already
+in use, `sourceinstall' refuses to start and explains the error.
 
-   On another cursed system, Azatoth and Marduk both deal with system
-administration. They do not care to read documentation (and everyone
-knows they don't get along very well) so they both login using their
-regular accounts, and install using the default system-wide prefix,
-`/usr/local'. This is BAD and can really screw up things.
+   As a last example, here's what not to do. Imagine both Pip and
+Merlin deal with system administration, like before, but since they
+don't read the docs, they login using their regular accounts, and
+perform installs using the default system-wide prefix, `/usr/local',
+providing the root password then needed. Even if they install at
+different times this is a bad thing to do: they will not be aware of
+each other's moves, file dependency tracking will be far less precise,
+and consequently uninstallation crosschecks will sometimes hint the
+wrong things.
 
 5.5 Files and Directories
 =========================
@@ -635,7 +641,8 @@ system will be used to make different implementations of
 
    I have some indistinct ideas about how it could be possible, at
 configure time, to determine the best supported implementation, and by
-default make the link point at that.
+default make the link point at that (of course the user will be able to
+choose his preferred version using a configure option).
 
    All this is yet to come though, so for the moment this has no great
 impact on the universe.
@@ -1534,32 +1541,32 @@ Concept Index
 This is a general index of all issues discussed in this manual, with the
 exception of the `sourceinstall' commands and command-line options.
 
-Adding a new source package:                   See 4.3.      (line  406)
-Bugs, reporting:                               See 6.        (line  690)
-Changing the Preferences:                      See 4.4.      (line  435)
-Conforming and non-conforming packages:        See 5.2.      (line  544)
-Consistency checks:                            See 5.1.      (line  524)
-Copying:                                       See 7.        (line  697)
-FDL, GNU Free Documentation License:           See 7.2.      (line 1118)
-Files and Directories:                         See 5.5.      (line  621)
-GPL, GNU General Public License:               See 7.1.      (line  760)
+Adding a new source package:                   See 4.3.      (line  410)
+Bugs, reporting:                               See 6.        (line  697)
+Changing the Preferences:                      See 4.4.      (line  439)
+Conforming and non-conforming packages:        See 5.2.      (line  548)
+Consistency checks:                            See 5.1.      (line  528)
+Copying:                                       See 7.        (line  704)
+FDL, GNU Free Documentation License:           See 7.2.      (line 1125)
+Files and Directories:                         See 5.5.      (line  627)
+GPL, GNU General Public License:               See 7.1.      (line  767)
 Installing the Installer:                      See 1.1.      (line   57)
 Introduction for Beginners:                    See 1.        (line   36)
 Introduction for the Experienced:              See 2.        (line  223)
-Invoking:                                      See 3.        (line  323)
-Looking for the right package:                 See 4.2.      (line  380)
-no warranty:                                   See 7.1.      (line 1024)
-Options:                                       See 3.2.      (line  340)
-Other package management systems:              See 5.3.      (line  565)
-Querying package information:                  See 4.5.      (line  478)
-Removing a package:                            See 4.6.      (line  486)
-Synopsis:                                      See 3.1.      (line  332)
-The default setup:                             See 4.1.      (line  358)
+Invoking:                                      See 3.        (line  330)
+Looking for the right package:                 See 4.2.      (line  384)
+no warranty:                                   See 7.1.      (line 1031)
+Options:                                       See 3.2.      (line  344)
+Other package management systems:              See 5.3.      (line  569)
+Querying package information:                  See 4.5.      (line  482)
+Removing a package:                            See 4.6.      (line  490)
+Synopsis:                                      See 3.1.      (line  336)
+The default setup:                             See 4.1.      (line  362)
 Troubleshooting sourceinstall Installation:    See 1.2.      (line  153)
-Usage for Beginners:                           See 4.        (line  355)
-Usage for the Experienced:                     See 5.        (line  498)
-Users:                                         See 5.4.      (line  583)
-Why should you avoid this program?:            See 2.2.      (line  282)
+Usage for Beginners:                           See 4.        (line  359)
+Usage for the Experienced:                     See 5.        (line  502)
+Users:                                         See 5.4.      (line  587)
+Why should you avoid this program?:            See 2.2.      (line  288)
 Why should you use this program?:              See 2.1.      (line  240)
 Index
 *****
@@ -1567,10 +1574,10 @@ Index
 This is an alphabetical list of all `sourceinstall' commands,
 command-line options, and environment variables.
 
---help:                                        See 3.2.      (line  340)
---version:                                     See 3.2.      (line  344)
--h:                                            See 3.2.      (line  340)
--V:                                            See 3.2.      (line  344)
+--help:                                        See 3.2.      (line  344)
+--version:                                     See 3.2.      (line  348)
+-h:                                            See 3.2.      (line  344)
+-V:                                            See 3.2.      (line  348)
 Table of Contents
 *****************
 

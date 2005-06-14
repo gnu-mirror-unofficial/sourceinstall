@@ -46,19 +46,21 @@ Source Installer (<span class="command">sourceinstall</span>) is a program that 
 If you already build most of the software on your system from source code, you might try <span class="command">sourceinstall</span> as a way to centralize and better organize your interactive source installs. Here is what this software offers to the experienced user:
 
      <dl>
-<dt>better integration with your GUI programs.<dd>The mozilla people for example, could easily implement an additional download action that is available for .tar.gz files which look like source packages (other than Open, Remove): Install.
+<dt><span class="samp">better integration with your GUI programs.</span><dd>Other GUI programs could interface with GNU Source Installer and provide tigher integration if desired.
 
      <p>This would be possible by interfacing at the simplest level (the executable level), by running <code>sourceinstall mypackage-1.0.1.tar.gz</code> for example.
 
-     <p>Another item in the wishlist is the drag-and-drop of source packages to the <span class="command">sourceinstall</span> gui.
+     <p>Another item, this one in the wishlist yet, is the drag-and-drop of source packages to the <span class="command">sourceinstall</span> gui.
 
-     <br><dt>tracking of all currently installed source packages,<dd>with info about install size, source size, and all files relevant to each package.
+     <br><dt><span class="samp">tracking of all currently installed source packages,</span><dd>with info about install size, source size, and all files relevant to each package.
 
-     <br><dt>automatic quick check for broken installs.<dd>If you remove or rename a file associated with an installed package, then clicking on the package will prompt the problem, and mark the missing file in red. If you can not solve the issue yourself by restoring the file, you can click &ldquo;Reinstall&rdquo; and get a fresh reinstallation.
+     <br><dt><span class="samp">automatic quick check for broken installs.</span><dd>If you remove or rename a file associated with an installed package, then clicking on the package will prompt the problem, and mark the missing file in red. If you can not solve the issue yourself by restoring the file, you can click &ldquo;Reinstall&rdquo; and get a fresh reinstallation.
 
-     <br><dt>implicit check for reliable and gnu-conforming packages.<dd>The program will issue warnings if the package offers only a very spartane build system, or does not correctly honor common Makefile targets and features.
+     <br><dt><span class="samp">implicit check for reliable and gnu-conforming packages.</span><dd>The program will issue warnings if the package offers only a very spartane build system, or does not correctly honor common Makefile targets and features.
 
-     <br><dt>full debugging output.<dd>A pseudo-console with all the output is provided, so you will be able to get notified of warnings and errors from <code>./configure</code>, <code>make</code>, and all other programs.
+     <br><dt><span class="samp">full debugging output.</span><dd>A pseudo-console with all the output is provided, so you will be able to get notified of warnings and errors from <code>./configure</code>, <code>make</code>, and all other programs.
+
+     <br><dt><span class="samp">clean uninstallation</span><dd>The program performs crosschecks between make uninstall results and internal information available on individual packages (gathered during the install process). These checks can detect files left over by the make uninstall procedure, and if no other package claims them, they are suggested for removal.
 
    </dl>
 
@@ -68,15 +70,15 @@ If you already build most of the software on your system from source code, you m
 The following is a critique against this tool, that shows what you lose, or do not gain in contrast to relying on the good old command line:
 
      <dl>
-<dt>you can lose time.<dd><span class="command">sourceinstall</span> basically installs two times (however, the install process is generally not so time-consuming, for example in contrast to the compile process). It makes a test installation first (if <code>DESTDIR</code> is supported), and gets a lot of info from the test installation. This has an impact on total installation time.
+<dt><span class="samp">you can lose time.</span><dd><span class="command">sourceinstall</span> basically installs two times. However, the install process is generally not so time-consuming, for example in contrast to the compile process. The program makes a test installation first (if <code>DESTDIR</code> is supported), to make a final check and gather useful information. This has an impact on total installation time.
 
-     <br><dt>it is not scriptable.<dd><span class="command">sourceinstall</span> can be called with filename parameters, but during installation dialogs can be popped up if decisions have to be taken. This is a tool tought for interactive use, so if total automation is your goal, <span class="command">sourceinstall</span> is not for you.
+     <br><dt><span class="samp">it is not scriptable.</span><dd><span class="command">sourceinstall</span> can be called with filename parameters, but during installation dialogs can be popped up if decisions have to be taken. This is a tool tought for interactive use, so if total automation is your goal, <span class="command">sourceinstall</span> is not for you.
 
-     <br><dt>some packages might not work.<dd><span class="command">sourceinstall</span> has to make some generalizations and will not be able to install difficult packages. An experienced user or developer can quickly go through a broken or sketched <code>Makefile</code> and fix things for his system, but <span class="command">sourceinstall</span> can not. On the other hand, if enough people use this tool, this could force developers towards the autotools and to create better packages in general.
+     <br><dt><span class="samp">some packages might not work.</span><dd><span class="command">sourceinstall</span> has to make some generalizations and will not be able to install difficult packages. An experienced user or developer can quickly go through a broken or sketched <code>Makefile</code> and fix things for his system, but <span class="command">sourceinstall</span> can not. On the other hand, if enough people use this tool, this could further drive developers towards the autotools and to create better packages in general.
 
-     <br><dt>no package dependency tracking, no repository, no metainfo.<dd>If your package blocks during configuration, for example, you still look at that damned error message in the pseudo-console and act consequently (generally this involves browsing for that missing file/package, install that, rinse and repeat).
+     <br><dt><span class="samp">no package-level dependency tracking, no repository, nothing at all</span><dd>If your package blocks during configuration, for example, you still look at that damned error message in the pseudo-console and act consequently (generally this involves browsing for that missing file/package).
 
-     <br><dt>people who install everything from source might not give a damn.<dd>  After widespread adoption, however, even less experienced users could be able to approach the source packages (and hopefully become more experienced with time)
+     <br><dt><span class="samp">people who install everything from source might not give a damn.</span><dd>  After widespread adoption, however, even less experienced users could be able to approach the source packages (and hopefully become more experienced with time)
 
    </dl>
 
