@@ -1,0 +1,124 @@
+<html lang="en">
+<head>
+<title>Usage for Beginners - GNU Source Installer, a graphical installer for source packages</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="GNU Source Installer, a graphical installer for source packages">
+<meta name="generator" content="makeinfo 4.8">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="prev" href="Invoking.html#Invoking" title="Invoking">
+<link rel="next" href="Usage-for-the-Experienced.html#Usage-for-the-Experienced" title="Usage for the Experienced">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc    { font-variant:small-caps }
+  span.roman { font-family:serif; font-weight:normal; } 
+  span.sansserif { font-family:sans-serif; font-weight:normal; } 
+--></style>
+</head>
+<body>
+<div class="node">
+<p>
+<a name="Usage-for-Beginners"></a>
+Next:&nbsp;<a rel="next" accesskey="n" href="Usage-for-the-Experienced.html#Usage-for-the-Experienced">Usage for the Experienced</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="Invoking.html#Invoking">Invoking</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="index.html#Top">Top</a>
+<hr>
+</div>
+
+<h2 class="chapter">4 Usage for Beginners</h2>
+
+<p><a name="index-Usage-for-Beginners-14"></a>
+
+<h3 class="section">4.1 The default setup</h3>
+
+<p><a name="index-The-default-setup-15"></a>
+For beginners, a default setup known to work well for GNU Source Installer is the following:
+
+     <ol type=1 start=1>
+<li>Your OS distribution provided programs are prefixed using <samp><span class="file">/usr</span></samp>. 
+GNU Source Installer itself is either prefixed using <samp><span class="file">/usr</span></samp> or <samp><span class="file">/usr/local</span></samp> (this means that the program executables are in <samp><span class="file">/usr/bin</span></samp> or <samp><span class="file">/usr/local/bin</span></samp> respectively. 
+<li>You login normally as you always do with your user name, then start the GNU Source Installer using command <samp><span class="command">sourceinstall</span></samp>. You do NOT login as root. 
+At the appropriate times, during installation, you will be asked for the root password if necessary. 
+<li>The default prefix in your preferences is <samp><span class="file">/usr/local</span></samp>, and thus you install your source packages in <samp><span class="file">/usr/local</span></samp>
+<li>You are the only one on the system that installs source packages, and always do that logging in as the same user.
+        </ol>
+
+<h3 class="section">4.2 Looking for the right package</h3>
+
+<p><a name="index-Looking-for-the-right-package-16"></a>
+First of all, think about a software you want. It is highly probable that such a software package is available under a Free license somewhere.
+
+   <p>You can search by simply using a web search engine.
+
+   <p>Tip: add GPL or another Free license name to your search, so you are sure to find real Free Software, and not freeware, shareware or whatelse. 
+You can also try the term &ldquo;Open Source&rdquo; (the Free Software movement generally despises the term, but it is less prone to sending you to a freeware or even commercial page than trying to enter &ldquo;Free Software&rdquo; in your engine).
+
+   <p>You can choose another road, and use a Directory instead. 
+Good places to start are the Free Software Directory and Savannah (home to the <samp><span class="command">sourceinstall</span></samp> project development). Other good places to search are Freshmeat and Sourceforge, although you will find a lot of not really Free software there too.
+
+   <p>Once you have found an interesting software, look for a SOURCE download (.tar.gz, .tar.bz2, ..) 
+Proceed with the download, and mark where the file will be downloaded.
+
+<h3 class="section">4.3 Adding a new source package</h3>
+
+<p><a name="index-Adding-a-new-source-package-17"></a>
+Once you have a new shiny source package, it is time to add it from the Source Installer. Run <samp><span class="command">sourceinstall</span></samp>, then press the <code>Add</code> button.
+
+   <p>In the <code>Add</code> dialog that appears, you can choose <code>Browse</code> to locate the package, and finally choose <code>Ok</code> to proceed. Let the other checkboxes be with their default values.
+
+   <p>If everything runs smooth and the package has been built with the autotools, you will be presented with a configuration window, where all package options can be tweaked prior to installation.
+
+   <p>If you have no idea about what those options mean, at least take a look at the option descriptions. You can then try 'Auto' to go on with the defaults.
+
+   <p>The option <samp><span class="option">--prefix</span></samp> will be highlighted. This is because it's a very useful and important option, that lets you specify where your install tree should start.
+
+   <p>When you are satisfied with the options, choose <code>Ok</code> and wait for the software to be configured and compiled.
+
+   <p>If no problems occur, you will be eventually asked for the root password (if needed), and then you will be informed about the result of the install operation.
+
+<h3 class="section">4.4 Changing the Preferences</h3>
+
+<p><a name="index-Changing-the-Preferences-18"></a>
+The default prefix to use for your installs can be changed, like other options, in the <code>Preferences</code> from the <code>Edit</code> menu, and it is initially set to <samp><span class="file">/usr/local</span></samp>.
+
+   <p>Here are the preferences you can change and their description:
+
+   <p>&ldquo;Default installation choices: Manual configuration, Install, Keep Source&rdquo;
+These are the default values for the checkboxes when you trigger the <code>Add</code> action. Beginners should keep all those selected.
+
+   <p>&ldquo;Manual configuration&rdquo; means that you will be able to see the software configuration window. It will get you aquainted with the common options supported by the packages, so it is recommended to keep this selected.
+
+   <p>You can always choose <code>Auto</code> in the configuration window to stick with the defaults.
+
+   <p>&ldquo;Install&rdquo; means that when you add new packages, they will be installed. Most beginners would want this.
+
+   <p>&ldquo;Keep Source&rdquo; means that the configured source code is compressed, archived and stored for later use. This does waste some space, but ensures a cleaner uninstall process, and can provide a future easy reinstallation.
+
+   <p>&ldquo;Strip binaries (not recommended)&rdquo;: this option should be off. It can cause a lot of trouble if you don't know what you are doing. It involves removing symbolic information from the installed programs.
+
+   <p>&ldquo;Default install prefix&rdquo;: this is the default prefix to use when installing software packages. Programs and data will generally be installed in a subtree of the specified directory. The default value is <samp><span class="file">/usr/local</span></samp> and is a good one for system-wide installs.
+
+   <p>&ldquo;Src compression&rdquo;: this is the compression format to use when archiving source packages. By default it is .bz2 (which provides very space-efficient compression), but if you have plenty of space in your disk and prefer quicker installs and uninstalls you can change it to .gz
+
+<h3 class="section">4.5 Querying package information</h3>
+
+<p><a name="index-Querying-package-information-19"></a>
+Clicking on the package will show all available information on that package, and will activate the actions for the installed package: <code>Remove</code> and <code>Reinstall</code>. This will also trigger a quick check to ensure that the package has all its needed files in place.
+
+<h3 class="section">4.6 Removing a package</h3>
+
+<p><a name="index-Removing-a-package-20"></a>
+To remove a package, select it from the list and click the <code>Remove</code> button. 
+When you <code>Remove</code> a package, you can decide to uninstall the package but keep it in compressed source form. This way, should you decide to install again later, you have the already configured source, and only need to select it from the list and choose <code>Install</code>.
+
+   <p>These instructions should get you started. 
+Read on if you want to know more.
+
+   </body></html>
+

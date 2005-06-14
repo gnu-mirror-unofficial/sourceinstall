@@ -1,0 +1,86 @@
+<html lang="en">
+<head>
+<title>Introduction for the Experienced - GNU Source Installer, a graphical installer for source packages</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="GNU Source Installer, a graphical installer for source packages">
+<meta name="generator" content="makeinfo 4.8">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="prev" href="Introduction-for-Beginners.html#Introduction-for-Beginners" title="Introduction for Beginners">
+<link rel="next" href="Invoking.html#Invoking" title="Invoking">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc    { font-variant:small-caps }
+  span.roman { font-family:serif; font-weight:normal; } 
+  span.sansserif { font-family:sans-serif; font-weight:normal; } 
+--></style>
+</head>
+<body>
+<div class="node">
+<p>
+<a name="Introduction-for-the-Experienced"></a>
+Next:&nbsp;<a rel="next" accesskey="n" href="Invoking.html#Invoking">Invoking</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="Introduction-for-Beginners.html#Introduction-for-Beginners">Introduction for Beginners</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="index.html#Top">Top</a>
+<hr>
+</div>
+
+<h2 class="chapter">2 Introduction for the Experienced</h2>
+
+<p><a name="index-Introduction-for-the-Experienced-4"></a>
+Source Installer (<samp><span class="command">sourceinstall</span></samp>) is a program that offers a graphical interface to source package configuration, installation, tracking and removal.
+
+   <p>It is intended to work on Unix-like systems (with <code>GNU/Linux</code> as a primary target).
+
+   <p>This is a tool intended for the user, not for developers: it has nothing to do with package creation.
+
+   <p>The user installs new source packages by browsing the web, downloading a source package (in .tar.gz or other formats), and then feeding it to the source installer.
+
+<h3 class="section">2.1 Why should you use this program?</h3>
+
+<p><a name="index-Why-should-you-use-this-program_003f-5"></a>
+If you already build most of the software on your system from source code, you might try <samp><span class="command">sourceinstall</span></samp> as a way to centralize and better organize your interactive source installs. Here is what this software offers to the experienced user:
+
+     <dl>
+<dt>better integration with your GUI programs.<dd>The mozilla people for example, could easily implement an additional download action that is available for .tar.gz files which look like source packages (other than Open, Remove): Install.
+
+     <p>This would be possible by interfacing at the simplest level (the executable level), by running <code>sourceinstall mypackage-1.0.1.tar.gz</code> for example.
+
+     <p>Another item in the wishlist is the drag-and-drop of source packages to the <samp><span class="command">sourceinstall</span></samp> gui.
+
+     <br><dt>tracking of all currently installed source packages,<dd>with info about install size, source size, and all files relevant to each package.
+
+     <br><dt>automatic quick check for broken installs.<dd>If you remove or rename a file associated with an installed package, then clicking on the package will prompt the problem, and mark the missing file in red. If you can not solve the issue yourself by restoring the file, you can click &ldquo;Reinstall&rdquo; and get a fresh reinstallation.
+
+     <br><dt>implicit check for reliable and gnu-conforming packages.<dd>The program will issue warnings if the package offers only a very spartane build system, or does not correctly honor common Makefile targets and features.
+
+     <br><dt>full debugging output.<dd>A pseudo-console with all the output is provided, so you will be able to get notified of warnings and errors from <code>./configure</code>, <code>make</code>, and all other programs.
+
+   </dl>
+
+<h3 class="section">2.2 Why should you avoid this program?</h3>
+
+<p><a name="index-Why-should-you-avoid-this-program_003f-6"></a>
+The following is a critique against this tool, that shows what you lose, or do not gain in contrast to relying on the good old command line:
+
+     <dl>
+<dt>you can lose time.<dd><samp><span class="command">sourceinstall</span></samp> basically installs two times (however, the install process is generally not so time-consuming, for example in contrast to the compile process). It makes a test installation first (if <code>DESTDIR</code> is supported), and gets a lot of info from the test installation. This has an impact on total installation time.
+
+     <br><dt>it is not scriptable.<dd><samp><span class="command">sourceinstall</span></samp> can be called with filename parameters, but during installation dialogs can be popped up if decisions have to be taken. This is a tool tought for interactive use, so if total automation is your goal, <samp><span class="command">sourceinstall</span></samp> is not for you.
+
+     <br><dt>some packages might not work.<dd><samp><span class="command">sourceinstall</span></samp> has to make some generalizations and will not be able to install difficult packages. An experienced user or developer can quickly go through a broken or sketched <code>Makefile</code> and fix things for his system, but <samp><span class="command">sourceinstall</span></samp> can not. On the other hand, if enough people use this tool, this could force developers towards the autotools and to create better packages in general.
+
+     <br><dt>no package dependency tracking, no repository, no metainfo.<dd>If your package blocks during configuration, for example, you still look at that damned error message in the pseudo-console and act consequently (generally this involves browsing for that missing file/package, install that, rinse and repeat).
+
+     <br><dt>people who install everything from source might not give a damn.<dd>  After widespread adoption, however, even less experienced users could be able to approach the source packages (and hopefully become more experienced with time)
+
+   </dl>
+
+   </body></html>
+
