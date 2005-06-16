@@ -156,20 +156,27 @@ because you do not have the required software in your system.
    Look at the output of `./configure', and you will see which programs
 have not been found on your system.
 
-   The most blocking thing is if you miss `tclsh': in this case
-`./configure' will exit with an error, and `make' will not be able to
-run.
+   The most blocking thing is if you miss `tcl', `Tk' or `Expect': in
+this case `./configure' will exit with an error, and `make' will not be
+able to run.
 
-   If this is your case, you will need to install tcl. If you have your
-OS installation disk(s), chances are that tcl is available there, and
-is installable using the OS specific installation system.
+   If this is your case, you will need to install tcl, tk and/or
+expect. If you have your OS installation disk(s), chances are that the
+software is available there, and is installable using the OS specific
+installation system.
 
-   Otherwise, a source release can be obtained from
-`http://sourceforge.net/projects/tcl'.  See the documentation provided
-by the tcl project to obtain a working tcl installation.
+   Otherwise, probably the easiest method to obtain an interpreter able
+to work with GNU Source Installer is to build the `expectk' program,
+which is included in the Expect package.
 
-   Then restart the procedure from `./configure' and things should be
-better.
+   You can fetch it from http://expect.nist.gov/
+
+   The other method is to use tclsh, with the Tk and Expect packages.
+Source releases for tcl can be obtained from
+`http://sourceforge.net/projects/tcl'.
+
+   After having a working interpreter, restart the procedure from
+`./configure' and things should be better.
 
    If you miss any of the other helper programs, only the particular
 functionality offered by that program will be missing (a WARNING will
@@ -178,14 +185,22 @@ be shown).
    This is a comprensive list of programs that GNU Source Installer
 uses, from the most important ones, to the really secondary:
 
-`tclsh'
-     with the Tk and Expect tcl packages
+`tcl interpreter'
+     `tclsh' with the Tk and Expect tcl packages, or in alternative the
+     all-in-one `expectk' interpreter.
 
 `sh, cp, mv, rm. du, su, rmdir'
      these are part of every unix-like, you must have them
 
 `tar'
-     this is necessary to extract the source .tar archive
+     this is necessary to extract the source .tar archive - in theory
+     you could use GNU Source Installer without this, but it would not
+     be practical.
+
+`gzip, gunzip'
+     these are necessary to uncompress .gz files and to compress the
+     stored source using the quick but less-than-bz2 (but still good)
+     space efficient .gz compression.
 
 `bunzip2, bzip2'
      these are necessary to uncompress .bz2 files and to compress the
@@ -193,22 +208,18 @@ uses, from the most important ones, to the really secondary:
      consuming) .bz2 compression. By default, the source is stored
      using this compression.
 
-`gzip, gunzip'
-     these are necessary to uncompress .gz files and to compress the
-     stored source using the quick but less-than-bz2 (but still good)
-     space efficient .gz compression.
-
 `unzip, zip'
      these deal with .zip files. It is very unlikely that you will find
      Free Software source packages available only in .zip format so you
      can ignore this. Also, you do not want to compress your source
      using zip. I found both .gz and .bz2 to be much more efficient at
-     least when dealing with source.
+     least when dealing with source. Ignore warning if not present.
 
 `compress'
-     this deals with .Z files, and only to create them to store source.
-     Do you want to store source in .Z ? I think not. So if it is
-     missing on your system, have a laugh and ignore it.
+     this deals with .Z files. The gzip utilities are used to
+     uncompress .Z packages, so you would only need this if for some
+     arcane reason you want to store source in .Z format. Ignore
+     warning if not present.
 
 
    If you still have problems, you can write an email to the
@@ -695,8 +706,11 @@ in the `Edit' Menu.
 ****************
 
 Email bug reports to <bug-sourceinstall@gnu.org>, trying to be as clear
-and precise as possible. Specify your OS name and version, your tclsh
-version, and a detailed way to reproduce the problem.
+and precise as possible. This means that you should provide all useful
+information that could help to identify the problem, and a detailed way
+to reproduce it.  A good starting point is to specify your OS name and
+version and your interpreter choice (tclsh, expectk or other
+interpreter) and version.
 
 7 Copying
 *********
@@ -1541,43 +1555,43 @@ Concept Index
 This is a general index of all issues discussed in this manual, with the
 exception of the `sourceinstall' commands and command-line options.
 
-Adding a new source package:                   See 4.3.      (line  410)
-Bugs, reporting:                               See 6.        (line  697)
-Changing the Preferences:                      See 4.4.      (line  439)
-Conforming and non-conforming packages:        See 5.2.      (line  548)
-Consistency checks:                            See 5.1.      (line  528)
-Copying:                                       See 7.        (line  704)
-FDL, GNU Free Documentation License:           See 7.2.      (line 1125)
-Files and Directories:                         See 5.5.      (line  627)
-GPL, GNU General Public License:               See 7.1.      (line  767)
+Adding a new source package:                   See 4.3.      (line  421)
+Bugs, reporting:                               See 6.        (line  708)
+Changing the Preferences:                      See 4.4.      (line  450)
+Conforming and non-conforming packages:        See 5.2.      (line  559)
+Consistency checks:                            See 5.1.      (line  539)
+Copying:                                       See 7.        (line  718)
+FDL, GNU Free Documentation License:           See 7.2.      (line 1139)
+Files and Directories:                         See 5.5.      (line  638)
+GPL, GNU General Public License:               See 7.1.      (line  781)
 Installing the Installer:                      See 1.1.      (line   57)
 Introduction for Beginners:                    See 1.        (line   36)
-Introduction for the Experienced:              See 2.        (line  223)
-Invoking:                                      See 3.        (line  330)
-Looking for the right package:                 See 4.2.      (line  384)
-no warranty:                                   See 7.1.      (line 1031)
-Options:                                       See 3.2.      (line  344)
-Other package management systems:              See 5.3.      (line  569)
-Querying package information:                  See 4.5.      (line  482)
-Removing a package:                            See 4.6.      (line  490)
-Synopsis:                                      See 3.1.      (line  336)
-The default setup:                             See 4.1.      (line  362)
+Introduction for the Experienced:              See 2.        (line  234)
+Invoking:                                      See 3.        (line  341)
+Looking for the right package:                 See 4.2.      (line  395)
+no warranty:                                   See 7.1.      (line 1045)
+Options:                                       See 3.2.      (line  355)
+Other package management systems:              See 5.3.      (line  580)
+Querying package information:                  See 4.5.      (line  493)
+Removing a package:                            See 4.6.      (line  501)
+Synopsis:                                      See 3.1.      (line  347)
+The default setup:                             See 4.1.      (line  373)
 Troubleshooting sourceinstall Installation:    See 1.2.      (line  153)
-Usage for Beginners:                           See 4.        (line  359)
-Usage for the Experienced:                     See 5.        (line  502)
-Users:                                         See 5.4.      (line  587)
-Why should you avoid this program?:            See 2.2.      (line  288)
-Why should you use this program?:              See 2.1.      (line  240)
+Usage for Beginners:                           See 4.        (line  370)
+Usage for the Experienced:                     See 5.        (line  513)
+Users:                                         See 5.4.      (line  598)
+Why should you avoid this program?:            See 2.2.      (line  299)
+Why should you use this program?:              See 2.1.      (line  251)
 Index
 *****
 
 This is an alphabetical list of all `sourceinstall' commands,
 command-line options, and environment variables.
 
---help:                                        See 3.2.      (line  344)
---version:                                     See 3.2.      (line  348)
--h:                                            See 3.2.      (line  344)
--V:                                            See 3.2.      (line  348)
+--help:                                        See 3.2.      (line  355)
+--version:                                     See 3.2.      (line  359)
+-h:                                            See 3.2.      (line  355)
+-V:                                            See 3.2.      (line  359)
 Table of Contents
 *****************
 

@@ -142,33 +142,37 @@ If you could not install GNU Source Installer, this is most likely because you d
 
    <p>Look at the output of <code>./configure</code>, and you will see which programs have not been found on your system.
 
-   <p>The most blocking thing is if you miss <span class="command">tclsh</span>: in this case <code>./configure</code> will exit with an error, and <span class="command">make</span> will not be able to run.
+   <p>The most blocking thing is if you miss <span class="command">tcl</span>, <span class="command">Tk</span> or <span class="command">Expect</span>: in this case <code>./configure</code> will exit with an error, and <span class="command">make</span> will not be able to run.
 
-   <p>If this is your case, you will need to install tcl. If you have your OS installation disk(s), chances are that tcl is available there, and is installable using the OS specific installation system.
+   <p>If this is your case, you will need to install tcl, tk and/or expect. If you have your OS installation disk(s), chances are that the software is available there, and is installable using the OS specific installation system.
 
-   <p>Otherwise, a source release can be obtained from <a href="http://sourceforge.net/projects/tcl">http://sourceforge.net/projects/tcl</a>. 
-See the documentation provided by the tcl project to obtain a working tcl installation.
+   <p>Otherwise, probably the easiest method to obtain an interpreter able to work with GNU Source Installer is to build the <span class="command">expectk</span> program, which is included in the Expect package.
 
-   <p>Then restart the procedure from <code>./configure</code> and things should be better.
+   <p>You can fetch it from http://expect.nist.gov/
+
+   <p>The other method is to use tclsh, with the Tk and Expect packages. 
+Source releases for tcl can be obtained from <a href="http://sourceforge.net/projects/tcl">http://sourceforge.net/projects/tcl</a>.
+
+   <p>After having a working interpreter, restart the procedure from <code>./configure</code> and things should be better.
 
    <p>If you miss any of the other helper programs, only the particular functionality offered by that program will be missing (a WARNING will be shown).
 
    <p>This is a comprensive list of programs that GNU Source Installer uses, from the most important ones, to the really secondary:
 
      <dl>
-<dt><span class="samp">tclsh</span><dd>with the Tk and Expect tcl packages
+<dt><span class="samp">tcl interpreter</span><dd><span class="command">tclsh</span> with the Tk and Expect tcl packages, or in alternative the all-in-one <span class="command">expectk</span> interpreter.
 
      <br><dt><span class="samp">sh, cp, mv, rm. du, su, rmdir</span><dd>these are part of every unix-like, you must have them
 
-     <br><dt><span class="samp">tar</span><dd>this is necessary to extract the source .tar archive
-
-     <br><dt><span class="samp">bunzip2, bzip2</span><dd>these are necessary to uncompress .bz2 files and to compress the stored source using the very space efficient (but more time consuming) .bz2 compression. By default, the source is stored using this compression.
+     <br><dt><span class="samp">tar</span><dd>this is necessary to extract the source .tar archive - in theory you could use GNU Source Installer without this, but it would not be practical.
 
      <br><dt><span class="samp">gzip, gunzip</span><dd>these are necessary to uncompress .gz files and to compress the stored source using the quick but less-than-bz2 (but still good) space efficient .gz compression.
 
-     <br><dt><span class="samp">unzip, zip</span><dd>these deal with .zip files. It is very unlikely that you will find Free Software source packages available only in .zip format so you can ignore this. Also, you do not want to compress your source using zip. I found both .gz and .bz2 to be much more efficient at least when dealing with source.
+     <br><dt><span class="samp">bunzip2, bzip2</span><dd>these are necessary to uncompress .bz2 files and to compress the stored source using the very space efficient (but more time consuming) .bz2 compression. By default, the source is stored using this compression.
 
-     <br><dt><span class="samp">compress</span><dd>this deals with .Z files, and only to create them to store source. Do you want to store source in .Z ? I think not. So if it is missing on your system, have a laugh and ignore it.
+     <br><dt><span class="samp">unzip, zip</span><dd>these deal with .zip files. It is very unlikely that you will find Free Software source packages available only in .zip format so you can ignore this. Also, you do not want to compress your source using zip. I found both .gz and .bz2 to be much more efficient at least when dealing with source. Ignore warning if not present.
+
+     <br><dt><span class="samp">compress</span><dd>this deals with .Z files. The gzip utilities are used to uncompress .Z packages, so you would only need this if for some arcane reason you want to store source in .Z format. Ignore warning if not present.
 
    </dl>
 
@@ -498,7 +502,9 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
 
 <h2 class="chapter">6 Reporting Bugs</h2>
 
-<p><a name="index-Bugs_002c-reporting-27"></a>Email bug reports to <a href="mailto:bug-sourceinstall@gnu.org">bug-sourceinstall@gnu.org</a>, trying to be as clear and precise as possible. Specify your OS name and version, your tclsh version, and a detailed way to reproduce the problem.
+<p><a name="index-Bugs_002c-reporting-27"></a>Email bug reports to <a href="mailto:bug-sourceinstall@gnu.org">bug-sourceinstall@gnu.org</a>, trying to be as clear and precise as possible. This means that you should provide all useful information that could help to identify the problem, and a detailed way to reproduce it. 
+A good starting point is to specify your OS name and version and
+your interpreter choice (tclsh, expectk or other interpreter) and version.
 
 <div class="node">
 <p><hr>
