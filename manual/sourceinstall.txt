@@ -169,11 +169,11 @@ installation system.
 to work with GNU Source Installer is to build the `expectk' program,
 which is included in the Expect package.
 
-   You can fetch it from http://expect.nist.gov/
+   You can fetch it from `http://expect.nist.gov/'
 
    The other method is to use tclsh, with the Tk and Expect packages.
 Source releases for tcl can be obtained from
-`http://sourceforge.net/projects/tcl'.
+`http://sourceforge.net/projects/tcl/'.
 
    After having a working interpreter, restart the procedure from
 `./configure' and things should be better.
