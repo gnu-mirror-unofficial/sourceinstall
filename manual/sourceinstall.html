@@ -162,13 +162,15 @@ Source releases for tcl can be obtained from <a href="http://sourceforge.net/pro
      <dl>
 <dt><span class="samp">tcl interpreter</span><dd><span class="command">tclsh</span> with the Tk and Expect tcl packages, or in alternative the all-in-one <span class="command">expectk</span> interpreter.
 
-     <br><dt><span class="samp">sh, cp, mv, rm. du, su, rmdir, kill</span><dd>these are part of every unix-like, you must have them
+     <br><dt><span class="samp">sh, cp, mv, rm, du, su, rmdir, find</span><dd>these should be part of every unix-like. You must have them for GNU Source Installer to work correctly.
 
-     <br><dt><span class="samp">tar</span><dd>this is necessary to extract the source .tar archive - in theory you could use GNU Source Installer without this, but it would not be practical.
+     <br><dt><span class="samp">tar</span><dd>this is necessary to extract the source .tar archive - in theory you could use GNU Source Installer without this, but in practice you will need it.
 
      <br><dt><span class="samp">gzip, gunzip</span><dd>these are necessary to uncompress .gz files and to compress the stored source using the quick but less-than-bz2 (but still good) space efficient .gz compression.
 
      <br><dt><span class="samp">bunzip2, bzip2</span><dd>these are necessary to uncompress .bz2 files and to compress the stored source using the very space efficient (but more time consuming) .bz2 compression. By default, the source is stored using this compression.
+
+     <br><dt><span class="samp">ps</span><dd>this command is used to better detect other sourceinstall processes. GNU Source Installer also uses a lock file, so it is not really necessary.
 
      <br><dt><span class="samp">unzip, zip</span><dd>these deal with .zip files. It is very unlikely that you will find Free Software source packages available only in .zip format so you can ignore this. Also, you do not want to compress your source using zip. I found both .gz and .bz2 to be much more efficient at least when dealing with source. Ignore warning if not present.
 

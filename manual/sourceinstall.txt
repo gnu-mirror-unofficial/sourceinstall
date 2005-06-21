@@ -189,13 +189,14 @@ uses, from the most important ones, to the really secondary:
      `tclsh' with the Tk and Expect tcl packages, or in alternative the
      all-in-one `expectk' interpreter.
 
-`sh, cp, mv, rm. du, su, rmdir, kill'
-     these are part of every unix-like, you must have them
+`sh, cp, mv, rm, du, su, rmdir, find'
+     these should be part of every unix-like. You must have them for
+     GNU Source Installer to work correctly.
 
 `tar'
      this is necessary to extract the source .tar archive - in theory
-     you could use GNU Source Installer without this, but it would not
-     be practical.
+     you could use GNU Source Installer without this, but in practice
+     you will need it.
 
 `gzip, gunzip'
      these are necessary to uncompress .gz files and to compress the
@@ -207,6 +208,11 @@ uses, from the most important ones, to the really secondary:
      stored source using the very space efficient (but more time
      consuming) .bz2 compression. By default, the source is stored
      using this compression.
+
+`ps'
+     this command is used to better detect other sourceinstall
+     processes. GNU Source Installer also uses a lock file, so it is
+     not really necessary.
 
 `unzip, zip'
      these deal with .zip files. It is very unlikely that you will find
@@ -1567,43 +1573,43 @@ Concept Index
 This is a general index of all issues discussed in this manual, with the
 exception of the `sourceinstall' commands and command-line options.
 
-Adding a new source package:                   See 4.3.      (line  424)
-Bugs, reporting:                               See 6.        (line  711)
-Changing the Preferences:                      See 4.4.      (line  453)
-Conforming and non-conforming packages:        See 5.2.      (line  562)
-Consistency checks:                            See 5.1.      (line  542)
-Copying:                                       See 7.        (line  729)
-FDL, GNU Free Documentation License:           See 7.2.      (line 1151)
-Files and Directories:                         See 5.5.      (line  641)
-GPL, GNU General Public License:               See 7.1.      (line  793)
+Adding a new source package:                   See 4.3.      (line  430)
+Bugs, reporting:                               See 6.        (line  717)
+Changing the Preferences:                      See 4.4.      (line  459)
+Conforming and non-conforming packages:        See 5.2.      (line  568)
+Consistency checks:                            See 5.1.      (line  548)
+Copying:                                       See 7.        (line  735)
+FDL, GNU Free Documentation License:           See 7.2.      (line 1157)
+Files and Directories:                         See 5.5.      (line  647)
+GPL, GNU General Public License:               See 7.1.      (line  799)
 Installing the Installer:                      See 1.1.      (line   57)
 Introduction for Beginners:                    See 1.        (line   36)
-Introduction for the Experienced:              See 2.        (line  237)
-Invoking:                                      See 3.        (line  344)
-Looking for the right package:                 See 4.2.      (line  398)
-no warranty:                                   See 7.1.      (line 1057)
-Options:                                       See 3.2.      (line  358)
-Other package management systems:              See 5.3.      (line  583)
-Querying package information:                  See 4.5.      (line  496)
-Removing a package:                            See 4.6.      (line  504)
-Synopsis:                                      See 3.1.      (line  350)
-The default setup:                             See 4.1.      (line  376)
+Introduction for the Experienced:              See 2.        (line  243)
+Invoking:                                      See 3.        (line  350)
+Looking for the right package:                 See 4.2.      (line  404)
+no warranty:                                   See 7.1.      (line 1063)
+Options:                                       See 3.2.      (line  364)
+Other package management systems:              See 5.3.      (line  589)
+Querying package information:                  See 4.5.      (line  502)
+Removing a package:                            See 4.6.      (line  510)
+Synopsis:                                      See 3.1.      (line  356)
+The default setup:                             See 4.1.      (line  382)
 Troubleshooting sourceinstall Installation:    See 1.2.      (line  153)
-Usage for Beginners:                           See 4.        (line  373)
-Usage for the Experienced:                     See 5.        (line  516)
-Users:                                         See 5.4.      (line  601)
-Why should you avoid this program?:            See 2.2.      (line  302)
-Why should you use this program?:              See 2.1.      (line  254)
+Usage for Beginners:                           See 4.        (line  379)
+Usage for the Experienced:                     See 5.        (line  522)
+Users:                                         See 5.4.      (line  607)
+Why should you avoid this program?:            See 2.2.      (line  308)
+Why should you use this program?:              See 2.1.      (line  260)
 Index
 *****
 
 This is an alphabetical list of all `sourceinstall' commands,
 command-line options, and environment variables.
 
---help:                                        See 3.2.      (line  358)
---version:                                     See 3.2.      (line  362)
--h:                                            See 3.2.      (line  358)
--V:                                            See 3.2.      (line  362)
+--help:                                        See 3.2.      (line  364)
+--version:                                     See 3.2.      (line  368)
+-h:                                            See 3.2.      (line  364)
+-V:                                            See 3.2.      (line  368)
 Table of Contents
 *****************
 
