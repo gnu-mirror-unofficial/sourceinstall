@@ -28,7 +28,7 @@ GNU Source Installer
 removal of source packages, using the common procedures used to install
 Unix software.
 
-   This document was produced for version 0.3-pre of `sourceinstall'.
+   This document was produced for version 0.3 of `sourceinstall'.
 
 1 Introduction for Beginners
 ****************************
@@ -54,9 +54,9 @@ package, and feeding it to GNU Installer.
 1.1 Installing the Installer
 ============================
 
-Proceed to download sourceinstall-0.3-pre.tar.gz, and mark where the
-file will be placed (the "folder", the "directory"). For example, we
-will assume that you are downloading to
+Proceed to download sourceinstall-0.3.tar.gz, and mark where the file
+will be placed (the "folder", the "directory"). For example, we will
+assume that you are downloading to
 
      /home/user/downloads
 
@@ -80,7 +80,7 @@ else than another $ ended message (a "prompt")
    At this point enter the following command (this assumes you have the
 GNU version of `tar'):
 
-     $ tar -zxvf sourceinstall-0.3-pre.tar.gz
+     $ tar -zxvf sourceinstall-0.3.tar.gz
 
    Note that you can use the tabulation (TAB) character to complete
 names. Experiment with pressing (TAB) around the middle of the file
@@ -89,7 +89,7 @@ name.
    All the files you'll see are being extracted from the archive, and a
 new directory is being created in the current one. At the end type:
 
-     $ cd sourceinstall-0.3-pre
+     $ cd sourceinstall-0.3
      $ ./configure
 
    A lot of output will be showing at this point. The software is being
