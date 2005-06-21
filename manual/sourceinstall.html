@@ -31,7 +31,7 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#dir">(dir)</a>
 
 <p><span class="command">sourceinstall</span> automates configuration, compilation, installation and removal of source packages, using the common procedures used to install Unix software.
 
-   <p>This document was produced for version 0.2-cvs of <span class="command">sourceinstall</span>.
+   <p>This document was produced for version 0.3-pre of <span class="command">sourceinstall</span>.
 
 <ul class="menu">
 <li><a accesskey="1" href="#Introduction-for-Beginners">Introduction for Beginners</a>:   Introduction for the really novice user
@@ -68,7 +68,7 @@ This is an introduction for real beginners. If you are already somewhat experien
 <h3 class="section">1.1 Installing the Installer</h3>
 
 <p><a name="index-Installing-the-Installer-2"></a>
-Proceed to download sourceinstall-0.2-cvs.tar.gz, and mark where the file will be placed (the &ldquo;folder&rdquo;, the <dfn>directory</dfn>). For example, we will assume that you are downloading to
+Proceed to download sourceinstall-0.3-pre.tar.gz, and mark where the file will be placed (the &ldquo;folder&rdquo;, the <dfn>directory</dfn>). For example, we will assume that you are downloading to
 
 <pre class="example">     /home/user/downloads
 </pre>
@@ -85,13 +85,13 @@ If things are going well, you will know because you will get nothing else than a
 
    <p>At this point enter the following command (this assumes you have the GNU version of <span class="command">tar</span>):
 
-<pre class="example">     $ tar -zxvf sourceinstall-0.2-cvs.tar.gz
+<pre class="example">     $ tar -zxvf sourceinstall-0.3-pre.tar.gz
 </pre>
    <p>Note that you can use the tabulation (TAB) character to complete names. Experiment with pressing (TAB) around the middle of the file name.
 
    <p>All the files you'll see are being extracted from the archive, and a new directory is being created in the current one. At the end type:
 
-<pre class="example">     $ cd sourceinstall-0.2-cvs
+<pre class="example">     $ cd sourceinstall-0.3-pre
      $ ./configure
 </pre>
    <p>A lot of output will be showing at this point. The software is being <dfn>configured</dfn> (adapted) for your system. If everything runs smooth, you will see at most WARNINGs but no ERRORs. After a while you will get the familiar dollar, and now you can write:
@@ -162,7 +162,7 @@ Source releases for tcl can be obtained from <a href="http://sourceforge.net/pro
      <dl>
 <dt><span class="samp">tcl interpreter</span><dd><span class="command">tclsh</span> with the Tk and Expect tcl packages, or in alternative the all-in-one <span class="command">expectk</span> interpreter.
 
-     <br><dt><span class="samp">sh, cp, mv, rm. du, su, rmdir</span><dd>these are part of every unix-like, you must have them
+     <br><dt><span class="samp">sh, cp, mv, rm. du, su, rmdir, kill</span><dd>these are part of every unix-like, you must have them
 
      <br><dt><span class="samp">tar</span><dd>this is necessary to extract the source .tar archive - in theory you could use GNU Source Installer without this, but it would not be practical.
 
@@ -177,9 +177,12 @@ Source releases for tcl can be obtained from <a href="http://sourceforge.net/pro
    </dl>
 
    <p>If you still have problems, you can write an email to the <span class="command">sourceinstall</span> users mailing list <a href="mailto:bug-sourceinstall@gnu.org">bug-sourceinstall@gnu.org</a> and ask for help. 
-Feedback of any sort is also welcome.
+Something that can help a lot is reporting the full output of
 
-   <p>Good luck, and I hope this helps :)
+<pre class="example">     $ ./configure
+</pre>
+   <p>Feedback of any sort is also welcome. 
+Good luck, and I hope this helps :)
 
 <div class="node">
 <p><hr>
@@ -503,8 +506,15 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
 <h2 class="chapter">6 Reporting Bugs</h2>
 
 <p><a name="index-Bugs_002c-reporting-27"></a>Email bug reports to <a href="mailto:bug-sourceinstall@gnu.org">bug-sourceinstall@gnu.org</a>, trying to be as clear and precise as possible. This means that you should provide all useful information that could help to identify the problem, and a detailed way to reproduce it. 
-A good starting point is to specify your OS name and version and
-your interpreter choice (tclsh, expectk or other interpreter) and version.
+A good starting point is to specify your OS name and version. If you have no idea about what OS you have, try:
+
+<pre class="example">     $ uname -a
+</pre>
+   <p>Also, please report output of:
+
+<pre class="example">     $ ./configure
+</pre>
+   <p>because it includes your interpreter choice, package versions and tools availability.
 
 <div class="node">
 <p><hr>
@@ -522,7 +532,7 @@ There is an exception in the m4/tcl.m4 file, which is
 Copyright (c) 1999-2000 Ajuba Solution,
 Copyright (c) 2002-2005 ActiveState Corporation. 
 The m4/tcl.m4 file is licensed under a &ldquo;revised BSD&rdquo; license. 
-See m4/license.terms.
+See m4/license.terms. It has been slightly modified for GNU Source Installer.
 
    <p>Please note that &ldquo;Free&rdquo; in &ldquo;Free Software&rdquo; refers to liberty, not
 price.  Think of &ldquo;free speech&rdquo; rather than &ldquo;free beer&rdquo;. 

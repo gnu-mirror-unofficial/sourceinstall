@@ -28,7 +28,7 @@ GNU Source Installer
 removal of source packages, using the common procedures used to install
 Unix software.
 
-   This document was produced for version 0.2-cvs of `sourceinstall'.
+   This document was produced for version 0.3-pre of `sourceinstall'.
 
 1 Introduction for Beginners
 ****************************
@@ -54,7 +54,7 @@ package, and feeding it to GNU Installer.
 1.1 Installing the Installer
 ============================
 
-Proceed to download sourceinstall-0.2-cvs.tar.gz, and mark where the
+Proceed to download sourceinstall-0.3-pre.tar.gz, and mark where the
 file will be placed (the "folder", the "directory"). For example, we
 will assume that you are downloading to
 
@@ -80,7 +80,7 @@ else than another $ ended message (a "prompt")
    At this point enter the following command (this assumes you have the
 GNU version of `tar'):
 
-     $ tar -zxvf sourceinstall-0.2-cvs.tar.gz
+     $ tar -zxvf sourceinstall-0.3-pre.tar.gz
 
    Note that you can use the tabulation (TAB) character to complete
 names. Experiment with pressing (TAB) around the middle of the file
@@ -89,7 +89,7 @@ name.
    All the files you'll see are being extracted from the archive, and a
 new directory is being created in the current one. At the end type:
 
-     $ cd sourceinstall-0.2-cvs
+     $ cd sourceinstall-0.3-pre
      $ ./configure
 
    A lot of output will be showing at this point. The software is being
@@ -189,7 +189,7 @@ uses, from the most important ones, to the really secondary:
      `tclsh' with the Tk and Expect tcl packages, or in alternative the
      all-in-one `expectk' interpreter.
 
-`sh, cp, mv, rm. du, su, rmdir'
+`sh, cp, mv, rm. du, su, rmdir, kill'
      these are part of every unix-like, you must have them
 
 `tar'
@@ -224,9 +224,12 @@ uses, from the most important ones, to the really secondary:
 
    If you still have problems, you can write an email to the
 `sourceinstall' users mailing list <bug-sourceinstall@gnu.org> and ask
-for help.  Feedback of any sort is also welcome.
+for help.  Something that can help a lot is reporting the full output of
 
-   Good luck, and I hope this helps :)
+     $ ./configure
+
+   Feedback of any sort is also welcome.  Good luck, and I hope this
+helps :)
 
 2 Introduction for the Experienced
 **********************************
@@ -709,8 +712,16 @@ Email bug reports to <bug-sourceinstall@gnu.org>, trying to be as clear
 and precise as possible. This means that you should provide all useful
 information that could help to identify the problem, and a detailed way
 to reproduce it.  A good starting point is to specify your OS name and
-version and your interpreter choice (tclsh, expectk or other
-interpreter) and version.
+version. If you have no idea about what OS you have, try:
+
+     $ uname -a
+
+   Also, please report output of:
+
+     $ ./configure
+
+   because it includes your interpreter choice, package versions and
+tools availability.
 
 7 Copying
 *********
@@ -721,7 +732,8 @@ This is a license that grants and protects freedoms.  `sourceinstall'
 is thus Free Software.  There is an exception in the m4/tcl.m4 file,
 which is Copyright (c) 1999-2000 Ajuba Solution, Copyright (c)
 2002-2005 ActiveState Corporation.  The m4/tcl.m4 file is licensed
-under a "revised BSD" license.  See m4/license.terms.
+under a "revised BSD" license.  See m4/license.terms. It has been
+slightly modified for GNU Source Installer.
 
    Please note that "Free" in "Free Software" refers to liberty, not
 price.  Think of "free speech" rather than "free beer".  The exact and
@@ -1555,43 +1567,43 @@ Concept Index
 This is a general index of all issues discussed in this manual, with the
 exception of the `sourceinstall' commands and command-line options.
 
-Adding a new source package:                   See 4.3.      (line  421)
-Bugs, reporting:                               See 6.        (line  708)
-Changing the Preferences:                      See 4.4.      (line  450)
-Conforming and non-conforming packages:        See 5.2.      (line  559)
-Consistency checks:                            See 5.1.      (line  539)
-Copying:                                       See 7.        (line  718)
-FDL, GNU Free Documentation License:           See 7.2.      (line 1139)
-Files and Directories:                         See 5.5.      (line  638)
-GPL, GNU General Public License:               See 7.1.      (line  781)
+Adding a new source package:                   See 4.3.      (line  424)
+Bugs, reporting:                               See 6.        (line  711)
+Changing the Preferences:                      See 4.4.      (line  453)
+Conforming and non-conforming packages:        See 5.2.      (line  562)
+Consistency checks:                            See 5.1.      (line  542)
+Copying:                                       See 7.        (line  729)
+FDL, GNU Free Documentation License:           See 7.2.      (line 1151)
+Files and Directories:                         See 5.5.      (line  641)
+GPL, GNU General Public License:               See 7.1.      (line  793)
 Installing the Installer:                      See 1.1.      (line   57)
 Introduction for Beginners:                    See 1.        (line   36)
-Introduction for the Experienced:              See 2.        (line  234)
-Invoking:                                      See 3.        (line  341)
-Looking for the right package:                 See 4.2.      (line  395)
-no warranty:                                   See 7.1.      (line 1045)
-Options:                                       See 3.2.      (line  355)
-Other package management systems:              See 5.3.      (line  580)
-Querying package information:                  See 4.5.      (line  493)
-Removing a package:                            See 4.6.      (line  501)
-Synopsis:                                      See 3.1.      (line  347)
-The default setup:                             See 4.1.      (line  373)
+Introduction for the Experienced:              See 2.        (line  237)
+Invoking:                                      See 3.        (line  344)
+Looking for the right package:                 See 4.2.      (line  398)
+no warranty:                                   See 7.1.      (line 1057)
+Options:                                       See 3.2.      (line  358)
+Other package management systems:              See 5.3.      (line  583)
+Querying package information:                  See 4.5.      (line  496)
+Removing a package:                            See 4.6.      (line  504)
+Synopsis:                                      See 3.1.      (line  350)
+The default setup:                             See 4.1.      (line  376)
 Troubleshooting sourceinstall Installation:    See 1.2.      (line  153)
-Usage for Beginners:                           See 4.        (line  370)
-Usage for the Experienced:                     See 5.        (line  513)
-Users:                                         See 5.4.      (line  598)
-Why should you avoid this program?:            See 2.2.      (line  299)
-Why should you use this program?:              See 2.1.      (line  251)
+Usage for Beginners:                           See 4.        (line  373)
+Usage for the Experienced:                     See 5.        (line  516)
+Users:                                         See 5.4.      (line  601)
+Why should you avoid this program?:            See 2.2.      (line  302)
+Why should you use this program?:              See 2.1.      (line  254)
 Index
 *****
 
 This is an alphabetical list of all `sourceinstall' commands,
 command-line options, and environment variables.
 
---help:                                        See 3.2.      (line  355)
---version:                                     See 3.2.      (line  359)
--h:                                            See 3.2.      (line  355)
--V:                                            See 3.2.      (line  359)
+--help:                                        See 3.2.      (line  358)
+--version:                                     See 3.2.      (line  362)
+-h:                                            See 3.2.      (line  358)
+-V:                                            See 3.2.      (line  362)
 Table of Contents
 *****************
 
