@@ -27,13 +27,13 @@ hr {
 <h4>Claudio Fontana</h4>
 <h2>UNIX source installations made easier with GNU Source Installer</h2>
 
-<p>GNU/Linux distributions and other UNIX and UNIX-like operating systems already offer a phletora of tools for installing software. They rely on different package formats, that enable users and administrators to quickly obtain additional functionality from their system.
+<p>GNU/Linux distributions and other UNIX and UNIX-like operating systems already offer a phletora of tools for installing software. These tools all rely on different package formats that enable users and administrators to quickly obtain additional functionality from their system.
 </p><p>
-A lot of the GNU/Linux distributions' effort is put in maintaining an updated and comprensive list of ports/packages.
+The different GNU/Linux distributions put a lot of their effort into maintaining an updated and comprehensive list of ports/packages.
 </p><p>
-However, sometimes this great and respectable effort does not suffice,
+Sometimes, however, this great and respectable effort does not suffice,
 and our user remains with the only option to install from the source packages provided by the developers.<br />
-Some optional and less frequently used feature might be needed, and must be compiled-in. A package might be unavailable yet from vendor or distributor, and maybe it never will. Whatever the reason is, sometimes fetching a source package and building it is the way to go.
+Some optional and less frequently used feature might be needed, and must be compiled-in. A package might be unavailable yet from vendor or distributor, and maybe it never will. Whatever the reason is, sometimes fetching a source package and building it is the best way to proceed.
 </p><p>
 On the developers' side, the GNU autotools (<a href="http://www.gnu.org/software/autoconf/">autoconf</a>, <a href="http://www.gnu.org/software/automake/">automake</a>, <a href="http://www.gnu.org/software/libtool/">libtool</a>, ...) have done much to ensure portability of UNIX (and even non-UNIX) code, and on the users' side, the familiar procedure (<i>./configure && make && make install</i>), that can be run from the command line, is becoming a de-facto standard.
 </p>
@@ -41,15 +41,15 @@ On the developers' side, the GNU autotools (<a href="http://www.gnu.org/software
 src="http://www.gnu.org/software/sourceinstall/sourceinstall-screenshot-1.png" alt = " (main window screenshot) " width="307" height="224" border="0" style="float:left" /></a>
 <hr />
 <p>
-In order to further incentive developers to prepare their source packages in a standardized way, and in order to initiate new users to the mysteries (?) of source installation, a new GNU project has been launched: <a href="http://www.gnu.org/software/sourceinstall/sourceinstall.html">GNU Source Installer</a>.
+In order to further encourage developers to prepare their source packages in a standardized way, and in order to initiate new users into the mysteries (?) of source installation, a new GNU project has been launched: <a href="http://www.gnu.org/software/sourceinstall/sourceinstall.html">GNU Source Installer</a>.
 </p>
 <p>
-The goal of the project is not to hide all the details of source installation. Instead, they are presented in a way that can be more easily understood by new users, adding some features that could even be handy for the more experienced.
+The goal of the project is not to hide all the details of source installation. Instead, they are presented in a way that can be more easily understood by new users, adding some features that might even be handy for the more experienced.
 </p>
 <p>
 For example, what about a configuration window, where all package features and options (those that appear in <i>./configure --help</i>) can be examined and tweaked, with tips containing the option comments? What about per package file consistency checks, package tracking and enhanced uninstallation? All this can be obtained without losing full control, and without having to design a new package format. The tarball released by the original developers sufficies, provided it honours some de-facto standards about UNIX package installations.
 </p><p>
-GNU Source Installer shows all commands it executes in the background, and comments them, so a new user will be able to slowly notice the patterns during installation, and eventually gain more knowledge and confidence in the UNIX commands in general.
+GNU Source Installer shows all commands it executes in the background, and comments them, so a new user should be able to slowly notice the patterns which develop during installation, and eventually gain more knowledge and confidence in UNIX commands in general.
 </p>
 
 <a href="http://www.gnu.org/software/sourceinstall/sourceinstall-screenshot-3.png"><img
@@ -63,26 +63,26 @@ Let us now follow the process of a new user, who tried to run a program, only to
 
 <p>He downloads the source package <i>SDL_image-1.2.4.tar.gz</i> and runs the GNU Source Installer.</p>
 
-<p>At this point from the main window he chooses the <b>Add</b> button, and browses for his <i>SDL_image-1.2.4.tar.gz</i> package. Then he confirms with an Ok.</p>
+<p>At this point from the main window he chooses the <b>Add</b> button, and browses for his <i>SDL_image-1.2.4.tar.gz</i> package. Once selected, he then confirms with Ok.</p>
 
-<p>The commands to uncompress and extract the source begin to appear in the information frame, and as soon as the program detects a configure script generated with version 2.59 of <i>Autoconf</i>, it reports that and presents a configuration window where all options, features and influential environment variables are shown and explained.</p>
+<p>The commands to uncompress and extract the source begin to appear in the information frame. As soon as the program detects a configure script generated with version 2.59 of <i>Autoconf</i>, it reports back to the user and presents a configuration window where all options, features and influential environment variables are shown and explained.</p>
 
 <a href="http://www.gnu.org/software/sourceinstall/sourceinstall-screenshot-2.png"><img
 src="http://www.gnu.org/software/sourceinstall/sourceinstall-screenshot-2.png" width="512" height="315" alt=" (Screenshot of a complete configuration window) " border="0" style="float:left" /></a>
 <hr />
-<p>The user indulges for a moment with the pointer on <i>--enable-maintainer-mode</i>, and after a second the available information about the option pops up. He decides he does not need that, but instead he tweaks some environment variable. His installation prefix of choice is <i>/usr/local</i>.</p>
+<p>The user indulges for a moment with the pointer on <i>--enable-maintainer-mode</i>, and after a second the available information about the option pops up. The user sensibly decides he does not need that option, and tweaks some environment variables instead. His installation prefix of choice is <i>/usr/local</i>.</p>
 
-<p>He clicks <b>Ok</b>, and then waits until compilation phase completes. At this point, the program makes a test installation and discovers that it needs root privileges to install in </i>/usr/local</i>, so a login window appears, asking the user to perform a privileged login.</p>
+<p>Finally he clicks <b>Ok</b>, and waits until the compilation phase completes. At this point, the program makes a test installation and discovers that it needs root privileges to install in </i>/usr/local</i>. So a login window appears, asking the user to perform a privileged login.</p>
 
-<p>The installation completes, and now the installer compresses the resulting configured source again, and stores it for an eventual future use.</p>
+<p>The installation then runs and completes; the installer re-compresses the resulting configured sources, and stores the archive for any eventual future use.</p>
 
 
 <a href="http://www.gnu.org/software/sourceinstall/sourceinstall-screenshot-4.png"><img
 src="http://www.gnu.org/software/sourceinstall/sourceinstall-screenshot-4.png" width="319" height="229" alt=" (Screenshot of newly built package info) " border="0" style="float:right" /></a>
 
-<p>Satisfied, our user gets a message about the success of the operation, and selects the new package that just appeared in the list to watch installed files and statistics.</p>
+<p>Satisfied, our user gets a message about the success of the operation, and selects the new package that just appeared in the list to inspect the installed files and statistics.</p>
 
-<p>The behaviour described in this example is just the default one; there are few but relevant options, initially set to safe defaults for the new user, that can be tweaked: the default installation prefix, whether to store the source or not, whether to strip the binaries, in which format the source code should be stored and so on.</p>
+<p>This example only describes the behaviour of the default options. There are a few other options that can be tweaked: the default installation prefix, whether to store the source or not, whether to strip the binaries, in which format the source code should be stored and so on. With the new user in mind these options have all been initially set to safe defaults.
 
 <a href="http://www.gnu.org/software/sourceinstall/sourceinstall-screenshot-5.png"><img
 src="http://www.gnu.org/software/sourceinstall/sourceinstall-screenshot-5.png" width="334" height="241" alt=" (Screenshot of the program options dialog) " border="0" style="float:left" /></a>
@@ -91,12 +91,11 @@ src="http://www.gnu.org/software/sourceinstall/sourceinstall-screenshot-5.png" w
 
 <p>Do all source package work equally well with this tool? No. For example, only packages where an autoconf-generated configure script is present get the nice configuration window. However there was an effort to provide nice 'fallbacks', which means that even a package containing just a simple Makefile, or a custom configure script could work (if they work as they are and do not require manual editing).</p>
 
-<p>Some packages do not work at all because they use different installation conventions. If the tool becomes widespread enough, though, it would be another incentive for developers to build good and standardized packages, and would further encourage the adoption of the autotools.
-</p>
+<p>Some packages do not work at all because they use different installation conventions. Though if GNU Source Installer becomes widespread enough it may become another incentive for developers to build good standardized packages, and so further encourage the adoption of GNU autotools.</p>
 
-<p>This project is very new, so although most features are already fully functional, there was not probably enough testing yet to suggest a heavy use in a critical system. A good way to help the project become more stable is to use it for user-installations (for example, specifying <i>/home/claudio/usr</i> as a default prefix in the preferences), reporting eventual problems or misfeatures encountered.</p>
+<p>This project is still very new, so although most features are already fully functional, there has probably not been enough testing yet to suggest heavy use in a critical system. A good way to help the project become more stable is to use it for user-installations (for example, specifying <i>/home/claudio/usr</i> as a default prefix in the preferences), reporting eventual problems or bugs encountered.</p>
 
-<p>The original author also welcomes additional developers, expecially people with a good background on at least one of Unix administration, m4, autoconf, Tcl, Tk, Expect, C, xlib. The project currently aims primarily at testing and fixing the existing codebase where needed. The future should see better handling of non-conforming packages, more intuitive and coherent behaviour for the administrative processes, an even better interface with autoconf-generated scripts, and could possibly also see an alternative implementation based on C and xlib.
+<p>The original author also welcomes additional developers, expecially people with a good background on at least one of Unix administration, m4, autoconf, Tcl, Tk, Expect, C, xlib. The project currently aims primarily at testing and fixing the existing code-base where needed. The future should see better handling of non-conforming packages, more intuitive and coherent behaviour for the administrative processes, an even better interface with autoconf-generated scripts, and could possibly also see an alternative implementation based on C and xlib.
 </p>
 
 <p>For all links, contacts, and additional information, the resource is always the <a href="http://www.gnu.org/software/sourceinstall">project home page</a>, where the address of the maintainer is also available.
