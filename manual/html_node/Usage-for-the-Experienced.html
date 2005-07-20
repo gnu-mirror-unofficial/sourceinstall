@@ -50,8 +50,8 @@ be preserved, you will not need to pass through the configuration window anymore
 <h3 class="section">5.1 Consistency checks</h3>
 
 <p><a name="index-Consistency-checks-22"></a>
-Another service that <span class="command">sourceinstall</span> silently offers is a simple set of consistency check for existing installations. 
-Selecting a package from the list at any time will show all available information about the installed package, and a check will be performed to see if the install looks ok. If some of the files required by the program are missing, you will find a notice and all the missing files will be highlighted in red and marked with an asterisk (*). 
+Another service that <span class="command">sourceinstall</span> silently offers is a simple set of consistency checks for existing installations. 
+Selecting a package from the list at any time will show all available information about the installed package, and a check will be performed to see if the install looks ok. If some of the files required by the program are missing, you will find a notice and all the missing files will be highlighted and marked with asterisks (*). 
 At this point you can correct the problem by restoring the missing files yourself (for example, you might have accidentally moved them for arcane reasons), or
 just perform a <code>Reinstall</code> action for the package. 
 Additionally, during the uninstallation cross-checks between make uninstall results and internal package information, only independent files (that is, files that are not being claimed by other packages) are proposed for removal. 
@@ -60,14 +60,11 @@ This works better if you avoid installing non-conforming packages, because Sourc
 <h3 class="section">5.2 Conforming and non-conforming packages</h3>
 
 <p><a name="index-Conforming-and-non_002dconforming-packages-23"></a>It is recommended to install only conforming packages using Source Installer. 
-Conforming packages are built using the autotools, and honor the install targets and environment variables correctly. 
-In particular, conforming packages must honor DESTDIR.
+Conforming packages offer a configure script that generates a Makefile, and the Makefile honors the common install targets and environment variables. Generally, packages built (correctly) with the GNU autotools result as conforming packages, and the autotools are also expecially supported: only configure scripts generated with autoconf get the nice configuration window. However, there are also other tools that developers can use which are capable of producing a configure script and a Makefile. Even hand-written configure scripts and Makefiles are ok, as long as they honor the install targets and the environment variables.
 
-   <p>Conforming packages get better uninstallation, better checks, more information in the Package information window. A single non-conforming package can make uninstallation checks degrade. Uninstalling the non-conforming package restores the better uninstallation checks.
+   <p>Conforming packages get better uninstallation, better checks, more information in the Package information window. A single non-conforming package can make uninstallation checks degrade. This is because the program can not detect which files a non-conforming package claims.
 
    <p>For these reasons, you will be warned when attempting to install a non-conforming package.
-
-   <p>Much less important is the autoconf version used to produce the configure script. If the version is old (currently &lt; 2.50), only basic configure options will be recognized and editable in the configuration window.
 
 <h3 class="section">5.3 Other package management systems</h3>
 
@@ -76,8 +73,8 @@ It is highy probable that you will have many different tools that provide packag
 For example, if you are running a GNU/Linux distribution, you probably have your distribution-specific way to handle binary (or even source) packages. 
 What I suggest here is to make a clean separation between your distribution-provided packages (along with any additional packages installed using your distribution-specific tools), and the source packages installed using the distribution-independent GNU Source Installer. 
 One good way to obtain this, is to use different prefixes for each package management system you use. 
-Suppose your distribution-handled packages are in <span class="file">/usr</span>, then your source packages managed by GNU Source Installer (or by yourself) can be prefixed using <span class="file">/usr/local</span> (this is the initial value). 
-This way you ensure that file dependancy checks are not tainted by other packages managed by other tools.
+Suppose your distribution-handled packages are in <span class="file">/usr</span>, then your source packages managed by GNU Source Installer can be prefixed using <span class="file">/usr/local</span> (this is the initial value). 
+This way you ensure that file dependency checks are not tainted by other packages managed by other tools.
 
 <h3 class="section">5.4 Users</h3>
 
@@ -90,7 +87,7 @@ GNU Source Installer configuration and packages always refer to the particular u
 
    <p>As a third example, suppose both Pip and Merlin deal with system administration. They get along well, and both deal with system-wide package installations. Thus, they decide to both install packages logging in using the privileged <code>root</code> account, and then install using <span class="command">sourceinstall</span>. They will both see the same packages, because they are logging in as the same user (<code>root</code>). However, only one of the two admins will be able to install software at the exact same time, because to prevent corruption of package data each user is entitled to a single running instance of GNU Source Installer. When the program is already in use, <span class="command">sourceinstall</span> refuses to start and explains the error.
 
-   <p>As a last example, here's what not to do. Imagine both Pip and Merlin deal with system administration, like before, but since they don't read the docs, they login using their regular accounts, and perform installs using the default system-wide prefix, <span class="file">/usr/local</span>, providing the root password then needed. Even if they install at different times this is a bad thing to do: they will not be aware of each other's moves, file dependency tracking will be far less precise, and consequently uninstallation crosschecks will sometimes hint the wrong things.
+   <p>As a last example, here's what not to do. Imagine both Pip and Merlin deal with system administration, like before, but since they don't read the docs, they login using their regular accounts, and perform installs using the default system-wide prefix, <span class="file">/usr/local</span>, providing the root password when needed. Even if they install at different times this is a bad thing to do: they will not be aware of each other's moves, file dependency tracking will be far less precise, and uninstallation crosschecks will degrade.
 
 <h3 class="section">5.5 Files and Directories</h3>
 
@@ -105,14 +102,9 @@ If you want to dwell on the internals of sourceinstall, this is an interesting c
 </pre>
    <p>Currently there is only a tcl implementation, but in the future this system will be used to make different implementations of <span class="command">sourceinstall</span> coesist.
 
-   <p>I have some indistinct ideas about how it could be possible, at configure time, to determine the best supported implementation, and by default make the link point at that (of course the user will be able to choose his preferred version using a configure option).
-
-   <p>All this is yet to come though, so for the moment this has no great impact on the universe.
-
    <p>The per user configuration directory is another story:
 
-   <p>each user that runs <span class="command">sourceinstall</span> gets a .sourceinstall directory created in his
-<span class="env">HOME</span>. This is for example a directory tree:
+   <p>each user that runs <span class="command">sourceinstall</span> gets a .sourceinstall directory created in his <span class="env">HOME</span>. This is for example a directory tree:
 
 <pre class="verbatim">
 $ tree ~/.sourceinstall

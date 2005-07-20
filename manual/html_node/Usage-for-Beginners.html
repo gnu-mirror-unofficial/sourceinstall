@@ -39,12 +39,12 @@ Up:&nbsp;<a rel="up" accesskey="u" href="index.html#Top">Top</a>
 For beginners, a default setup known to work well for GNU Source Installer is the following:
 
      <ol type=1 start=1>
-<li>Your OS distribution provided programs are prefixed using <span class="file">/usr</span>. 
-GNU Source Installer itself is either prefixed using <span class="file">/usr</span> or <span class="file">/usr/local</span> (this means that the program executables are in <span class="file">/usr/bin</span> or <span class="file">/usr/local/bin</span> respectively. 
+<li>GNU Source Installer is installed system-wide as the root user in a different prefix than your OS distribution. For example <span class="file">/usr/local</span>. 
 <li>You login normally as you always do with your user name, then start the GNU Source Installer using command <span class="command">sourceinstall</span>. You do NOT login as root. 
 At the appropriate times, during installation, you will be asked for the root password if necessary. 
 <li>The default prefix in your preferences is <span class="file">/usr/local</span>, and thus you install your source packages in <span class="file">/usr/local</span>
-<li>You are the only one on the system that installs source packages, and always do that logging in as the same user.
+<li>You are the only one on the system that installs source packages, and always do that logging in as the same user. 
+<li>When you need to remove or upgrade <span class="command">sourceinstall</span>, login as root and run the program. You will see GNU Source Installer listed in the root user's packages.
         </ol>
 
 <h3 class="section">4.2 Looking for the right package</h3>
