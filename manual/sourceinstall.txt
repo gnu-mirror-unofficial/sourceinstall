@@ -28,7 +28,7 @@ GNU Source Installer
 removal of source packages, using the common procedures used to install
 Unix software.
 
-   This document was produced for version 0.4 of `sourceinstall'.
+   This document was produced for version 0.4-cvs of `sourceinstall'.
 
 1 Introduction for Beginners
 ****************************
@@ -55,9 +55,9 @@ package, and feeding it to GNU Source Installer.
 ============================
 
 If you have a fast internet connection, proceed to download
-sourceinstall-0.4-fullpack.sh or a newer version, and mark where the
-file will be placed (the "folder", the "directory"). For example, we
-will assume that you are downloading to
+sourceinstall-0.4-cvs-fullpack.sh or a newer version, and mark where
+the file will be placed (the "folder", the "directory"). For example,
+we will assume that you are downloading to
 
      /home/user/downloads
 
@@ -89,7 +89,7 @@ so, type
 
    At this point run the installer by typing:
 
-   $ /bin/sh sourceinstall-0.4-fullpack.sh
+   $ /bin/sh sourceinstall-0.4-cvs-fullpack.sh
 
    wait for the package to extract (this might take some minutes on
 slow or loaded systems), and follow the instructions. After being asked
@@ -115,13 +115,13 @@ size, because they contain all the major dependencies in source form,
 and it could be that you already have the required packages.
 
    So, if you are a bit more daring, you can try a normal source
-release instead.  For example, download sourceinstall-0.4.tar.gz .  We
-will assume the same directory as above.
+release instead.  For example, download sourceinstall-0.4-cvs.tar.gz .
+We will assume the same directory as above.
 
    At this point enter the following command (this assumes you have the
 GNU version of `tar'):
 
-     $ tar -zxvf sourceinstall-0.4.tar.gz
+     $ tar -zxvf sourceinstall-0.4-cvs.tar.gz
 
    Note that you can use the tabulation (TAB) character to complete
 names. Experiment with pressing (TAB) around the middle of the file
@@ -130,7 +130,7 @@ name.
    All the files you'll see are being extracted from the archive, and a
 new directory is being created in the current one. At the end type:
 
-     $ cd sourceinstall-0.4
+     $ cd sourceinstall-0.4-cvs
      $ ./configure
 
    A lot of output will be showing at this point. The software is being

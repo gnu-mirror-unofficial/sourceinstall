@@ -31,7 +31,7 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#dir">(dir)</a>
 
 <p><span class="command">sourceinstall</span> automates configuration, compilation, installation and removal of source packages, using the common procedures used to install Unix software.
 
-   <p>This document was produced for version 0.4 of <span class="command">sourceinstall</span>.
+   <p>This document was produced for version 0.4-cvs of <span class="command">sourceinstall</span>.
 
 <ul class="menu">
 <li><a accesskey="1" href="#Introduction-for-Beginners">Introduction for Beginners</a>:   Introduction for the really novice user
@@ -68,7 +68,7 @@ This is an introduction for real beginners. If you are already somewhat experien
 <h3 class="section">1.1 Installing the Installer</h3>
 
 <p><a name="index-Installing-the-Installer-2"></a>
-If you have a fast internet connection, proceed to download sourceinstall-0.4-fullpack.sh or a newer version, and mark where the file will be placed (the &ldquo;folder&rdquo;, the <dfn>directory</dfn>). For example, we will assume that you are downloading to
+If you have a fast internet connection, proceed to download sourceinstall-0.4-cvs-fullpack.sh or a newer version, and mark where the file will be placed (the &ldquo;folder&rdquo;, the <dfn>directory</dfn>). For example, we will assume that you are downloading to
 
 <pre class="example">     /home/user/downloads
 </pre>
@@ -92,7 +92,7 @@ If things are going well, you will know because you will get nothing else than a
 </pre>
    <p>At this point run the installer by typing:
 
-   <p>$ /bin/sh sourceinstall-0.4-fullpack.sh
+   <p>$ /bin/sh sourceinstall-0.4-cvs-fullpack.sh
 
    <p>wait for the package to extract (this might take some minutes on slow or loaded systems), and follow the instructions. After being asked some simple questions, hopefully you will get a working installation of the GNU Source Installer. 
 Mark the executable name that is showed at the end of the procedure, because that is the program that you need to run to start the installer.
@@ -106,18 +106,18 @@ Mark the executable name that is showed at the end of the procedure, because tha
    <p>The releases whose names end in -fullpack are many megabytes in size, because they contain all the major dependencies in source form, and it could be that you already have the required packages.
 
    <p>So, if you are a bit more daring, you can try a normal source release instead. 
-For example, download sourceinstall-0.4.tar.gz . 
+For example, download sourceinstall-0.4-cvs.tar.gz . 
 We will assume the same directory as above.
 
    <p>At this point enter the following command (this assumes you have the GNU version of <span class="command">tar</span>):
 
-<pre class="example">     $ tar -zxvf sourceinstall-0.4.tar.gz
+<pre class="example">     $ tar -zxvf sourceinstall-0.4-cvs.tar.gz
 </pre>
    <p>Note that you can use the tabulation (TAB) character to complete names. Experiment with pressing (TAB) around the middle of the file name.
 
    <p>All the files you'll see are being extracted from the archive, and a new directory is being created in the current one. At the end type:
 
-<pre class="example">     $ cd sourceinstall-0.4
+<pre class="example">     $ cd sourceinstall-0.4-cvs
      $ ./configure
 </pre>
    <p>A lot of output will be showing at this point. The software is being <dfn>configured</dfn> (adapted) for your system. If everything runs smooth, you will see at most WARNINGs but no ERRORs. After a while you will get the familiar dollar, and now you can write:
