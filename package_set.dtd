@@ -1,0 +1,14 @@
+<!ELEMENT package_set (package*)>
+<!ELEMENT package (description?, long_description?, configured, source_available, source_size?, source_location?, build_subdir?, installed, installed_size?, installed_files?)>
+<!ATTLIST package name ID #REQUIRED>
+<!ELEMENT description (#PCDATA)>
+<!ELEMENT long_description (#PCDATA)>
+<!ELEMENT configured (#PCDATA)>
+<!ELEMENT source_available (#PCDATA)>
+<!ELEMENT source_size (#PCDATA)>
+<!ELEMENT source_location (#PCDATA)>
+<!ELEMENT build_subdir (#PCDATA)>
+<!ELEMENT installed (#PCDATA)>
+<!ELEMENT installed_size (#PCDATA)>
+<!ELEMENT installed_files (file*)>
+<!ELEMENT file (#PCDATA)>
