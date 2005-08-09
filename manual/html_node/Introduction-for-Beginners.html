@@ -32,11 +32,15 @@ Up:&nbsp;<a rel="up" accesskey="u" href="index.html#Top">Top</a>
 <h2 class="chapter">1 Introduction for Beginners</h2>
 
 <p><a name="index-Introduction-for-Beginners-1"></a>
-This is an introduction for real beginners. If you are already somewhat experienced with UNIX-like systems and GNU install procedures, you should skip this chapter, otherwise
+This is an introduction for real beginners of source installation. If you are already somewhat experienced with UNIX-like systems and GNU source code install procedures, you should skip this chapter, otherwise
 
    <p>Welcome!
 
-   <p><span class="command">sourceinstall</span> will try to make configuration, compilation, installation and removal of source packages easier for you as a beginner, but instead of hiding information and operations, everything that happens will be available for you to see, so you can hopefully understand basic concepts by just using this program.
+   <p><span class="command">sourceinstall</span> will try to make configuration, compilation, installation and removal of source packages easier for you as a beginner.
+
+   <p>Instead of hiding information and operations from you, everything that happens will be available for you to see.
+
+   <p>This way, if you are interested you can hopefully understand basic concepts by just looking at the commands executed by this program in the information frame.
 
    <p>Provided your system meets the requirements, and thus you manage to have a working installation of <span class="command">sourceinstall</span> itself, you will be shortly able to install new software from its source code by surfing the web, identifying a Free Software you like, downloading its SOURCE package, and feeding it to GNU Source Installer.
 
@@ -55,6 +59,8 @@ If you have a fast internet connection, proceed to download sourceinstall-0.4-cv
 
 <pre class="example">     $ cd /home/user/downloads
 </pre>
+   <p>where of course <span class="file">/home/user/downloads</span> is the directory in which you downloaded the file.
+
    <p>If you get an error message, double check your command for typos. 
 If things are going well, you will know because you will get nothing else than another $ ended message (a <dfn>prompt</dfn>).
 
@@ -92,7 +98,7 @@ We will assume the same directory as above.
 
    <p>All the files you'll see are being extracted from the archive, and a new directory is being created in the current one. At the end type:
 
-<pre class="example">     $ cd sourceinstall-0.4-cvs
+<pre class="example">     $ cd sourceinstall
      $ ./configure
 </pre>
    <p>A lot of output will be showing at this point. The software is being <dfn>configured</dfn> (adapted) for your system. If everything runs smooth, you will see at most WARNINGs but no ERRORs. After a while you will get the familiar dollar, and now you can write:
@@ -115,7 +121,7 @@ The # character before <code>make install</code> denotes the fact that after <co
 
 <pre class="example">     sourceinstall
 </pre>
-   <p>To run it from the graphical environment, you should create some kind of &ldquo;shortcut&rdquo; or &ldquo;link&rdquo; to the program on your desktop or in your program menus. The program to launch is (assuming default values) <span class="file">/usr/local/bin/sourceinstall</span> .
+   <p>To run it from the graphical environment, you should create some kind of &ldquo;shortcut&rdquo; or &ldquo;link&rdquo; to the program on your desktop or in your program menus. The program to launch is (assuming a root installation and default values) <span class="file">/usr/local/bin/sourceinstall</span> .
 
    <p>If you experience errors that prevent the correct installation and execution of the program, the next section tries to deal with these cases.
 
@@ -159,24 +165,32 @@ They are a bit tricky to install, so if you cannot find your way out of them, yo
 
    <p>This is a comprensive list of programs that GNU Source Installer uses, from the most important ones, to the really secondary:
 
-     <dl>
-<dt><span class="samp">tcl interpreter</span><dd><span class="command">tclsh</span> with the Tk and Expect tcl packages, or in alternative the all-in-one <span class="command">expectk</span> interpreter.
+     <ul>
+<li>tcl interpreter
+<span class="command">tclsh</span> with the Tk and Expect tcl packages, or in alternative the all-in-one <span class="command">expectk</span> interpreter.
 
-     <br><dt><span class="samp">sh, cp, mv, rm, du, su, rmdir, find</span><dd>these should be part of every unix-like. You must have them for GNU Source Installer to work correctly.
+     <li>sh, cp, mv, rm, du, su, rmdir, find
+these should be part of every unix-like. You must have them for GNU Source Installer to work correctly.
 
-     <br><dt><span class="samp">tar</span><dd>this is necessary to extract the source .tar archive - in theory you could use GNU Source Installer without this, but in practice you will need it.
+     <li>tar
+this is necessary to extract the source .tar archive - in theory you could use GNU Source Installer without this, but in practice you will need it.
 
-     <br><dt><span class="samp">gzip, gunzip</span><dd>these are necessary to uncompress .gz files and to compress the stored source using the quick but less-than-bz2 (but still good) space efficient .gz compression.
+     <li>gzip, gunzip
+these are necessary to uncompress .gz files and to compress the stored source using the quick and space-efficient .gz compression.
 
-     <br><dt><span class="samp">bunzip2, bzip2</span><dd>these are necessary to uncompress .bz2 files and to compress the stored source using the very space efficient (but more time consuming) .bz2 compression. By default, the source is stored using this compression.
+     <li>bunzip2, bzip2
+these are necessary to uncompress .bz2 files and to compress the stored source using the very space-efficient (but more time consuming) .bz2 compression. By default, the source is stored using this compression.
 
-     <br><dt><span class="samp">ps</span><dd>this command is used to better detect other sourceinstall processes. GNU Source Installer also uses a lock file, so it is not really necessary.
+     <li>ps
+this command is used to better detect other sourceinstall processes. GNU Source Installer also uses a lock file, so it is not really necessary.
 
-     <br><dt><span class="samp">unzip, zip</span><dd>these deal with .zip files. It is very unlikely that you will find Free Software source packages available only in .zip format so you can ignore this. Also, you do not want to compress your source using zip. I found both .gz and .bz2 to be more efficient at least when dealing with source. Ignore warning if not present.
+     <li>unzip, zip
+these deal with .zip files. It is very unlikely that you will find Free Software source packages available only in .zip format so you can ignore this. Also, you do not want to compress your source using zip. I found both .gz and .bz2 to be more efficient at least when dealing with source. Ignore warning if not present.
 
-     <br><dt><span class="samp">compress</span><dd>this deals with .Z files. The gzip utilities are used to uncompress .Z packages, so you would only need this if for some arcane reason you want to store source in .Z format. Ignore warning if not present.
+     <li>compress
+this deals with .Z files. The gzip utilities are used to uncompress .Z packages, so you would only need this if for some arcane reason you want to store source in .Z format. Ignore warning if not present.
 
-   </dl>
+   </ul>
 
    <p>If you still have problems, you can write an email to the <span class="command">sourceinstall</span> users mailing list <a href="mailto:bug-sourceinstall@gnu.org">bug-sourceinstall@gnu.org</a> and ask for help. 
 Something that can help a lot is reporting the full output of

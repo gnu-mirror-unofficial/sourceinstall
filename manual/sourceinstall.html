@@ -39,10 +39,11 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#dir">(dir)</a>
 <li><a accesskey="3" href="#Invoking">Invoking</a>:                     Invoking <span class="command">sourceinstall</span>
 <li><a accesskey="4" href="#Usage-for-Beginners">Usage for Beginners</a>:          How to use the software
 <li><a accesskey="5" href="#Usage-for-the-Experienced">Usage for the Experienced</a>:    How to abuse the software
-<li><a accesskey="6" href="#Reporting-Bugs">Reporting Bugs</a>:               How to properly report bugs
-<li><a accesskey="7" href="#Copying">Copying</a>:                      License terms. 
-<li><a accesskey="8" href="#Concept-Index">Concept Index</a>:                A menu with all the topics in this manual
-<li><a accesskey="9" href="#Index">Index</a>:                        A menu with all <span class="command">sourceinstall</span> concepts
+<li><a accesskey="6" href="#FAQ">FAQ</a>:                          Frequently Asked Questions
+<li><a accesskey="7" href="#Reporting-Bugs">Reporting Bugs</a>:               How to properly report bugs
+<li><a accesskey="8" href="#Copying">Copying</a>:                      License terms. 
+<li><a accesskey="9" href="#Concept-Index">Concept Index</a>:                A menu with all the topics in this manual
+<li><a href="#Index">Index</a>:                        A menu with all <span class="command">sourceinstall</span> concepts
 
    </ul>
 
@@ -57,11 +58,15 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
 <h2 class="chapter">1 Introduction for Beginners</h2>
 
 <p><a name="index-Introduction-for-Beginners-1"></a>
-This is an introduction for real beginners. If you are already somewhat experienced with UNIX-like systems and GNU install procedures, you should skip this chapter, otherwise
+This is an introduction for real beginners of source installation. If you are already somewhat experienced with UNIX-like systems and GNU source code install procedures, you should skip this chapter, otherwise
 
    <p>Welcome!
 
-   <p><span class="command">sourceinstall</span> will try to make configuration, compilation, installation and removal of source packages easier for you as a beginner, but instead of hiding information and operations, everything that happens will be available for you to see, so you can hopefully understand basic concepts by just using this program.
+   <p><span class="command">sourceinstall</span> will try to make configuration, compilation, installation and removal of source packages easier for you as a beginner.
+
+   <p>Instead of hiding information and operations from you, everything that happens will be available for you to see.
+
+   <p>This way, if you are interested you can hopefully understand basic concepts by just looking at the commands executed by this program in the information frame.
 
    <p>Provided your system meets the requirements, and thus you manage to have a working installation of <span class="command">sourceinstall</span> itself, you will be shortly able to install new software from its source code by surfing the web, identifying a Free Software you like, downloading its SOURCE package, and feeding it to GNU Source Installer.
 
@@ -80,6 +85,8 @@ If you have a fast internet connection, proceed to download sourceinstall-0.4-cv
 
 <pre class="example">     $ cd /home/user/downloads
 </pre>
+   <p>where of course <span class="file">/home/user/downloads</span> is the directory in which you downloaded the file.
+
    <p>If you get an error message, double check your command for typos. 
 If things are going well, you will know because you will get nothing else than another $ ended message (a <dfn>prompt</dfn>).
 
@@ -117,7 +124,7 @@ We will assume the same directory as above.
 
    <p>All the files you'll see are being extracted from the archive, and a new directory is being created in the current one. At the end type:
 
-<pre class="example">     $ cd sourceinstall-0.4-cvs
+<pre class="example">     $ cd sourceinstall
      $ ./configure
 </pre>
    <p>A lot of output will be showing at this point. The software is being <dfn>configured</dfn> (adapted) for your system. If everything runs smooth, you will see at most WARNINGs but no ERRORs. After a while you will get the familiar dollar, and now you can write:
@@ -140,7 +147,7 @@ The # character before <code>make install</code> denotes the fact that after <co
 
 <pre class="example">     sourceinstall
 </pre>
-   <p>To run it from the graphical environment, you should create some kind of &ldquo;shortcut&rdquo; or &ldquo;link&rdquo; to the program on your desktop or in your program menus. The program to launch is (assuming default values) <span class="file">/usr/local/bin/sourceinstall</span> .
+   <p>To run it from the graphical environment, you should create some kind of &ldquo;shortcut&rdquo; or &ldquo;link&rdquo; to the program on your desktop or in your program menus. The program to launch is (assuming a root installation and default values) <span class="file">/usr/local/bin/sourceinstall</span> .
 
    <p>If you experience errors that prevent the correct installation and execution of the program, the next section tries to deal with these cases.
 
@@ -184,24 +191,32 @@ They are a bit tricky to install, so if you cannot find your way out of them, yo
 
    <p>This is a comprensive list of programs that GNU Source Installer uses, from the most important ones, to the really secondary:
 
-     <dl>
-<dt><span class="samp">tcl interpreter</span><dd><span class="command">tclsh</span> with the Tk and Expect tcl packages, or in alternative the all-in-one <span class="command">expectk</span> interpreter.
+     <ul>
+<li>tcl interpreter
+<span class="command">tclsh</span> with the Tk and Expect tcl packages, or in alternative the all-in-one <span class="command">expectk</span> interpreter.
 
-     <br><dt><span class="samp">sh, cp, mv, rm, du, su, rmdir, find</span><dd>these should be part of every unix-like. You must have them for GNU Source Installer to work correctly.
+     <li>sh, cp, mv, rm, du, su, rmdir, find
+these should be part of every unix-like. You must have them for GNU Source Installer to work correctly.
 
-     <br><dt><span class="samp">tar</span><dd>this is necessary to extract the source .tar archive - in theory you could use GNU Source Installer without this, but in practice you will need it.
+     <li>tar
+this is necessary to extract the source .tar archive - in theory you could use GNU Source Installer without this, but in practice you will need it.
 
-     <br><dt><span class="samp">gzip, gunzip</span><dd>these are necessary to uncompress .gz files and to compress the stored source using the quick but less-than-bz2 (but still good) space efficient .gz compression.
+     <li>gzip, gunzip
+these are necessary to uncompress .gz files and to compress the stored source using the quick and space-efficient .gz compression.
 
-     <br><dt><span class="samp">bunzip2, bzip2</span><dd>these are necessary to uncompress .bz2 files and to compress the stored source using the very space efficient (but more time consuming) .bz2 compression. By default, the source is stored using this compression.
+     <li>bunzip2, bzip2
+these are necessary to uncompress .bz2 files and to compress the stored source using the very space-efficient (but more time consuming) .bz2 compression. By default, the source is stored using this compression.
 
-     <br><dt><span class="samp">ps</span><dd>this command is used to better detect other sourceinstall processes. GNU Source Installer also uses a lock file, so it is not really necessary.
+     <li>ps
+this command is used to better detect other sourceinstall processes. GNU Source Installer also uses a lock file, so it is not really necessary.
 
-     <br><dt><span class="samp">unzip, zip</span><dd>these deal with .zip files. It is very unlikely that you will find Free Software source packages available only in .zip format so you can ignore this. Also, you do not want to compress your source using zip. I found both .gz and .bz2 to be more efficient at least when dealing with source. Ignore warning if not present.
+     <li>unzip, zip
+these deal with .zip files. It is very unlikely that you will find Free Software source packages available only in .zip format so you can ignore this. Also, you do not want to compress your source using zip. I found both .gz and .bz2 to be more efficient at least when dealing with source. Ignore warning if not present.
 
-     <br><dt><span class="samp">compress</span><dd>this deals with .Z files. The gzip utilities are used to uncompress .Z packages, so you would only need this if for some arcane reason you want to store source in .Z format. Ignore warning if not present.
+     <li>compress
+this deals with .Z files. The gzip utilities are used to uncompress .Z packages, so you would only need this if for some arcane reason you want to store source in .Z format. Ignore warning if not present.
 
-   </dl>
+   </ul>
 
    <p>If you still have problems, you can write an email to the <span class="command">sourceinstall</span> users mailing list <a href="mailto:bug-sourceinstall@gnu.org">bug-sourceinstall@gnu.org</a> and ask for help. 
 Something that can help a lot is reporting the full output of
@@ -224,7 +239,7 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
 <p><a name="index-Introduction-for-the-Experienced-4"></a>
 Source Installer (<span class="command">sourceinstall</span>) is a program that offers a graphical interface to source package configuration, installation, tracking and removal.
 
-   <p>It is intended to work on Unix-like systems (with <code>GNU/Linux</code> as a primary target).
+   <p>It is intended to work on modern Unix-like systems (with <code>GNU/Linux</code> as a primary target).
 
    <p>This is a tool intended for the user, not for developers: it has nothing to do with package creation.
 
@@ -235,42 +250,66 @@ Source Installer (<span class="command">sourceinstall</span>) is a program that 
 <p><a name="index-Why-should-you-use-this-program_003f-5"></a>
 If you already build most of the software on your system from source code, you might try <span class="command">sourceinstall</span> as a way to centralize and better organize your interactive source installs. Here is what this software offers to the experienced user:
 
-     <dl>
-<dt><span class="samp">a GUI,</span><dd>the most visible feature of <span class="command">sourceinstall</span>. The GUI interfaces with the command line tools, and displays information about installed packages and available actions and preferences.
+     <ul>
+<li>a GUI,
+
+     <p>the most visible feature of <span class="command">sourceinstall</span>. The GUI interfaces with the command line tools, and displays information about installed packages and available actions and preferences.
 
      <p>Other programs can interface with GNU Source Installer at the executable level, by running sourceinstall PACKAGE_NAME PACKAGE_NAME ...
 
-     <br><dt><span class="samp">tracking of all currently installed source packages,</span><dd>with info about install size, source size, and all files relevant to each package.
+     <li>tracking of all currently installed source packages,
 
-     <br><dt><span class="samp">automatic quick check for broken installs.</span><dd>If a file associated with an installed package goes missing, then clicking on the package will prompt the problem, and mark the missing file with big warnings. If you can not solve the issue yourself by restoring the file, you can click &ldquo;Reinstall&rdquo; and get a fresh reinstallation.
+     <p>with info about install size, source size, and all files relevant to each package.
 
-     <br><dt><span class="samp">implicit check for reliable and gnu-conforming packages.</span><dd>The program will issue warnings if the package offers only a very spartane build system, or does not correctly honor common Makefile targets and features.
+     <li>automatic quick check for broken installs.
 
-     <br><dt><span class="samp">full debugging output.</span><dd>A pseudo-console with all the output is provided, so you will be able to get notified of warnings and errors from <code>./configure</code>, <code>make</code>, and all other programs.
+     <p>If a file associated with an installed package goes missing, then clicking on the package will prompt the problem, and mark the missing file with big warnings. If you can not solve the issue yourself by restoring the file, you can click &ldquo;Reinstall&rdquo; and get a fresh reinstallation.
 
-     <br><dt><span class="samp">clean uninstallation.</span><dd>The program performs crosschecks between make uninstall results and internal information available on individual packages (gathered during the install process). These checks can detect files left over by the make uninstall procedure, and if no other package claims them, they are suggested for removal.
+     <li>implicit check for reliable and gnu-conforming packages.
 
-     <br><dt><span class="samp">portability.</span><dd>The program aims at being portable to most modern Unices. A lot of GNU/Linux enthusiasts compared GNU Source Installer to GNU/Linux-specific, distribution-specific, repository-based tools to install or prepare source and binary packages. I hope that by reading this manual and using this software you will have clear that they are comparing apples with oranges.
+     <p>The program will issue warnings if the package offers only a very spartane build system, or does not correctly honor common Makefile targets and features.
 
-   </dl>
+     <li>full debugging output.
+
+     <p>A pseudo-console with all the output is provided, so you will be able to get notified of warnings and errors from <code>./configure</code>, <code>make</code>, and all other programs.
+
+     <li>clean uninstallation.
+
+     <p>The program performs crosschecks between make uninstall results and internal information available on individual packages (gathered during the install process). These checks can detect files left over by the make uninstall procedure, and if no other package claims them, they are suggested for removal.
+
+     <li>portability.
+
+     <p>The program should work on most modern Unices. Even though great care has been taken as to use only very portable code in both the program and its build system, something can slip by, even more since I (the author) do not have other machines than a trusted GNU/Linux box. Just report them: chances are, you will get the portability problem solved sooner than expected. 
+</ul>
 
 <h3 class="section">2.2 Why should you avoid this program?</h3>
 
 <p><a name="index-Why-should-you-avoid-this-program_003f-6"></a>
-The following is a critique against this tool, that shows what you lose, or do not gain in contrast to relying on the good old command line:
+The following is a critique against this tool, that shows what you lose, or do not gain in contrast to relying for example on the good old command line:
 
-     <dl>
-<dt><span class="samp">you can lose time.</span><dd><span class="command">sourceinstall</span> basically installs two times. However, the install process is generally not so time-consuming, for example in contrast to the compile process. The program makes a test installation first (if <code>DESTDIR</code> is supported), to make a final check and gather useful information. This has an impact on total installation time.
+     <ul>
+<li>you can lose time.
 
-     <br><dt><span class="samp">it is not scriptable.</span><dd><span class="command">sourceinstall</span> can be called with filename parameters, but during installation dialogs can be popped up if decisions have to be taken. This is a tool tought for interactive use, so if total automation is your goal, <span class="command">sourceinstall</span> is not for you.
+     <p><span class="command">sourceinstall</span> basically installs two times. The program makes a test installation first (if <code>DESTDIR</code> is supported), to make a final check and gather useful information. This has an impact on total installation time. It is a necessary overhead to avoid non-portable low level solutions. In addition, other phases you can sometimes skip when running the commands yourself will add up to the total installation time.
 
-     <br><dt><span class="samp">some packages might not work.</span><dd><span class="command">sourceinstall</span> has to make some generalizations and will not be able to install difficult packages. An experienced user or developer can quickly go through a broken or sketched <code>Makefile</code> and fix things for his system, but <span class="command">sourceinstall</span> can not. Also, packages which use different installation conventions (for example imake), do not work with <span class="command">sourceinstall</span>. This program actively supports the autotools and the derived build system. If enough people use this tool, this could further drive developers towards the autotools and to create better packages in general.
+     <li>it is not really scriptable.
 
-     <br><dt><span class="samp">no package-level dependency tracking, no repository, nothing at all</span><dd>If your package blocks during configuration, for example, you still look at that error message in the pseudo-console and act consequently (generally this involves browsing for that missing file/package). This program does not use a repository of &ldquo;installable&rdquo; packages, so dependencies should be slowly learned by the user.
+     <p><span class="command">sourceinstall</span> can be called with filename parameters, but during installation dialogs can be popped up if decisions have to be taken. This is a tool thought for interactive use, so if total automation is your goal, <span class="command">sourceinstall</span> is not for you. A non-interactive mode of operation could be hopefully added in the future.
 
-     <br><dt><span class="samp">people who install everything from source might not give a damn.</span><dd>  After widespread adoption, however, even less experienced users could be able to approach the source packages (and hopefully become more experienced with time).
+     <li>some packages might not work.
 
-   </dl>
+     <p><span class="command">sourceinstall</span> has to make some generalizations and will not be able to install difficult packages. An experienced user or developer can quickly go through a broken or sketched <code>Makefile</code> and fix things for his system, but <span class="command">sourceinstall</span> can not. Also, packages which use different installation conventions (for example imake), do not work with <span class="command">sourceinstall</span>. This program actively supports the autotools and the derived build system. If enough people use this tool, this could further drive developers towards the autotools and to create better packages in general.
+
+     <li>no package-level dependency tracking, no repository, nothing at all
+
+     <p>This is not a GNU/Linux distribution. 
+If your package blocks during configuration, you still look at that error message in the pseudo-console and act consequently (generally this involves browsing for that missing file/package). This program does not interact with a repository of &ldquo;installable&rdquo; packages and dependencies.
+
+     <li>people who install everything from source might not give a damn.
+
+     <p>After widespread adoption, however, even less experienced users could be able to approach the source packages (and hopefully become more experienced with time).
+
+   </ul>
 
 <div class="node">
 <p><hr>
@@ -400,7 +439,7 @@ Read on if you want to know more.
 
 <div class="node">
 <p><hr>
-<a name="Usage-for-the-Experienced"></a>Next:&nbsp;<a rel="next" accesskey="n" href="#Reporting-Bugs">Reporting Bugs</a>,
+<a name="Usage-for-the-Experienced"></a>Next:&nbsp;<a rel="next" accesskey="n" href="#FAQ">FAQ</a>,
 Previous:&nbsp;<a rel="previous" accesskey="p" href="#Usage-for-Beginners">Usage for Beginners</a>,
 Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
 <br>
@@ -516,13 +555,88 @@ $ tree ~/.sourceinstall
 
 <div class="node">
 <p><hr>
-<a name="Reporting-Bugs"></a>Next:&nbsp;<a rel="next" accesskey="n" href="#Copying">Copying</a>,
+<a name="FAQ"></a>Next:&nbsp;<a rel="next" accesskey="n" href="#Reporting-Bugs">Reporting Bugs</a>,
 Previous:&nbsp;<a rel="previous" accesskey="p" href="#Usage-for-the-Experienced">Usage for the Experienced</a>,
 Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
 <br>
 </div>
 
-<h2 class="chapter">6 Reporting Bugs</h2>
+<h2 class="chapter">6 FAQ</h2>
+
+<p>This is a small section in which I try to address the common questions I have gathered until now, in no particular order.
+
+     <ol type=1 start=1>
+<li>Q: Why doesn't sourceinstall use Checkinstall?
+
+     <p>A: Checkinstall is a nice program that tracks a source installation using Installwatch, which is Copyright 1998 by Pancrazio `Ezio' de Mauro, and is now part of the Checkinstall distribution. 
+Installwatch is a low-level tool that intercepts calls to file functions in the dynamically linked glibc that alter the file system during 'make install' (or another installation command). Then, Checkinstall builds binary Slackware, RPM or Debian packages based on that information.
+
+     <p>Now I find that the DESTDIR and INSTALL_ROOT (its old, deprecated replacement) way used in <code>sourceinstall</code> is more clean and portable (although slower) than the low level installwatch approach, and is an incentive for developers to correctly support DESTDIR in their custom Makefiles or in their automake hooks. <code>sourceinstall</code> detects if the build system supports DESTDIR or the old INSTALL_ROOT variables, and uses them for the installation tracking.
+
+     <p>As for GNU/Linux distribution-specific binary package building features, GNU Source Installer is again an OS neutral program, so it is not its job to build them. However, a functionality to build simple, neutral binary packages in the form of a tarball archive will arrive soon, along with other, possibly more interesting &ldquo;export&rdquo; functions. From that package, it should be straightforward to build your desired distribution-specific package.
+
+     <li>Q: Does sourceinstall build [:your format:] binary packages ?
+
+     <p>A: (see question above) No, but there are plans for the near future to be able to export a simple tarball containing the installed binaries.
+
+     <li>Q: There's Gentoo and Portage already. Isn't sourceinstall pointless ?
+
+     <p>A: Surprisingly, I got many (well some) private mails stating that there's already the Gentoo GNU/Linux distribution and its Portage system, so <code>sourceinstall</code> was supposedly pointless. Again, this software is an installer for source packages, targeted at modern Unix systems (these include, but do not end with GNU/Linux). Of course, <code>sourceinstall</code> is not a GNU/Linux distribution and not a package repository.
+
+     <li>Q: Why are you using Tk? Why don't you use gtk|Qt|[:yourtoolkit:] ?
+
+     <p>A: I do not have any real preference of one toolkit over another. They can all get the job done. However I really wished to use the GNU ToolKit at the beginning (gtk), because it's the GNU ToolKit (talk about tautology). 
+There is one problem: dependencies and dependencies' size. I wanted to provide something that you could install from a bare-bones Unix + X11 system requiring nothing else. 
+With the current tcl/tk/expect implementation I can provide, in 7 MB, a fullpack alternative shell-archive release of <code>sourceinstall</code>, which includes and autobuilds all its dependencies if necessary. The same thing would not be possible with gtk, which is bigger and less straightforward to autobuild.
+
+     <li>Q: Why are you using Tcl? Why don't you use [:yourlanghere:] ?
+
+     <p>A: Tcl seemed the natural choice having to deal with both Tk and Expect, and it offered simpler Unix portability.
+
+     <li>Q: I do not care about cross Unix portability, dependencies, building the whole system from scratch or anything like this. Is there an alternative, specific for my already working GNU/Linux desktop system ?
+
+     <p>A: There are these project I have been made aware of:
+
+     <p>Kconfigure, QT based, for KDE: <a href="http://kconfigure.sourceforge.net/">http://kconfigure.sourceforge.net/</a>
+
+     <p>Easinstaller, Ruby and Fox based: <a href="http://easinstaller.sourceforge.net/">http://easinstaller.sourceforge.net/</a>
+
+     <p>GPaco, Gtk based, for GNU/Linux and Solaris: <a href="http://paco.sourceforge.net/">http://paco.sourceforge.net/</a>
+
+     <li>Q: The manual is not comprensive enough! It does not say anything about [:X:]
+
+     <p>A: The project is still very young, as is the documentation. It will be a lot better; you can speed up things by reporting what exactly is missing.
+
+     <li>Q: This program does not deal with dependencies at all!
+
+     <p>A: This manual will be integrated with a detailed explanation on how to deal with dependencies. With some patience, I think almost everyone can learn to live with them.
+
+     <li>Q: I have an older version of sourceinstall, how do I upgrade to the current version?
+
+     <p>A: Starting from sourceinstall-0.4, this has been made easier. Just download the regular new version (for example, sourceinstall-0.5.tar.gz), then run sourceinstall, and choose &ldquo;Add&rdquo;; select that new sourceinstall package (sourceinstall-0.5.tar.gz), and confirm with Ok. All your installed packages and preferences will not be harmed.
+
+     <li>Q: I want to contribute to the project in some way, where do I start?
+
+     <p>A: Start with the Bugs and Task list in the Savannah sourceinstall project page: <a href="http://savannah.gnu.org/projects/sourceinstall/">http://savannah.gnu.org/projects/sourceinstall/</a> . 
+Even if you are not a programmer, the task list can contain very relevant work that does not involve programming or reading code at all.
+
+     <p>If you have an interesting idea to share, by all means do so. You can contact the mailing list <a href="mailto:bug-sourceinstall@gnu.org">bug-sourceinstall@gnu.org</a>, or if you prefer you can contact the author directly at <a href="mailto:claudio@gnu.org">claudio@gnu.org</a>. As long as your mail is polite enough, you will not be judged by me in any way by the ideas you express, even if I do not agree with you.
+
+     <li>Q: I want to join the project! Please add me to the project members list.
+
+     <p>A: Great, but please do something for the project. If you make regular contributions, you will be added to the sourceinstall project.
+
+        </ol>
+
+<div class="node">
+<p><hr>
+<a name="Reporting-Bugs"></a>Next:&nbsp;<a rel="next" accesskey="n" href="#Copying">Copying</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#FAQ">FAQ</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+<br>
+</div>
+
+<h2 class="chapter">7 Reporting Bugs</h2>
 
 <p><a name="index-Bugs_002c-reporting-27"></a>Email bug reports to <a href="mailto:bug-sourceinstall@gnu.org">bug-sourceinstall@gnu.org</a>, trying to be as clear and precise as possible. This means that you should provide all useful information that could help to identify the problem, and a detailed way to reproduce it. 
 A good starting point is to specify your OS name and version. If you have no idea about what OS you have, try:
@@ -543,7 +657,7 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
 <br>
 </div>
 
-<h2 class="chapter">7 Copying</h2>
+<h2 class="chapter">8 Copying</h2>
 
 <p><a name="index-Copying-28"></a>GNU Source Installer (<span class="command">sourceinstall</span>) is Copyright (c) 2005 Claudio Fontana and is licensed under the GNU General Public License (GPL). This is a license that grants and protects freedoms. 
 <span class="command">sourceinstall</span> is thus Free Software. 
@@ -619,7 +733,7 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Copying">Copying</a>
 <br>
 </div>
 
-<h3 class="section">7.1 GNU General Public License</h3>
+<h3 class="section">8.1 GNU General Public License</h3>
 
 <div align="center">Version 2, June 1991</div>
    <p><a name="index-GPL_002c-GNU-General-Public-License-29"></a>
@@ -974,7 +1088,7 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Copying">Copying</a>
 <br>
 </div>
 
-<h3 class="section">7.2 GNU Free Documentation License</h3>
+<h3 class="section">8.2 GNU Free Documentation License</h3>
 
 <div align="center">Version 1.2, November 2002</div>
    <p><a name="index-FDL_002c-GNU-Free-Documentation-License-31"></a>
@@ -1495,13 +1609,14 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
 <li><a href="#Usage-for-the-Experienced">5.4 Users</a>
 <li><a href="#Usage-for-the-Experienced">5.5 Files and Directories</a>
 </li></ul>
-<li><a name="toc_Reporting-Bugs" href="#Reporting-Bugs">6 Reporting Bugs</a>
-<li><a name="toc_Copying" href="#Copying">7 Copying</a>
+<li><a name="toc_FAQ" href="#FAQ">6 FAQ</a>
+<li><a name="toc_Reporting-Bugs" href="#Reporting-Bugs">7 Reporting Bugs</a>
+<li><a name="toc_Copying" href="#Copying">8 Copying</a>
 <ul>
-<li><a href="#GNU-General-Public-License">7.1 GNU General Public License</a>
+<li><a href="#GNU-General-Public-License">8.1 GNU General Public License</a>
 <li><a href="#GNU-General-Public-License">Preamble</a>
 <li><a href="#GNU-General-Public-License">How to Apply These Terms to Your New Programs</a>
-<li><a href="#GNU-Free-Documentation-License">7.2 GNU Free Documentation License</a>
+<li><a href="#GNU-Free-Documentation-License">8.2 GNU Free Documentation License</a>
 <li><a href="#GNU-Free-Documentation-License">ADDENDUM: How to use this License for your documents</a>
 </li></ul>
 <li><a name="toc_Concept-Index" href="#Concept-Index">Concept Index</a>
