@@ -31,25 +31,25 @@ Up:&nbsp;<a rel="up" accesskey="u" href="index.html#Top">Top</a>
 
 <h2 class="chapter">4 Usage for Beginners</h2>
 
-<p><a name="index-Usage-for-Beginners-14"></a>
+<p><a name="index-Usage-for-Beginners-87"></a>
 
 <h3 class="section">4.1 The default setup</h3>
 
-<p><a name="index-The-default-setup-15"></a>
+<p><a name="index-The-default-setup-88"></a>
 For beginners, a default setup known to work well for GNU Source Installer is the following:
 
      <ol type=1 start=1>
 <li>GNU Source Installer is installed system-wide as the root user in a different prefix than your OS distribution. For example <span class="file">/usr/local</span>. 
-<li>You login normally as you always do with your user name, then start the GNU Source Installer using command <span class="command">sourceinstall</span>. You do NOT login as root. 
+<li>You login normally as you always do with your user name, then start the GNU Source Installer using command <span class="command">sourceinstall</span>, which starts the graphical interface. You do NOT login as root. 
 At the appropriate times, during installation, you will be asked for the root password if necessary. 
 <li>The default prefix in your preferences is <span class="file">/usr/local</span>, and thus you install your source packages in <span class="file">/usr/local</span>
 <li>You are the only one on the system that installs source packages, and always do that logging in as the same user. 
-<li>When you need to remove or upgrade <span class="command">sourceinstall</span>, login as root and run the program. You will see GNU Source Installer listed in the root user's packages.
+<li>When you need to remove or upgrade <span class="command">sourceinstall</span>, login as root and run the program. You will see GNU Source Installer listed in the root user's packages and will be able to manage it.
         </ol>
 
 <h3 class="section">4.2 Looking for the right package</h3>
 
-<p><a name="index-Looking-for-the-right-package-16"></a>
+<p><a name="index-Looking-for-the-right-package-89"></a>
 First of all, think about a software you want. It is highly probable that such a software package is available under a Free license somewhere.
 
    <p>You can search by simply using a web search engine.
@@ -65,7 +65,7 @@ Proceed with the download, and mark where the file will be downloaded.
 
 <h3 class="section">4.3 Adding a new source package</h3>
 
-<p><a name="index-Adding-a-new-source-package-17"></a>
+<p><a name="index-Adding-a-new-source-package-90"></a>
 Once you have a new shiny source package, it is time to add it from the Source Installer. Run <span class="command">sourceinstall</span>, then press the <code>Add</code> button.
 
    <p>In the <code>Add</code> dialog that appears, you can choose <code>Browse</code> to locate the package, and finally choose <code>Ok</code> to proceed. Let the other checkboxes be with their default values.
@@ -82,7 +82,7 @@ Once you have a new shiny source package, it is time to add it from the Source I
 
 <h3 class="section">4.4 Changing the Preferences</h3>
 
-<p><a name="index-Changing-the-Preferences-18"></a>
+<p><a name="index-Changing-the-Preferences-91"></a>
 The default prefix to use for your installs can be changed, like other options, in the <code>Preferences</code> from the <code>Edit</code> menu, and it is initially set to <span class="file">/usr/local</span>.
 
    <p>Here are the preferences you can change and their description:
@@ -106,12 +106,12 @@ These are the default values for the checkboxes when you trigger the <code>Add</
 
 <h3 class="section">4.5 Querying package information</h3>
 
-<p><a name="index-Querying-package-information-19"></a>
+<p><a name="index-Querying-package-information-92"></a>
 Clicking on the package will show all available information on that package, and will activate the actions for the installed package: <code>Remove</code> and <code>Reinstall</code>. This will also trigger a quick check to ensure that the package has all its needed files in place.
 
 <h3 class="section">4.6 Removing a package</h3>
 
-<p><a name="index-Removing-a-package-20"></a>
+<p><a name="index-Removing-a-package-93"></a>
 To remove a package, select it from the list and click the <code>Remove</code> button. 
 When you <code>Remove</code> a package, you can decide to uninstall the package but keep it in compressed source form. This way, should you decide to install again later, you have the already configured source, and only need to select it from the list and choose <code>Install</code>.
 

@@ -31,7 +31,7 @@ Up:&nbsp;<a rel="up" accesskey="u" href="index.html#Top">Top</a>
 
 <h2 class="chapter">1 Introduction for Beginners</h2>
 
-<p><a name="index-Introduction-for-Beginners-1"></a>
+<p><a name="index-Introduction-for-Beginners-2"></a>
 This is an introduction for real beginners of source installation. If you are already somewhat experienced with UNIX-like systems and GNU source code install procedures, you should skip this chapter, otherwise
 
    <p>Welcome!
@@ -46,12 +46,13 @@ This is an introduction for real beginners of source installation. If you are al
 
 <h3 class="section">1.1 Installing the Installer</h3>
 
-<p><a name="index-Installing-the-Installer-2"></a>
-If you have a fast internet connection, proceed to download sourceinstall-0.4-cvs-fullpack.sh or a newer version, and mark where the file will be placed (the &ldquo;folder&rdquo;, the <dfn>directory</dfn>). For example, we will assume that you are downloading to
+<p><a name="index-Installing-the-Installer-3"></a>
+If you have a fast internet connection, proceed to download sourceinstall-0.5-fullpack.sh or a newer version, and mark where the file will be placed
+<a name="index-directory-4"></a><a name="index-folder-5"></a>(the &ldquo;folder&rdquo;, the <dfn>directory</dfn>). You must have the permission to write in that directory. For example, we will assume that you are downloading to
 
 <pre class="example">     /home/user/downloads
 </pre>
-   <p>After the download completes, start a console session. Your desktop environment should include a button, picture, or menu item that refers to a &ldquo;shell&rdquo;, &ldquo;terminal&rdquo; or &ldquo;console&rdquo;.
+   <p><a name="index-shell-6"></a><a name="index-terminal-7"></a><a name="index-console-8"></a>After the download completes, start a console session. Your desktop environment should include a button, picture, or menu item that refers to a &ldquo;shell&rdquo;, &ldquo;terminal&rdquo; or &ldquo;console&rdquo;.
 
    <p>After the console is open, you should see a brief message ending in $; this message will be represented here by a single dollar character, and you shall NOT type that character as part of the commands.
 
@@ -61,10 +62,10 @@ If you have a fast internet connection, proceed to download sourceinstall-0.4-cv
 </pre>
    <p>where of course <span class="file">/home/user/downloads</span> is the directory in which you downloaded the file.
 
-   <p>If you get an error message, double check your command for typos. 
+   <p><a name="index-prompt-9"></a>If you get an error message, double check your command for typos. 
 If things are going well, you will know because you will get nothing else than another $ ended message (a <dfn>prompt</dfn>).
 
-   <p>At this point, you can decide if you want to install as the super-user (root), or using your ordinary account.
+   <p><a name="index-root-10"></a>At this point, you can decide if you want to install as the super-user (root), or using your ordinary account.
 
    <p>Installing as root is more indicated for system-wide installs. To do so, type
 
@@ -73,35 +74,40 @@ If things are going well, you will know because you will get nothing else than a
 </pre>
    <p>At this point run the installer by typing:
 
-   <p>$ /bin/sh sourceinstall-0.4-cvs-fullpack.sh
+   <p>$ /bin/sh sourceinstall-0.5-fullpack.sh
 
    <p>wait for the package to extract (this might take some minutes on slow or loaded systems), and follow the instructions. After being asked some simple questions, hopefully you will get a working installation of the GNU Source Installer. 
 Mark the executable name that is showed at the end of the procedure, because that is the program that you need to run to start the installer.
 
-   <p>This setup procedure installs in a subdirectory of your home directory by default if you are using an ordinary account. In particular, by default the installation <dfn>prefix</dfn> is ~/usr, where ~ represents your home directory.
+   <p><a name="index-prefix-11"></a>This setup procedure installs in a subdirectory of your home directory by default if you are using an ordinary account. In particular, by default the installation <dfn>prefix</dfn> (the directory subtree in which to install) is ~/usr, where ~ represents your home directory.
 
    <p>If you are using a root account, then the setup procedure will instead use /usr/local as the default prefix. This is a common prefix for system-wide installs.
 
-   <p>If you have a fast internet connection and want the easiest install, you can skip the rest of this section.
+   <p>If you have a fast internet connection and want the easiest install, you can skip the rest of this section, and jump to the &ldquo;Troubleshooting&rdquo; section if you experiece any problems during installation.
 
-   <p>The releases whose names end in -fullpack are many megabytes in size, because they contain all the major dependencies in source form, and it could be that you already have the required packages.
-
-   <p>So, if you are a bit more daring, you can try a normal source release instead. 
-For example, download sourceinstall-0.4-cvs.tar.gz . 
-We will assume the same directory as above.
+   <p>If you are a bit more daring, instead, you can try a normal source release. 
+The releases whose names end in -fullpack are many megabytes in size, because they contain all the major dependencies in source form, and it could be that you already have the required packages. 
+<br>
+You can fetch the much smaller sourceinstall-0.5.tar.gz (or other version). 
+We will assume the same destination directory as above for the download.
 
    <p>At this point enter the following command (this assumes you have the GNU version of <span class="command">tar</span>):
 
-<pre class="example">     $ tar -zxvf sourceinstall-0.4-cvs.tar.gz
+<pre class="example">     $ tar -zxvf sourceinstall-0.5.tar.gz
 </pre>
-   <p>Note that you can use the tabulation (TAB) character to complete names. Experiment with pressing (TAB) around the middle of the file name.
+   <p>or, if you do not have the GNU version of <span class="command">tar</span> (f.e. Solaris):
+
+<pre class="example">     $ gunzip sourceinstall-0.5.tar.gz
+     $ tar -xvf sourceinstall-0.5.tar
+</pre>
+   <p><a name="index-tabulation-12"></a>Note that you can use the tabulation (TAB) character to complete names. Experiment with pressing (TAB) around the middle of the file name.
 
    <p>All the files you'll see are being extracted from the archive, and a new directory is being created in the current one. At the end type:
 
 <pre class="example">     $ cd sourceinstall
      $ ./configure
 </pre>
-   <p>A lot of output will be showing at this point. The software is being <dfn>configured</dfn> (adapted) for your system. If everything runs smooth, you will see at most WARNINGs but no ERRORs. After a while you will get the familiar dollar, and now you can write:
+   <p><a name="index-configuration-13"></a>A lot of output will be showing at this point. The software is being <dfn>configured</dfn> (adapted) for your system. If everything runs smooth, you will see at most WARNINGs but no ERRORs. After a while you will get the familiar dollar, and now you can write:
 
 <pre class="example">     $ make
 </pre>
@@ -111,17 +117,18 @@ We will assume the same directory as above.
      (Enter your root password)
      # make install
 </pre>
-   <p>After writing <code>su</code>, you will be asked for your root password. 
+   <p><a name="index-root-password-14"></a>After writing <code>su</code>, you will be asked for your root password. 
 You should have set your root password during your Operating System initial setup. If you do not know, try pressing ENTER. 
 The # character before <code>make install</code> denotes the fact that after <code>su</code> you have gained root privileges. Since you are done, drop your root privileges by typing
 
 <pre class="example">     # exit
 </pre>
-   <p>Each time you want to run GNU Source Installer from the console, type:
+   <p><a name="index-run-sourceinstall-15"></a>Each time you want to run GNU Source Installer from the console, type:
 
 <pre class="example">     sourceinstall
 </pre>
-   <p>To run it from the graphical environment, you should create some kind of &ldquo;shortcut&rdquo; or &ldquo;link&rdquo; to the program on your desktop or in your program menus. The program to launch is (assuming a root installation and default values) <span class="file">/usr/local/bin/sourceinstall</span> .
+   <p><a name="index-shortcut-16"></a><a name="index-link-17"></a>
+To run it from the graphical environment, you should create some kind of &ldquo;shortcut&rdquo; or &ldquo;link&rdquo; to the program on your desktop or in your program menus. The program to launch is (assuming a root installation and default values) <span class="file">/usr/local/bin/sourceinstall</span> .
 
    <p>If you experience errors that prevent the correct installation and execution of the program, the next section tries to deal with these cases.
 
@@ -134,22 +141,30 @@ The # character before <code>make install</code> denotes the fact that after <co
 <li><span class="file">/usr/local/man/man1/sourceinstall.man</span>       (man page)
         </ol>
 
-   <p>To consult the GNU Source Installer manual type
+   <p><a name="index-info-18"></a>To consult the GNU Source Installer manual type
 
 <pre class="example">     $ info sourceinstall
 </pre>
-   <p>If you want a brief overview of program invocation and options, you can consult the traditional man page by issuing
+   <p><a name="index-man-19"></a>If you want a brief overview of program invocation and options, you can consult the traditional man page by issuing
 
 <pre class="example">     $ man sourceinstall
 </pre>
-   <h3 class="section">1.2 Troubleshooting <span class="command">sourceinstall</span> Installation</h3>
+   <h3 class="section">1.2 Troubleshooting Installation</h3>
 
-<p><a name="index-Troubleshooting-_0040command_007bsourceinstall_007d-Installation-3"></a>
+<p><a name="index-Troubleshooting-Installation-20"></a>
 If you could not install GNU Source Installer, this is most likely because you do not have the required software in your system. In other cases, it could be a bug in the installation procedure.
 
-   <p>For the -fullpack releases, it is most likely the second (the special -fullpack release is meant to install without dependency errors). If you need to report a bug that prevented the correct installation of a -fullpack, please provide all the files ending in .log and .err that are generated during the procedure.
+   <p>For the -fullpack releases, it is most likely the second (the special -fullpack release is meant to install without dependency errors).
 
-   <p>If you are using a normal release, look at the output of <code>./configure</code>, instead, and you will see if some needed programs have not been found on your system.
+   <p>If you need to report a bug that prevented the correct installation of a -fullpack, please provide all the files ending in .log and .err that are generated during the procedure.
+
+   <p>To find all these .log and .err files, after getting the error during installation, look in the directory in which you ran the procedure. In our example, it was:
+
+   <p><span class="file">/home/user/downloads</span>
+
+   <p>You should find a <span class="file">sourceinstall-fullpack</span> directory there. It is a directory created during installation, that is removed after the operation and only if it completed correctly. In your case, if you have an error during the procedure, the directory will still be there. That directory should contain many files whose names end in .err and .log . These are the files to attach to your bug report. As always, report your bugs to <a href="mailto:bug-sourceinstall@gnu.org">bug-sourceinstall@gnu.org</a> .
+
+   <p><a name="index-sourceinstall-dependencies-21"></a>If you are using a normal release (not a fullpack), look at the output of <code>./configure</code>, instead, and you will see if some needed programs have not been found on your system.
 
    <p>The most blocking thing is if you miss <span class="command">tcl</span>, <span class="command">Tk</span> or <span class="command">Expect</span>: in this case <code>./configure</code> will exit with an error, and <span class="command">make</span> will not be able to run.
 
@@ -167,10 +182,10 @@ They are a bit tricky to install, so if you cannot find your way out of them, yo
 
      <ul>
 <li>tcl interpreter
-<span class="command">tclsh</span> with the Tk and Expect tcl packages, or in alternative the all-in-one <span class="command">expectk</span> interpreter.
+<span class="command">tclsh</span> with the Tk and Expect tcl packages, or in alternative the all-in-one <span class="command">expectk</span> interpreter. If Tk is not present, you will still be able to use sourceinstall through the command line, but trying to launch the graphical interface will report an error.
 
-     <li>sh, cp, mv, rm, du, su, rmdir, find
-these should be part of every unix-like. You must have them for GNU Source Installer to work correctly.
+     <li>sh, cp, mv, rm, du, su, rmdir, ln, find, make
+These should be provided by your Unix-like OS. You must have them for GNU Source Installer to work correctly.
 
      <li>tar
 this is necessary to extract the source .tar archive - in theory you could use GNU Source Installer without this, but in practice you will need it.
@@ -189,6 +204,9 @@ these deal with .zip files. It is very unlikely that you will find Free Software
 
      <li>compress
 this deals with .Z files. The gzip utilities are used to uncompress .Z packages, so you would only need this if for some arcane reason you want to store source in .Z format. Ignore warning if not present.
+
+     <li>chmod, chown
+these are used by the very experimental (and pointless?) binary package export feature.
 
    </ul>
 

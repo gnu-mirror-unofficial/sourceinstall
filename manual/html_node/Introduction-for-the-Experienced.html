@@ -31,34 +31,42 @@ Up:&nbsp;<a rel="up" accesskey="u" href="index.html#Top">Top</a>
 
 <h2 class="chapter">2 Introduction for the Experienced</h2>
 
-<p><a name="index-Introduction-for-the-Experienced-4"></a>
-Source Installer (<span class="command">sourceinstall</span>) is a program that offers a graphical interface to source package configuration, installation, tracking and removal.
+<p><a name="index-Introduction-for-the-Experienced-22"></a>
+GNU Source Installer (<span class="command">sourceinstall</span>) is a complete source package management tool, that handles source package configuration, installation, tracking and removal, information querying and export.
 
    <p>It is intended to work on modern Unix-like systems (with <code>GNU/Linux</code> as a primary target).
 
-   <p>This is a tool intended for the user, not for developers: it has nothing to do with package creation.
+   <p>This is a tool intended for the user, not for developers: it has nothing to do with package creation. It helps people install and manage software packages in source form.
 
    <p>The user installs new source packages by browsing the web, downloading a source package (in .tar.gz or other formats), and then feeding it to the source installer.
 
+   <p>There are two different ways to interact with <span class="command">sourceinstall</span>: a Tk graphical interface, and a command-line driven, non-interactive interface.
+
 <h3 class="section">2.1 Why should you use this program?</h3>
 
-<p><a name="index-Why-should-you-use-this-program_003f-5"></a>
-If you already build most of the software on your system from source code, you might try <span class="command">sourceinstall</span> as a way to centralize and better organize your interactive source installs. Here is what this software offers to the experienced user:
+<p><a name="index-Why-should-you-use-this-program_003f-23"></a>
+If you already build most of the software on your system from source code, you might try <span class="command">sourceinstall</span> nonetheless. Here is what this software offers to the experienced user:
 
      <ul>
-<li>a GUI,
+<li>a centralized way of handling source installations
 
-     <p>the most visible feature of <span class="command">sourceinstall</span>. The GUI interfaces with the command line tools, and displays information about installed packages and available actions and preferences.
+     <p>even if you have no problems building from source code, you can use <span class="command">sourceinstall</span> as a way to centralize and better organize your source installations.
 
-     <p>Other programs can interface with GNU Source Installer at the executable level, by running sourceinstall PACKAGE_NAME PACKAGE_NAME ...
+     <li>a GUI and a complete command line interface,
+
+     <p>that should satisfy the needs of many. The GUI interface also shows all output of the underlying command line tools called, and displays information about installed packages and available actions and preferences, so nothing will be hidden from you. The command line interface and the GUI are functionally equivalent.
+
+     <p>Scripts can interface with GNU Source Installer at the executable level, by using the command line interface.
 
      <li>tracking of all currently installed source packages,
 
-     <p>with info about install size, source size, and all files relevant to each package.
+     <p>with info about install size, source size, and all files relevant to each package. 
+<br>
+Yes, you can build everything from source directly using ./configure, make, make install, but <span class="command">sourceinstall</span> helps you remember which configure parameters you used back then to configure that package, helps you after installation by tracking the executable to run, the available documentation, etc from a handy file list, offers editable package descriptions, and other features.
 
      <li>automatic quick check for broken installs.
 
-     <p>If a file associated with an installed package goes missing, then clicking on the package will prompt the problem, and mark the missing file with big warnings. If you can not solve the issue yourself by restoring the file, you can click &ldquo;Reinstall&rdquo; and get a fresh reinstallation.
+     <p>If a file associated with an installed package goes missing, then (Tk interface) clicking on the package will prompt the problem, and mark the missing file with big warnings. If you can not solve the issue yourself by restoring the file, you can ask for a fresh reinstallation by clicking &ldquo;Reinstall&rdquo;. The command line <span class="option">--check</span> and <span class="option">--install</span> actions can be used for the same goal.
 
      <li>implicit check for reliable and gnu-conforming packages.
 
@@ -66,11 +74,11 @@ If you already build most of the software on your system from source code, you m
 
      <li>full debugging output.
 
-     <p>A pseudo-console with all the output is provided, so you will be able to get notified of warnings and errors from <code>./configure</code>, <code>make</code>, and all other programs.
+     <p>You will be able to get notified of warnings and errors from <code>./configure</code>, <code>make</code>, and all other programs.
 
      <li>clean uninstallation.
 
-     <p>The program performs crosschecks between make uninstall results and internal information available on individual packages (gathered during the install process). These checks can detect files left over by the make uninstall procedure, and if no other package claims them, they are suggested for removal.
+     <p>The program performs crosschecks between make uninstall results and internal information available on individual packages (gathered during the install process in a clean and portable way). These checks can detect files left over by the make uninstall procedure, and if no other package claims them, they are suggested for removal (Tk interface), or removed directly (cmdline interface).
 
      <li>portability.
 
@@ -79,30 +87,26 @@ If you already build most of the software on your system from source code, you m
 
 <h3 class="section">2.2 Why should you avoid this program?</h3>
 
-<p><a name="index-Why-should-you-avoid-this-program_003f-6"></a>
+<p><a name="index-Why-should-you-avoid-this-program_003f-24"></a>
 The following is a critique against this tool, that shows what you lose, or do not gain in contrast to relying for example on the good old command line:
 
      <ul>
 <li>you can lose time.
 
-     <p><span class="command">sourceinstall</span> basically installs two times. The program makes a test installation first (if <code>DESTDIR</code> is supported), to make a final check and gather useful information. This has an impact on total installation time. It is a necessary overhead to avoid non-portable low level solutions. In addition, other phases you can sometimes skip when running the commands yourself will add up to the total installation time.
-
-     <li>it is not really scriptable.
-
-     <p><span class="command">sourceinstall</span> can be called with filename parameters, but during installation dialogs can be popped up if decisions have to be taken. This is a tool thought for interactive use, so if total automation is your goal, <span class="command">sourceinstall</span> is not for you. A non-interactive mode of operation could be hopefully added in the future.
+     <p><span class="command">sourceinstall</span> basically installs two times. The program makes a test installation first (if <code>DESTDIR</code> or <code>INSTALL_ROOT</code> are supported), to make a final check and gather useful information. This has an impact on total installation time. It is a necessary overhead to avoid non-portable low level solutions. In addition, other phases you can sometimes skip when running the commands yourself will add up to the total installation time.
 
      <li>some packages might not work.
 
      <p><span class="command">sourceinstall</span> has to make some generalizations and will not be able to install difficult packages. An experienced user or developer can quickly go through a broken or sketched <code>Makefile</code> and fix things for his system, but <span class="command">sourceinstall</span> can not. Also, packages which use different installation conventions (for example imake), do not work with <span class="command">sourceinstall</span>. This program actively supports the autotools and the derived build system. If enough people use this tool, this could further drive developers towards the autotools and to create better packages in general.
 
-     <li>no package-level dependency tracking, no repository, nothing at all
+     <li>no package-level dependency tracking, no repository, nothing at all.
 
-     <p>This is not a GNU/Linux distribution. 
-If your package blocks during configuration, you still look at that error message in the pseudo-console and act consequently (generally this involves browsing for that missing file/package). This program does not interact with a repository of &ldquo;installable&rdquo; packages and dependencies.
+     <p>This is not a GNU/Linux distribution. It is a source package management tool. 
+If your package blocks during configuration, you still look at that error message in the console or pseudo-console and act consequently (generally this involves browsing for that missing file/package). This program does not interact with a repository of &ldquo;installable&rdquo; packages and dependencies.
 
      <li>people who install everything from source might not give a damn.
 
-     <p>After widespread adoption, however, even less experienced users could be able to approach the source packages (and hopefully become more experienced with time).
+     <p>If the benefits shown in the preceeding list do not apply to you, you might prefer to just install from source as you always did. After widespread adoption, however, even less experienced users than you could be able to approach the source packages (and hopefully become more experienced with time).
 
    </ul>
 

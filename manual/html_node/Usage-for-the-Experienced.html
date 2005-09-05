@@ -31,7 +31,7 @@ Up:&nbsp;<a rel="up" accesskey="u" href="index.html#Top">Top</a>
 
 <h2 class="chapter">5 Usage for the Experienced</h2>
 
-<p><a name="index-Usage-for-the-Experienced-21"></a>
+<p><a name="index-Usage-for-the-Experienced-94"></a>
 A package processed by sourceinstall can exist in three forms:
 
      <ol type=1 start=1>
@@ -40,7 +40,7 @@ A package processed by sourceinstall can exist in three forms:
 <li>archived configured source only
         </ol>
 
-   <p>For example, if you are short on space, and you are installing a well-behaved package (you get no warning about DESTDIR not being honoured during installation), you can decide to remove the archived source (losing all the advantages though) to free up some space. Alternatively, you can avoid to store it in the first place when you perform the <code>Add</code> action.
+   <p>For example, if you are short on space, and you are installing a conforming package (so you get a list of installed files in the package details), you can decide to remove the archived source (losing all the advantages though) to free up some space. Alternatively, you can avoid to store it in the first place when you perform the <code>Add</code> action.
 
    <p>On the countrary, you might think that you do not require a certain installed
 program right now, so you select the <code>Remove</code> action for that package, but
@@ -49,26 +49,33 @@ be preserved, you will not need to pass through the configuration window anymore
 
 <h3 class="section">5.1 Consistency checks</h3>
 
-<p><a name="index-Consistency-checks-22"></a>
-Another service that <span class="command">sourceinstall</span> silently offers is a simple set of consistency checks for existing installations. 
-Selecting a package from the list at any time will show all available information about the installed package, and a check will be performed to see if the install looks ok. If some of the files required by the program are missing, you will find a notice and all the missing files will be highlighted and marked with asterisks (*). 
-At this point you can correct the problem by restoring the missing files yourself (for example, you might have accidentally moved them for arcane reasons), or
-just perform a <code>Reinstall</code> action for the package. 
-Additionally, during the uninstallation cross-checks between make uninstall results and internal package information, only independent files (that is, files that are not being claimed by other packages) are proposed for removal. 
+<p><a name="index-Consistency-checks-95"></a>
+Another service that <span class="command">sourceinstall</span> offers is a simple set of consistency checks for existing installations. 
+<br>
+In the Tk interface, selecting a package from the list at any time will show all available information about the installed package, and a check will be performed to see if the install looks ok. If some of the files required by the program are missing, you will find a notice and all the missing files will be highlighted and marked with asterisks (*). 
+<br>
+The same thing can be obtained from the command line interface using the <span class="option">--check</span> action.
+
+   <p>At this point you can correct the problem by restoring the missing files yourself (for example, you might have accidentally moved them for arcane reasons), or
+just reinstall the package, using the <code>Reinstall</code> button of the Tk interface, or the <span class="option">--install</span> action of the command line one.
+
+   <p>Additionally, during the uninstallation cross-checks will be performed between make uninstall results and internal package information; only independent files (that is, files that are not being claimed by other packages) are proposed for removal (Tk interface), or directly removed (command line interface). 
+<br>
 This works better if you avoid installing non-conforming packages, because Source Installer will not be able to know which files a non-conforming package claims.
 
-<h3 class="section">5.2 Conforming and non-conforming packages</h3>
+<h3 class="section">5.2 Conforming packages</h3>
 
-<p><a name="index-Conforming-and-non_002dconforming-packages-23"></a>It is recommended to install only conforming packages using Source Installer. 
-Conforming packages offer a configure script that generates a Makefile, and the Makefile honors the common install targets and environment variables. Generally, packages built (correctly) with the GNU autotools result as conforming packages, and the autotools are also expecially supported: only configure scripts generated with autoconf get the nice configuration window. However, there are also other tools that developers can use which are capable of producing a configure script and a Makefile. Even hand-written configure scripts and Makefiles are ok, as long as they honor the install targets and the environment variables.
+<p><a name="index-Conforming-packages-96"></a>
+It is recommended to install only conforming packages using Source Installer. 
+Conforming packages offer a configure script that generates a Makefile, and the Makefile honors the common install targets and environment variables. Generally, packages built (correctly) with the GNU autotools result as conforming packages, and the autotools are also expecially supported: only configure scripts generated with autoconf get the nice configuration window in the Tk interface. However, there are also other tools that developers can use which are capable of producing a configure script and a Makefile. Even hand-written configure scripts and Makefiles are ok, as long as they honor the install targets and the environment variables.
 
    <p>Conforming packages get better uninstallation, better checks, more information in the Package information window. A single non-conforming package can make uninstallation checks degrade. This is because the program can not detect which files a non-conforming package claims.
 
-   <p>For these reasons, you will be warned when attempting to install a non-conforming package.
+   <p>For these reasons, you will be warned when installing a non-conforming package.
 
 <h3 class="section">5.3 Other package management systems</h3>
 
-<p><a name="index-Other-package-management-systems-24"></a>
+<p><a name="index-Other-package-management-systems-97"></a>
 It is highy probable that you will have many different tools that provide package management. 
 For example, if you are running a GNU/Linux distribution, you probably have your distribution-specific way to handle binary (or even source) packages. 
 What I suggest here is to make a clean separation between your distribution-provided packages (along with any additional packages installed using your distribution-specific tools), and the source packages installed using the distribution-independent GNU Source Installer. 
@@ -78,7 +85,7 @@ This way you ensure that file dependency checks are not tainted by other package
 
 <h3 class="section">5.4 Users</h3>
 
-<p><a name="index-Users-25"></a>
+<p><a name="index-Users-98"></a>
 GNU Source Installer configuration and packages always refer to the particular user that runs it. What follows is a list of possible setups.
 
    <p>As the first example, suppose user Pip wants to install his private packages. He chooses to install in <span class="file">/home/pip/usr</span>, at the same time allowing user Merlin to install his own packages in <span class="file">/home/merlin/usr</span>. Of course, in this case no one steps on anybody's toes and everything runs smooth.
@@ -91,7 +98,7 @@ GNU Source Installer configuration and packages always refer to the particular u
 
 <h3 class="section">5.5 Files and Directories</h3>
 
-<p><a name="index-Files-and-Directories-26"></a>
+<p><a name="index-Files-and-Directories-99"></a>
 If you want to dwell on the internals of sourceinstall, this is an interesting chapter. We will look at all files and directories that together make sourceinstall work.
 
    <p>The <span class="command">sourceinstall</span> executable is in fact a symbolic link to the implementation in use. For example:
@@ -135,7 +142,20 @@ $ tree ~/.sourceinstall
 
    <p>Do not store anything in these directories yourself, because they will be regularily emptied.
 
-   <p>The <span class="file">sourceinstallrc</span> file contains the current user preferences. These are the same options that can be tweaked from the <code>Preferences</code> in the <code>Edit</code> Menu.
+   <p>The <span class="file">sourceinstallrc</span> file contains the current user preferences. These are the same options that can be tweaked from the <code>Preferences</code> in the <code>Edit</code> Menu using the Tk interface.
+
+<h3 class="section">5.6 Export functions</h3>
+
+<p><a name="index-Export-functions-100"></a>
+<span class="command">sourceinstall</span> contains now some experimental export functions, to offer more interface to other programs (and some user functionalities as well).
+
+   <p>Information about a single package (or about all the packages) can be exported through the <dfn>Export package information to XML</dfn> and <dfn>Export package information to plaintext</dfn> features. The XML involved is a simple XML 1.0 format (look at the XML output for the external public DTD address) and is more machine-oriented, while the plaintext is more user-oriented.
+
+   <p>It is also possible to extract just the list of the files claimed by the installed package, in a plaintext, newline-separated list using the <dfn>Export installed files list</dfn> action.
+
+   <p>A whole different story is the <dfn>Export as binary package</dfn> functionality. Information that follows is very unstable and should not be relied upon for the long term. 
+This is a simple function that builds a .tar.gz archive out of the files, directories and links claimed by an installed package. Original file permissions and ownership will be preserved. It should be easy to build OS-specific binary packages out of these simple binary tarballs. However, also consider using the export installed files list functionality instead. 
+If you expected more binary package building functionalities, please remember that this program is source-centered and OS-neutral.
 
    </body></html>
 

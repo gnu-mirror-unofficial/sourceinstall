@@ -31,24 +31,237 @@ Up:&nbsp;<a rel="up" accesskey="u" href="index.html#Top">Top</a>
 
 <h2 class="chapter">3 Invoking</h2>
 
-<p><a name="index-Invoking-7"></a>
-This chapter shows the options and parameters that <span class="command">sourceinstall</span> accepts.
+<p><a name="index-Invoking-25"></a>
+This chapter shows the various actions, options, parameters and preferences that <span class="command">sourceinstall</span> accepts.
 
 <h3 class="section">3.1 Synopsis</h3>
 
-<p><a name="index-Synopsis-8"></a>
-<pre class="example">     sourceinstall [-hV] [[SOURCE_PACKAGE], ...]
+<p><a name="index-Synopsis-26"></a>
+<pre class="example">     sourceinstall
+     
+     sourceinstall  ACTION [ ACTION_ARG... ]
+                    [ OPTION [ OPTION_ARG... ]... ] [ PACKAGE_NAME ]
+     
+     sourceinstall  [ OPTION [ OPTION_ARG... ]... ] FILENAME
 </pre>
-   <p>If called without any arguments, the program starts a graphical interface and waits user input to decide the action to perform.
+   <p><span class="command">sourceinstall</span> can be run in three different ways.
 
-<h3 class="section">3.2 Options</h3>
+   <p>If called without any arguments, the program starts a graphical interface and waits for user input to decide the action to perform. This is what beginners should probably do.
 
-<p><a name="index-Options-9"></a>
-<a name="index-_002dh-10"></a><a name="index-_002d_002dhelp-11"></a>If called with the <span class="option">-h</span>, or long equivalent <span class="option">--help</span> option, then no graphical interface will be started, and a help message with the available options will be displayed on standard output.
+   <p>The second way of calling the program is the complete command line interface, where a single action must be specified, followed by zero or more options, possibly followed by a final <span class="option">PACKAGE_NAME</span> if the action requires it.
 
-   <p><a name="index-_002dV-12"></a><a name="index-_002d_002dversion-13"></a>If called with the <span class="option">-V</span>, or long equivalent <span class="option">--version</span> option, then no graphical interface will be started, and a version string message will be displayed on standard output.
+   <p>The third way of calling the program is without specifying any actions, and with a required <span class="option">FILENAME</span>.
 
-   <p>If one or more <span class="option">SOURCE_PACKAGE</span> parameters are specified, then all specified source packages/directories will be installed in the given order. The first install failure breaks the chain.
+   <p>This is for both convenience and backward compatibility, and is a shortcut for the <span class="option">--add</span> action with no custom package name.
+
+<h3 class="section">3.2 Actions</h3>
+
+<p><a name="index-Actions-27"></a>Only ONE action can be specified on the command line. The action may require one or more parameters.
+
+   <p>Some actions require a <span class="option">PACKAGE_NAME</span> on which to act, while others behave differently if such a <span class="option">PACKAGE_NAME</span> is specified.
+
+   <p>For example, the <span class="option">--export</span> action can export information about all installed packages or about a single package, depending on whether a <span class="option">PACKAGE_NAME</span> is specified.
+
+   <p>As another example, the <span class="option">--add</span> action adds a new package to the <span class="command">sourceinstall</span> package list (a very common operation). If <span class="option">PACKAGE_NAME</span> is specified, then the new package will be called <span class="option">PACKAGE_NAME</span>. Otherwise, a default value is obtained from the top source directory of the package.
+
+     
+<a name="index-_002dh-28"></a>
+<a name="index-_002d_002dhelp-29"></a>
+<dl><dt><span class="option">-h, --help</span><dd>show brief command line help
+
+     <p><a name="index-_002dV-30"></a><a name="index-_002d_002dversion-31"></a><br><dt><span class="option">-V, --version</span><dd>show program version
+
+     <p><a name="index-_002dl-32"></a><a name="index-_002d_002dlist-33"></a><br><dt><span class="option">-l, --list</span><dd>list existing packages;
+<br>
+if PACKAGE_NAME is specified, it is treated as a regular expression, and only matching package names are included in the output. The regular expression is a tcl ARE. Tcl regular expressions have been implemented using the package written by Henry Spencer, based on the 1003.2 spec and some (not quite all) of the Perl5 extension. 
+<br>
+Packages are separated by newlines, and a short description is shown near the package name if such a description is available. Package name and description are separated by a &ldquo; - &ldquo; (space, dash, space) sequence.
+
+     <p><a name="index-broken-pipe-34"></a><a name="index-pipe-35"></a><a name="index-more-36"></a><a name="index-pager-37"></a>You might be tempted to pipe the output to a pager. If you do, and have expect-5.43 installed, avoid <span class="command">more</span>. There is a bug in that Expect version that causes problems with pipes, and you will get a <dfn>broken pipe</dfn> error with more. Expect-5.41 does not show this problem.
+
+     <p><a name="index-_002da-38"></a><a name="index-_002d_002dadd-39"></a><br><dt><span class="option">-a, --add FILENAME</span><dd>add new source package from FILENAME;
+<br>
+this is the way to add and install new source packages, so you will use this often. Note that this is not the same as the <span class="option">--install</span> action, which only acts on an already added (but uninstalled) package.
+
+     <p>The <span class="option">--add</span> action configures, builds and installs the source code referenced by FILENAME, then stores the configured source code and saves package information. The unique package name will be taken from the top source directory by default, but can be specified using PACKAGE_NAME (look at the SYNOPSIS above).
+
+     <p>Note that since the source code is automatically stored (in the <span class="file">~/.sourceinstall/src</span> directory) you can safely remove FILENAME after a successful <span class="option">--add</span> action.
+
+     <p>All the above assumes the default behaviour. It can be altered by Options and Preferences.
+
+     <p><a name="index-_002dr-40"></a><a name="index-_002d_002dremove-41"></a><br><dt><span class="option">-r, --remove</span><dd>remove source package PACKAGE_NAME;
+<br>
+by default, the <span class="option">--remove</span> action removes both installation and stored source code. In this case, after removal the package will not exist anymore, and its name will not show in the package list. You can instead fine grain what gets removed by using the <span class="option">--binary</span> or <span class="option">--source</span> options.
+
+     <p><a name="index-_002dc-42"></a><a name="index-_002d_002dcheck-43"></a><br><dt><span class="option">-c, --check</span><dd>show package PACKAGE_NAME information;
+<br>
+if the package is currently installed, validation on known installed files is performed, signaling eventually missing files. If the check reports some missing files, you can rely on the <span class="option">--install</span> action to reinstall over the broken installation.
+
+     <p><a name="index-_002dv-44"></a><a name="index-_002d_002dupdate-45"></a><br><dt><span class="option">-v, --update OLD_PACKAGE FILENAME</span><dd>remove package OLD_PACKAGE completely, then add FILENAME as a new package. 
+<br>
+As for the <span class="option">--add</span> action, the new package name will be taken from the top source directory by default, or from PACKAGE_NAME if specified. 
+<br>
+This action is nothing more than a twofold <span class="option">--remove</span> / <span class="option">--add</span> action.
+
+     <p><a name="index-_002di-46"></a><a name="index-_002d_002dinstall-47"></a><br><dt><span class="option">-i, --install</span><dd>install known package PACKAGE_NAME from stored source code. 
+<br>
+This action is not the way to deal with a new package. If you want to add a new package, you want to use the <span class="option">--add</span> action instead.
+
+     <p><a name="index-_002du-48"></a><a name="index-_002d_002duninstall-49"></a><br><dt><span class="option">-u, --uninstall</span><dd>this is an alias for -r -b . 
+<br>
+This action only removes the installation, but not the source code. Useful to remove something you might wish to restore at a later date. If you want to remove and completely forget about a package, use the <span class="option">--remove</span> action instead.
+
+     <p><a name="index-_002dd-50"></a><a name="index-_002d_002ddescription-51"></a><br><dt><span class="option">-d, --description STRING</span><dd>associate first line of STRING to package PACKAGE_NAME short description,
+<br>
+and the remaining lines to the long description. 
+<br>
+If STRING is empty, remove descriptions from the package. 
+<br>
+To submit an empty string, or a string containing newlines, make use of your shell quotation characters. Two examples (bash):
+
+     <pre class="example">          $ sourceinstall -d "STFU - Shoot The Fighters Up space game
+          &gt; This game is the famous SDL based STFU space game, where lots of noisy
+          &gt; enemy fighters dance through the screen making every kind of disturbing
+          &gt; crappy sound. Using overpowered weapons, you can finally bring them to
+          &gt; silence, and restore peace to the galaxy." STFU
+     </pre>
+     <p>Here we add a package description to the package STFU. The first line will be
+the short description, and the rest of the multiline text is called the long
+description. The descriptions will show everytime the <span class="option">--list</span> and <span class="option">--check</span> actions are requested (see those actions for further info).
+
+     <pre class="example">          $ sourceinstall -d "" STFU
+     </pre>
+     <p>Here we remove all the descriptions (both short and long) from the STFU package. The <span class="option">--list</span> and <span class="option">--check</span> actions will not show any descriptive text anymore.
+
+     <p><a name="index-_002dn-52"></a><a name="index-_002d_002drename-53"></a><br><dt><span class="option">-n, --rename OLD_NAME</span><dd>rename existing package OLD_NAME to PACKAGE_NAME.
+
+     <p><a name="index-_002dx-54"></a><a name="index-_002d_002dexport-55"></a><br><dt><span class="option">-x, --export FORMAT FILENAME</span><dd>export package information to FILENAME. 
+<br>
+FORMAT can be xml, txt or lst . The xml format and txt format contain all the package information, while the lst format only exports the installed files list (and thus has only sense when applied to an installed package). 
+<br>
+If a PACKAGE_NAME is specified, then only the information regarding PACKAGE_NAME is exported. If no PACKAGE_NAME is present on the command line, information about all known packages is exported (xml and txt formats only).
+
+     <p><a name="index-_002dp-56"></a><a name="index-_002d_002dpack-57"></a><br><dt><span class="option">-p, --pack FILENAME</span><dd>build binary tarball from the installed package PACKAGE_NAME, and save it as FILENAME. 
+<br>
+Permissions and ownership are preserved. This functionality is experimental, unstable, slow, sketched. You will need to have or acquire root privileges to complete this operation. 
+</dl>
+
+<h3 class="section">3.3 Options</h3>
+
+<p><a name="index-Options-58"></a>Many options can be specified on the command line, but each option can be chosen only once. Options modify specific actions' behaviour. 
+<br>
+Some of these options overlap with the preferences in the sourceinstall configuration file, and could even overlap with the package information. These command line options take precedence in these cases.
+
+     
+<a name="index-_002ds-59"></a>
+<a name="index-_002d_002dsource-60"></a>
+<dl><dt><span class="option">-s, --source</span><dd>apply add or remove action to source only. 
+<br>
+During an <span class="option">--add</span> action, use this option to specify that you do not want the software to be installed, but only want to store the source internally for future needs. You can combine this with the <span class="option">--configure</span> option to prepare a configured source package and then store it for later use. 
+<br>
+During a <span class="option">--remove</span> action, use this option to specify that you want only the source code to be removed. If the package is currently installed, this leaves only the binary installation, without the stored source code that generated it. If you have enough disk space, it is recommended to keep the source code.
+
+     <p><a name="index-_002db-61"></a><a name="index-_002d_002dbinary-62"></a><br><dt><span class="option">-b, --binary</span><dd>apply add or remove action to installation only. 
+<br>
+During an <span class="option">--add</span> action, use this option to skip the &ldquo;store source code&rdquo; phase. If you have enough disk space, it is recommended to keep the source code.
+
+     <p><a name="index-_002dt-63"></a><a name="index-_002d_002dstrip-64"></a><br><dt><span class="option">-t, --strip</span><dd>strip binaries during installation if possible (not recommended)
+
+     <p><a name="index-_002dz-65"></a><a name="index-_002d_002dcompression-66"></a><br><dt><span class="option">-z, --compression FORMAT</span><dd>use FORMAT as compression format for storing source code. Can assume values gz, bz2, Z . 
+<br>
+This overrides the <span class="option">SRC_COMPRESS</span> preference .
+
+     <p><a name="index-_002dC-67"></a><a name="index-_002d_002dconfigure-68"></a><br><dt><span class="option">-C, --configure STRING</span><dd>(re)configure package using STRING. 
+<br>
+First char of STRING cannot be a '-'. This is worth saying because a common usage of the <span class="option">-C</span> option is to override the default installation prefix set in the Preferences. The command line parser will take your &ldquo;&ndash;prefix&rdquo; string for another option and will complain about a missing <span class="option">-C</span> parameter. To avoid this, just prepend your configuration string with a harmless space. 
+<br>
+You can take the habit to prepend a space to every configuration string you submit, and you will be fine. Here is an example:
+
+     <pre class="example">          $ sourceinstall --install -C " --prefix=/home/claudio/usr" unshield-0.5
+     </pre>
+     <p>Note that if you want to submit some environment variables to configure, a nice way to do it is to specify them in the configure STRING. This way they will appear in the package information. For example:
+
+     <pre class="example">          $ sourceinstall --add cmdftp-0.9.2.tar.gz -C " CFLAGS=-Os LDFLAGS=-s"
+     </pre>
+     <p><a name="index-_002dD-69"></a><a name="index-_002d_002dsubdir-70"></a><br><dt><span class="option">-D, --subdir STRING</span><dd>use STRING as build subdirectory for the package. 
+<br>
+Some packages' build system is nested in some subdirectory. Use this option to specify a directory to move to before configuring and building the package. 
+<br>
+This is a real example with tcl source package, that has a unix subdirectory that contains the configure script. Trying to build it normally gives:
+
+     <pre class="example">          $ sourceinstall --add tcl8.4.11-src.tar.gz -C " --enable-shared --disable-threads --enable-symbols"
+          sourceinstall: warning in `Configuration': A configure script for this package has not been found in the top source directory. However, configure scripts have been found in subdirectories
+          
+          unix/configure
+          win/configure
+          tools/configure
+          
+          Use the `--subdir' option to specify a build subdirectory containing one of these configure scripts
+          # configure script not available
+          sourceinstall: warning in `Configuration': configure script not available. Default prefix and configure options will be ignored.
+          # compile software
+          sourceinstall: error in `Install package': Could not compile the code.
+     </pre>
+     <p>In this case, the subdirectory to indicate is of course the unix subdirectory:
+
+     <pre class="example">          $ sourceinstall --add tcl8.4.11-src.tar.gz -C " --enable-shared" -D unix
+     </pre>
+     <p><a name="index-_002df-71"></a><a name="index-_002d_002dforce-72"></a><br><dt><span class="option">-f, --force</span><dd>force execution of the action even when not recommended (Not Implemented Yet). 
+<br>
+Currently this option has absolutely no effect.
+
+     <p><a name="index-_002dU-73"></a><a name="index-_002d_002duser-74"></a><br><dt><span class="option">-U, --user STRING</span><dd>privileged user login to revert to if required [default=root] . 
+<br>
+When running <span class="command">sourceinstall</span> as a regular user, sometimes privileges will be needed, for example to install to a part of the filesystem that belongs to root, or even to prepare binary packages (see <span class="option">--pack</span> action). 
+<br>
+You can choose to use a login different than root in these cases, by specifying this option.
+
+     <p><a name="index-_002dP-75"></a><a name="index-_002d_002dpass-76"></a><br><dt><span class="option">-P, --pass STRING</span><dd>privileged user password to revert to if required [default=] . 
+<br>
+WARNING! USING THIS OPTION IN A MULTIUSER ENVIRONMENT IS VERY INSECURE! 
+<br>
+When running <span class="command">sourceinstall</span> as a regular user, sometimes privileges will be needed, for example to install to a part of the filesystem that belongs to root, or even to prepare binary packages (see <span class="option">--pack</span> action). 
+<br>
+You can use this option to specify the password to use in these cases. 
+Note however that the program invocation, with all its parameters, could be stored in some log files, or in the system running processes list. 
+<br>
+If you want to run <span class="command">sourceinstall</span> from the command line in a multiuser environment, you will probably do best by running sourceinstall as the root user.
+
+     <p><a name="index-_002dq-77"></a><a name="index-_002d_002dquiet-78"></a><br><dt><span class="option">-q, --quiet</span><dd>be very quiet: only indispensable information will be sent to the standard output.
+
+   </dl>
+
+<h3 class="section">3.4 Preferences</h3>
+
+<p><a name="index-Preferences-79"></a>
+Preferences are very much like options, but they are stored in a specific file that is loaded each time sourceinstall starts.
+
+   <p>Every time a command line option and a preference clash, the command line option takes precedence.
+
+   <p>To change the preferences you can edit your
+<span class="file">~/.sourceinstall/sourceinstallrc</span> file. 
+<br>
+Note that each user (root too!) has his own preferences file.
+
+     
+<a name="index-MANUAL_005fCONFIGURE-80"></a>
+<dl><dt><span class="option">MANUAL_CONFIGURE: bool</span><dd>(Tk interface only) This preference controls whether the configuration window should be shown in the Tk interface. It has no effect if you are using the command line interface. 
+<br>
+The <span class="option">bool</span> value can be 0 (do not show configure window) or 1 (do it).
+
+     <p><a name="index-KEEP_005fSOURCE-81"></a><br><dt><span class="option">KEEP_SOURCE: bool</span><dd>This preference controls whether the source code should be stored when adding or installing software. Of course, this preference clashes with options <span class="option">--source</span>, <span class="option">--binary</span>, and their aliases. The <span class="option">bool</span> value can be of course 0 or 1.
+
+     <p><a name="index-INSTALL-82"></a><br><dt><span class="option">INSTALL: bool</span><dd>This preference controls whether the software should be installed when adding software. Of course, this preference clashes with options <span class="option">--source</span>, <span class="option">--binary</span>, and their aliases. The <span class="option">bool</span> value can be again 0 or 1.
+
+     <p><a name="index-ADD_005fDIRECTORY-83"></a><br><dt><span class="option">ADD_DIRECTORY: path</span><dd>(Tk interface only) This preference controls the initial directory <span class="option">PATH</span> to browse when clicking Add.
+
+     <p><a name="index-STRIP-84"></a><br><dt><span class="option">STRIP: bool</span><dd>This preference mimics the <span class="option">--strip</span> option.
+
+     <p><a name="index-PREFIX-85"></a><br><dt><span class="option">PREFIX: path</span><dd>This is the default prefix to use when adding/installing software. Note that you can override this setting by providing a <span class="option">--prefix</span> configure string (see the <span class="option">--configure</span> option). The default value is <span class="file">/usr/local</span>, a safe choice for systemwide installs.
+
+     <p><a name="index-SRC_005fCOMPRESS-86"></a><br><dt><span class="option">SRC_COMPRESS: format</span><dd>This is another preference that mimics an option. In this case it is the <span class="option">--compression</span> option.
+
+   </dl>
 
    </body></html>
 

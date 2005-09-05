@@ -29,9 +29,9 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#dir">(dir)</a>
 
 <h2 class="unnumbered">GNU Source Installer</h2>
 
-<p><span class="command">sourceinstall</span> automates configuration, compilation, installation and removal of source packages, using the common procedures used to install Unix software.
+<p><a name="index-sourceinstall-1"></a><span class="command">sourceinstall</span> is a fully featured source package management tool. It automates configuration, compilation, installation, tracking and removal of source packages, using the common procedures used to install Unix software.
 
-   <p>This document was produced for version 0.4-cvs of <span class="command">sourceinstall</span>.
+   <p>This document was produced for version 0.5 of <span class="command">sourceinstall</span>.
 
 <ul class="menu">
 <li><a accesskey="1" href="#Introduction-for-Beginners">Introduction for Beginners</a>:   Introduction for the really novice user
@@ -42,8 +42,9 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#dir">(dir)</a>
 <li><a accesskey="6" href="#FAQ">FAQ</a>:                          Frequently Asked Questions
 <li><a accesskey="7" href="#Reporting-Bugs">Reporting Bugs</a>:               How to properly report bugs
 <li><a accesskey="8" href="#Copying">Copying</a>:                      License terms. 
-<li><a accesskey="9" href="#Concept-Index">Concept Index</a>:                A menu with all the topics in this manual
-<li><a href="#Index">Index</a>:                        A menu with all <span class="command">sourceinstall</span> concepts
+<li><a accesskey="9" href="#Beginners-Concept-Index">Beginners Concept Index</a>:      A menu with the really basic topics
+<li><a href="#Concept-Index">Concept Index</a>:                A menu with the relevant topics in this manual
+<li><a href="#Functions-Index">Functions Index</a>:              A menu with all options and functionalities
 
    </ul>
 
@@ -57,7 +58,7 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
 
 <h2 class="chapter">1 Introduction for Beginners</h2>
 
-<p><a name="index-Introduction-for-Beginners-1"></a>
+<p><a name="index-Introduction-for-Beginners-2"></a>
 This is an introduction for real beginners of source installation. If you are already somewhat experienced with UNIX-like systems and GNU source code install procedures, you should skip this chapter, otherwise
 
    <p>Welcome!
@@ -72,12 +73,13 @@ This is an introduction for real beginners of source installation. If you are al
 
 <h3 class="section">1.1 Installing the Installer</h3>
 
-<p><a name="index-Installing-the-Installer-2"></a>
-If you have a fast internet connection, proceed to download sourceinstall-0.4-cvs-fullpack.sh or a newer version, and mark where the file will be placed (the &ldquo;folder&rdquo;, the <dfn>directory</dfn>). For example, we will assume that you are downloading to
+<p><a name="index-Installing-the-Installer-3"></a>
+If you have a fast internet connection, proceed to download sourceinstall-0.5-fullpack.sh or a newer version, and mark where the file will be placed
+<a name="index-directory-4"></a><a name="index-folder-5"></a>(the &ldquo;folder&rdquo;, the <dfn>directory</dfn>). You must have the permission to write in that directory. For example, we will assume that you are downloading to
 
 <pre class="example">     /home/user/downloads
 </pre>
-   <p>After the download completes, start a console session. Your desktop environment should include a button, picture, or menu item that refers to a &ldquo;shell&rdquo;, &ldquo;terminal&rdquo; or &ldquo;console&rdquo;.
+   <p><a name="index-shell-6"></a><a name="index-terminal-7"></a><a name="index-console-8"></a>After the download completes, start a console session. Your desktop environment should include a button, picture, or menu item that refers to a &ldquo;shell&rdquo;, &ldquo;terminal&rdquo; or &ldquo;console&rdquo;.
 
    <p>After the console is open, you should see a brief message ending in $; this message will be represented here by a single dollar character, and you shall NOT type that character as part of the commands.
 
@@ -87,10 +89,10 @@ If you have a fast internet connection, proceed to download sourceinstall-0.4-cv
 </pre>
    <p>where of course <span class="file">/home/user/downloads</span> is the directory in which you downloaded the file.
 
-   <p>If you get an error message, double check your command for typos. 
+   <p><a name="index-prompt-9"></a>If you get an error message, double check your command for typos. 
 If things are going well, you will know because you will get nothing else than another $ ended message (a <dfn>prompt</dfn>).
 
-   <p>At this point, you can decide if you want to install as the super-user (root), or using your ordinary account.
+   <p><a name="index-root-10"></a>At this point, you can decide if you want to install as the super-user (root), or using your ordinary account.
 
    <p>Installing as root is more indicated for system-wide installs. To do so, type
 
@@ -99,35 +101,40 @@ If things are going well, you will know because you will get nothing else than a
 </pre>
    <p>At this point run the installer by typing:
 
-   <p>$ /bin/sh sourceinstall-0.4-cvs-fullpack.sh
+   <p>$ /bin/sh sourceinstall-0.5-fullpack.sh
 
    <p>wait for the package to extract (this might take some minutes on slow or loaded systems), and follow the instructions. After being asked some simple questions, hopefully you will get a working installation of the GNU Source Installer. 
 Mark the executable name that is showed at the end of the procedure, because that is the program that you need to run to start the installer.
 
-   <p>This setup procedure installs in a subdirectory of your home directory by default if you are using an ordinary account. In particular, by default the installation <dfn>prefix</dfn> is ~/usr, where ~ represents your home directory.
+   <p><a name="index-prefix-11"></a>This setup procedure installs in a subdirectory of your home directory by default if you are using an ordinary account. In particular, by default the installation <dfn>prefix</dfn> (the directory subtree in which to install) is ~/usr, where ~ represents your home directory.
 
    <p>If you are using a root account, then the setup procedure will instead use /usr/local as the default prefix. This is a common prefix for system-wide installs.
 
-   <p>If you have a fast internet connection and want the easiest install, you can skip the rest of this section.
+   <p>If you have a fast internet connection and want the easiest install, you can skip the rest of this section, and jump to the &ldquo;Troubleshooting&rdquo; section if you experiece any problems during installation.
 
-   <p>The releases whose names end in -fullpack are many megabytes in size, because they contain all the major dependencies in source form, and it could be that you already have the required packages.
-
-   <p>So, if you are a bit more daring, you can try a normal source release instead. 
-For example, download sourceinstall-0.4-cvs.tar.gz . 
-We will assume the same directory as above.
+   <p>If you are a bit more daring, instead, you can try a normal source release. 
+The releases whose names end in -fullpack are many megabytes in size, because they contain all the major dependencies in source form, and it could be that you already have the required packages. 
+<br>
+You can fetch the much smaller sourceinstall-0.5.tar.gz (or other version). 
+We will assume the same destination directory as above for the download.
 
    <p>At this point enter the following command (this assumes you have the GNU version of <span class="command">tar</span>):
 
-<pre class="example">     $ tar -zxvf sourceinstall-0.4-cvs.tar.gz
+<pre class="example">     $ tar -zxvf sourceinstall-0.5.tar.gz
 </pre>
-   <p>Note that you can use the tabulation (TAB) character to complete names. Experiment with pressing (TAB) around the middle of the file name.
+   <p>or, if you do not have the GNU version of <span class="command">tar</span> (f.e. Solaris):
+
+<pre class="example">     $ gunzip sourceinstall-0.5.tar.gz
+     $ tar -xvf sourceinstall-0.5.tar
+</pre>
+   <p><a name="index-tabulation-12"></a>Note that you can use the tabulation (TAB) character to complete names. Experiment with pressing (TAB) around the middle of the file name.
 
    <p>All the files you'll see are being extracted from the archive, and a new directory is being created in the current one. At the end type:
 
 <pre class="example">     $ cd sourceinstall
      $ ./configure
 </pre>
-   <p>A lot of output will be showing at this point. The software is being <dfn>configured</dfn> (adapted) for your system. If everything runs smooth, you will see at most WARNINGs but no ERRORs. After a while you will get the familiar dollar, and now you can write:
+   <p><a name="index-configuration-13"></a>A lot of output will be showing at this point. The software is being <dfn>configured</dfn> (adapted) for your system. If everything runs smooth, you will see at most WARNINGs but no ERRORs. After a while you will get the familiar dollar, and now you can write:
 
 <pre class="example">     $ make
 </pre>
@@ -137,17 +144,18 @@ We will assume the same directory as above.
      (Enter your root password)
      # make install
 </pre>
-   <p>After writing <code>su</code>, you will be asked for your root password. 
+   <p><a name="index-root-password-14"></a>After writing <code>su</code>, you will be asked for your root password. 
 You should have set your root password during your Operating System initial setup. If you do not know, try pressing ENTER. 
 The # character before <code>make install</code> denotes the fact that after <code>su</code> you have gained root privileges. Since you are done, drop your root privileges by typing
 
 <pre class="example">     # exit
 </pre>
-   <p>Each time you want to run GNU Source Installer from the console, type:
+   <p><a name="index-run-sourceinstall-15"></a>Each time you want to run GNU Source Installer from the console, type:
 
 <pre class="example">     sourceinstall
 </pre>
-   <p>To run it from the graphical environment, you should create some kind of &ldquo;shortcut&rdquo; or &ldquo;link&rdquo; to the program on your desktop or in your program menus. The program to launch is (assuming a root installation and default values) <span class="file">/usr/local/bin/sourceinstall</span> .
+   <p><a name="index-shortcut-16"></a><a name="index-link-17"></a>
+To run it from the graphical environment, you should create some kind of &ldquo;shortcut&rdquo; or &ldquo;link&rdquo; to the program on your desktop or in your program menus. The program to launch is (assuming a root installation and default values) <span class="file">/usr/local/bin/sourceinstall</span> .
 
    <p>If you experience errors that prevent the correct installation and execution of the program, the next section tries to deal with these cases.
 
@@ -160,22 +168,30 @@ The # character before <code>make install</code> denotes the fact that after <co
 <li><span class="file">/usr/local/man/man1/sourceinstall.man</span>       (man page)
         </ol>
 
-   <p>To consult the GNU Source Installer manual type
+   <p><a name="index-info-18"></a>To consult the GNU Source Installer manual type
 
 <pre class="example">     $ info sourceinstall
 </pre>
-   <p>If you want a brief overview of program invocation and options, you can consult the traditional man page by issuing
+   <p><a name="index-man-19"></a>If you want a brief overview of program invocation and options, you can consult the traditional man page by issuing
 
 <pre class="example">     $ man sourceinstall
 </pre>
-   <h3 class="section">1.2 Troubleshooting <span class="command">sourceinstall</span> Installation</h3>
+   <h3 class="section">1.2 Troubleshooting Installation</h3>
 
-<p><a name="index-Troubleshooting-_0040command_007bsourceinstall_007d-Installation-3"></a>
+<p><a name="index-Troubleshooting-Installation-20"></a>
 If you could not install GNU Source Installer, this is most likely because you do not have the required software in your system. In other cases, it could be a bug in the installation procedure.
 
-   <p>For the -fullpack releases, it is most likely the second (the special -fullpack release is meant to install without dependency errors). If you need to report a bug that prevented the correct installation of a -fullpack, please provide all the files ending in .log and .err that are generated during the procedure.
+   <p>For the -fullpack releases, it is most likely the second (the special -fullpack release is meant to install without dependency errors).
 
-   <p>If you are using a normal release, look at the output of <code>./configure</code>, instead, and you will see if some needed programs have not been found on your system.
+   <p>If you need to report a bug that prevented the correct installation of a -fullpack, please provide all the files ending in .log and .err that are generated during the procedure.
+
+   <p>To find all these .log and .err files, after getting the error during installation, look in the directory in which you ran the procedure. In our example, it was:
+
+   <p><span class="file">/home/user/downloads</span>
+
+   <p>You should find a <span class="file">sourceinstall-fullpack</span> directory there. It is a directory created during installation, that is removed after the operation and only if it completed correctly. In your case, if you have an error during the procedure, the directory will still be there. That directory should contain many files whose names end in .err and .log . These are the files to attach to your bug report. As always, report your bugs to <a href="mailto:bug-sourceinstall@gnu.org">bug-sourceinstall@gnu.org</a> .
+
+   <p><a name="index-sourceinstall-dependencies-21"></a>If you are using a normal release (not a fullpack), look at the output of <code>./configure</code>, instead, and you will see if some needed programs have not been found on your system.
 
    <p>The most blocking thing is if you miss <span class="command">tcl</span>, <span class="command">Tk</span> or <span class="command">Expect</span>: in this case <code>./configure</code> will exit with an error, and <span class="command">make</span> will not be able to run.
 
@@ -193,10 +209,10 @@ They are a bit tricky to install, so if you cannot find your way out of them, yo
 
      <ul>
 <li>tcl interpreter
-<span class="command">tclsh</span> with the Tk and Expect tcl packages, or in alternative the all-in-one <span class="command">expectk</span> interpreter.
+<span class="command">tclsh</span> with the Tk and Expect tcl packages, or in alternative the all-in-one <span class="command">expectk</span> interpreter. If Tk is not present, you will still be able to use sourceinstall through the command line, but trying to launch the graphical interface will report an error.
 
-     <li>sh, cp, mv, rm, du, su, rmdir, find
-these should be part of every unix-like. You must have them for GNU Source Installer to work correctly.
+     <li>sh, cp, mv, rm, du, su, rmdir, ln, find, make
+These should be provided by your Unix-like OS. You must have them for GNU Source Installer to work correctly.
 
      <li>tar
 this is necessary to extract the source .tar archive - in theory you could use GNU Source Installer without this, but in practice you will need it.
@@ -215,6 +231,9 @@ these deal with .zip files. It is very unlikely that you will find Free Software
 
      <li>compress
 this deals with .Z files. The gzip utilities are used to uncompress .Z packages, so you would only need this if for some arcane reason you want to store source in .Z format. Ignore warning if not present.
+
+     <li>chmod, chown
+these are used by the very experimental (and pointless?) binary package export feature.
 
    </ul>
 
@@ -236,34 +255,42 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
 
 <h2 class="chapter">2 Introduction for the Experienced</h2>
 
-<p><a name="index-Introduction-for-the-Experienced-4"></a>
-Source Installer (<span class="command">sourceinstall</span>) is a program that offers a graphical interface to source package configuration, installation, tracking and removal.
+<p><a name="index-Introduction-for-the-Experienced-22"></a>
+GNU Source Installer (<span class="command">sourceinstall</span>) is a complete source package management tool, that handles source package configuration, installation, tracking and removal, information querying and export.
 
    <p>It is intended to work on modern Unix-like systems (with <code>GNU/Linux</code> as a primary target).
 
-   <p>This is a tool intended for the user, not for developers: it has nothing to do with package creation.
+   <p>This is a tool intended for the user, not for developers: it has nothing to do with package creation. It helps people install and manage software packages in source form.
 
    <p>The user installs new source packages by browsing the web, downloading a source package (in .tar.gz or other formats), and then feeding it to the source installer.
 
+   <p>There are two different ways to interact with <span class="command">sourceinstall</span>: a Tk graphical interface, and a command-line driven, non-interactive interface.
+
 <h3 class="section">2.1 Why should you use this program?</h3>
 
-<p><a name="index-Why-should-you-use-this-program_003f-5"></a>
-If you already build most of the software on your system from source code, you might try <span class="command">sourceinstall</span> as a way to centralize and better organize your interactive source installs. Here is what this software offers to the experienced user:
+<p><a name="index-Why-should-you-use-this-program_003f-23"></a>
+If you already build most of the software on your system from source code, you might try <span class="command">sourceinstall</span> nonetheless. Here is what this software offers to the experienced user:
 
      <ul>
-<li>a GUI,
+<li>a centralized way of handling source installations
 
-     <p>the most visible feature of <span class="command">sourceinstall</span>. The GUI interfaces with the command line tools, and displays information about installed packages and available actions and preferences.
+     <p>even if you have no problems building from source code, you can use <span class="command">sourceinstall</span> as a way to centralize and better organize your source installations.
 
-     <p>Other programs can interface with GNU Source Installer at the executable level, by running sourceinstall PACKAGE_NAME PACKAGE_NAME ...
+     <li>a GUI and a complete command line interface,
+
+     <p>that should satisfy the needs of many. The GUI interface also shows all output of the underlying command line tools called, and displays information about installed packages and available actions and preferences, so nothing will be hidden from you. The command line interface and the GUI are functionally equivalent.
+
+     <p>Scripts can interface with GNU Source Installer at the executable level, by using the command line interface.
 
      <li>tracking of all currently installed source packages,
 
-     <p>with info about install size, source size, and all files relevant to each package.
+     <p>with info about install size, source size, and all files relevant to each package. 
+<br>
+Yes, you can build everything from source directly using ./configure, make, make install, but <span class="command">sourceinstall</span> helps you remember which configure parameters you used back then to configure that package, helps you after installation by tracking the executable to run, the available documentation, etc from a handy file list, offers editable package descriptions, and other features.
 
      <li>automatic quick check for broken installs.
 
-     <p>If a file associated with an installed package goes missing, then clicking on the package will prompt the problem, and mark the missing file with big warnings. If you can not solve the issue yourself by restoring the file, you can click &ldquo;Reinstall&rdquo; and get a fresh reinstallation.
+     <p>If a file associated with an installed package goes missing, then (Tk interface) clicking on the package will prompt the problem, and mark the missing file with big warnings. If you can not solve the issue yourself by restoring the file, you can ask for a fresh reinstallation by clicking &ldquo;Reinstall&rdquo;. The command line <span class="option">--check</span> and <span class="option">--install</span> actions can be used for the same goal.
 
      <li>implicit check for reliable and gnu-conforming packages.
 
@@ -271,11 +298,11 @@ If you already build most of the software on your system from source code, you m
 
      <li>full debugging output.
 
-     <p>A pseudo-console with all the output is provided, so you will be able to get notified of warnings and errors from <code>./configure</code>, <code>make</code>, and all other programs.
+     <p>You will be able to get notified of warnings and errors from <code>./configure</code>, <code>make</code>, and all other programs.
 
      <li>clean uninstallation.
 
-     <p>The program performs crosschecks between make uninstall results and internal information available on individual packages (gathered during the install process). These checks can detect files left over by the make uninstall procedure, and if no other package claims them, they are suggested for removal.
+     <p>The program performs crosschecks between make uninstall results and internal information available on individual packages (gathered during the install process in a clean and portable way). These checks can detect files left over by the make uninstall procedure, and if no other package claims them, they are suggested for removal (Tk interface), or removed directly (cmdline interface).
 
      <li>portability.
 
@@ -284,30 +311,26 @@ If you already build most of the software on your system from source code, you m
 
 <h3 class="section">2.2 Why should you avoid this program?</h3>
 
-<p><a name="index-Why-should-you-avoid-this-program_003f-6"></a>
+<p><a name="index-Why-should-you-avoid-this-program_003f-24"></a>
 The following is a critique against this tool, that shows what you lose, or do not gain in contrast to relying for example on the good old command line:
 
      <ul>
 <li>you can lose time.
 
-     <p><span class="command">sourceinstall</span> basically installs two times. The program makes a test installation first (if <code>DESTDIR</code> is supported), to make a final check and gather useful information. This has an impact on total installation time. It is a necessary overhead to avoid non-portable low level solutions. In addition, other phases you can sometimes skip when running the commands yourself will add up to the total installation time.
-
-     <li>it is not really scriptable.
-
-     <p><span class="command">sourceinstall</span> can be called with filename parameters, but during installation dialogs can be popped up if decisions have to be taken. This is a tool thought for interactive use, so if total automation is your goal, <span class="command">sourceinstall</span> is not for you. A non-interactive mode of operation could be hopefully added in the future.
+     <p><span class="command">sourceinstall</span> basically installs two times. The program makes a test installation first (if <code>DESTDIR</code> or <code>INSTALL_ROOT</code> are supported), to make a final check and gather useful information. This has an impact on total installation time. It is a necessary overhead to avoid non-portable low level solutions. In addition, other phases you can sometimes skip when running the commands yourself will add up to the total installation time.
 
      <li>some packages might not work.
 
      <p><span class="command">sourceinstall</span> has to make some generalizations and will not be able to install difficult packages. An experienced user or developer can quickly go through a broken or sketched <code>Makefile</code> and fix things for his system, but <span class="command">sourceinstall</span> can not. Also, packages which use different installation conventions (for example imake), do not work with <span class="command">sourceinstall</span>. This program actively supports the autotools and the derived build system. If enough people use this tool, this could further drive developers towards the autotools and to create better packages in general.
 
-     <li>no package-level dependency tracking, no repository, nothing at all
+     <li>no package-level dependency tracking, no repository, nothing at all.
 
-     <p>This is not a GNU/Linux distribution. 
-If your package blocks during configuration, you still look at that error message in the pseudo-console and act consequently (generally this involves browsing for that missing file/package). This program does not interact with a repository of &ldquo;installable&rdquo; packages and dependencies.
+     <p>This is not a GNU/Linux distribution. It is a source package management tool. 
+If your package blocks during configuration, you still look at that error message in the console or pseudo-console and act consequently (generally this involves browsing for that missing file/package). This program does not interact with a repository of &ldquo;installable&rdquo; packages and dependencies.
 
      <li>people who install everything from source might not give a damn.
 
-     <p>After widespread adoption, however, even less experienced users could be able to approach the source packages (and hopefully become more experienced with time).
+     <p>If the benefits shown in the preceeding list do not apply to you, you might prefer to just install from source as you always did. After widespread adoption, however, even less experienced users than you could be able to approach the source packages (and hopefully become more experienced with time).
 
    </ul>
 
@@ -321,24 +344,237 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
 
 <h2 class="chapter">3 Invoking</h2>
 
-<p><a name="index-Invoking-7"></a>
-This chapter shows the options and parameters that <span class="command">sourceinstall</span> accepts.
+<p><a name="index-Invoking-25"></a>
+This chapter shows the various actions, options, parameters and preferences that <span class="command">sourceinstall</span> accepts.
 
 <h3 class="section">3.1 Synopsis</h3>
 
-<p><a name="index-Synopsis-8"></a>
-<pre class="example">     sourceinstall [-hV] [[SOURCE_PACKAGE], ...]
+<p><a name="index-Synopsis-26"></a>
+<pre class="example">     sourceinstall
+     
+     sourceinstall  ACTION [ ACTION_ARG... ]
+                    [ OPTION [ OPTION_ARG... ]... ] [ PACKAGE_NAME ]
+     
+     sourceinstall  [ OPTION [ OPTION_ARG... ]... ] FILENAME
 </pre>
-   <p>If called without any arguments, the program starts a graphical interface and waits user input to decide the action to perform.
+   <p><span class="command">sourceinstall</span> can be run in three different ways.
 
-<h3 class="section">3.2 Options</h3>
+   <p>If called without any arguments, the program starts a graphical interface and waits for user input to decide the action to perform. This is what beginners should probably do.
 
-<p><a name="index-Options-9"></a>
-<a name="index-_002dh-10"></a><a name="index-_002d_002dhelp-11"></a>If called with the <span class="option">-h</span>, or long equivalent <span class="option">--help</span> option, then no graphical interface will be started, and a help message with the available options will be displayed on standard output.
+   <p>The second way of calling the program is the complete command line interface, where a single action must be specified, followed by zero or more options, possibly followed by a final <span class="option">PACKAGE_NAME</span> if the action requires it.
 
-   <p><a name="index-_002dV-12"></a><a name="index-_002d_002dversion-13"></a>If called with the <span class="option">-V</span>, or long equivalent <span class="option">--version</span> option, then no graphical interface will be started, and a version string message will be displayed on standard output.
+   <p>The third way of calling the program is without specifying any actions, and with a required <span class="option">FILENAME</span>.
 
-   <p>If one or more <span class="option">SOURCE_PACKAGE</span> parameters are specified, then all specified source packages/directories will be installed in the given order. The first install failure breaks the chain.
+   <p>This is for both convenience and backward compatibility, and is a shortcut for the <span class="option">--add</span> action with no custom package name.
+
+<h3 class="section">3.2 Actions</h3>
+
+<p><a name="index-Actions-27"></a>Only ONE action can be specified on the command line. The action may require one or more parameters.
+
+   <p>Some actions require a <span class="option">PACKAGE_NAME</span> on which to act, while others behave differently if such a <span class="option">PACKAGE_NAME</span> is specified.
+
+   <p>For example, the <span class="option">--export</span> action can export information about all installed packages or about a single package, depending on whether a <span class="option">PACKAGE_NAME</span> is specified.
+
+   <p>As another example, the <span class="option">--add</span> action adds a new package to the <span class="command">sourceinstall</span> package list (a very common operation). If <span class="option">PACKAGE_NAME</span> is specified, then the new package will be called <span class="option">PACKAGE_NAME</span>. Otherwise, a default value is obtained from the top source directory of the package.
+
+     
+<a name="index-_002dh-28"></a>
+<a name="index-_002d_002dhelp-29"></a>
+<dl><dt><span class="option">-h, --help</span><dd>show brief command line help
+
+     <p><a name="index-_002dV-30"></a><a name="index-_002d_002dversion-31"></a><br><dt><span class="option">-V, --version</span><dd>show program version
+
+     <p><a name="index-_002dl-32"></a><a name="index-_002d_002dlist-33"></a><br><dt><span class="option">-l, --list</span><dd>list existing packages;
+<br>
+if PACKAGE_NAME is specified, it is treated as a regular expression, and only matching package names are included in the output. The regular expression is a tcl ARE. Tcl regular expressions have been implemented using the package written by Henry Spencer, based on the 1003.2 spec and some (not quite all) of the Perl5 extension. 
+<br>
+Packages are separated by newlines, and a short description is shown near the package name if such a description is available. Package name and description are separated by a &ldquo; - &ldquo; (space, dash, space) sequence.
+
+     <p><a name="index-broken-pipe-34"></a><a name="index-pipe-35"></a><a name="index-more-36"></a><a name="index-pager-37"></a>You might be tempted to pipe the output to a pager. If you do, and have expect-5.43 installed, avoid <span class="command">more</span>. There is a bug in that Expect version that causes problems with pipes, and you will get a <dfn>broken pipe</dfn> error with more. Expect-5.41 does not show this problem.
+
+     <p><a name="index-_002da-38"></a><a name="index-_002d_002dadd-39"></a><br><dt><span class="option">-a, --add FILENAME</span><dd>add new source package from FILENAME;
+<br>
+this is the way to add and install new source packages, so you will use this often. Note that this is not the same as the <span class="option">--install</span> action, which only acts on an already added (but uninstalled) package.
+
+     <p>The <span class="option">--add</span> action configures, builds and installs the source code referenced by FILENAME, then stores the configured source code and saves package information. The unique package name will be taken from the top source directory by default, but can be specified using PACKAGE_NAME (look at the SYNOPSIS above).
+
+     <p>Note that since the source code is automatically stored (in the <span class="file">~/.sourceinstall/src</span> directory) you can safely remove FILENAME after a successful <span class="option">--add</span> action.
+
+     <p>All the above assumes the default behaviour. It can be altered by Options and Preferences.
+
+     <p><a name="index-_002dr-40"></a><a name="index-_002d_002dremove-41"></a><br><dt><span class="option">-r, --remove</span><dd>remove source package PACKAGE_NAME;
+<br>
+by default, the <span class="option">--remove</span> action removes both installation and stored source code. In this case, after removal the package will not exist anymore, and its name will not show in the package list. You can instead fine grain what gets removed by using the <span class="option">--binary</span> or <span class="option">--source</span> options.
+
+     <p><a name="index-_002dc-42"></a><a name="index-_002d_002dcheck-43"></a><br><dt><span class="option">-c, --check</span><dd>show package PACKAGE_NAME information;
+<br>
+if the package is currently installed, validation on known installed files is performed, signaling eventually missing files. If the check reports some missing files, you can rely on the <span class="option">--install</span> action to reinstall over the broken installation.
+
+     <p><a name="index-_002dv-44"></a><a name="index-_002d_002dupdate-45"></a><br><dt><span class="option">-v, --update OLD_PACKAGE FILENAME</span><dd>remove package OLD_PACKAGE completely, then add FILENAME as a new package. 
+<br>
+As for the <span class="option">--add</span> action, the new package name will be taken from the top source directory by default, or from PACKAGE_NAME if specified. 
+<br>
+This action is nothing more than a twofold <span class="option">--remove</span> / <span class="option">--add</span> action.
+
+     <p><a name="index-_002di-46"></a><a name="index-_002d_002dinstall-47"></a><br><dt><span class="option">-i, --install</span><dd>install known package PACKAGE_NAME from stored source code. 
+<br>
+This action is not the way to deal with a new package. If you want to add a new package, you want to use the <span class="option">--add</span> action instead.
+
+     <p><a name="index-_002du-48"></a><a name="index-_002d_002duninstall-49"></a><br><dt><span class="option">-u, --uninstall</span><dd>this is an alias for -r -b . 
+<br>
+This action only removes the installation, but not the source code. Useful to remove something you might wish to restore at a later date. If you want to remove and completely forget about a package, use the <span class="option">--remove</span> action instead.
+
+     <p><a name="index-_002dd-50"></a><a name="index-_002d_002ddescription-51"></a><br><dt><span class="option">-d, --description STRING</span><dd>associate first line of STRING to package PACKAGE_NAME short description,
+<br>
+and the remaining lines to the long description. 
+<br>
+If STRING is empty, remove descriptions from the package. 
+<br>
+To submit an empty string, or a string containing newlines, make use of your shell quotation characters. Two examples (bash):
+
+     <pre class="example">          $ sourceinstall -d "STFU - Shoot The Fighters Up space game
+          &gt; This game is the famous SDL based STFU space game, where lots of noisy
+          &gt; enemy fighters dance through the screen making every kind of disturbing
+          &gt; crappy sound. Using overpowered weapons, you can finally bring them to
+          &gt; silence, and restore peace to the galaxy." STFU
+     </pre>
+     <p>Here we add a package description to the package STFU. The first line will be
+the short description, and the rest of the multiline text is called the long
+description. The descriptions will show everytime the <span class="option">--list</span> and <span class="option">--check</span> actions are requested (see those actions for further info).
+
+     <pre class="example">          $ sourceinstall -d "" STFU
+     </pre>
+     <p>Here we remove all the descriptions (both short and long) from the STFU package. The <span class="option">--list</span> and <span class="option">--check</span> actions will not show any descriptive text anymore.
+
+     <p><a name="index-_002dn-52"></a><a name="index-_002d_002drename-53"></a><br><dt><span class="option">-n, --rename OLD_NAME</span><dd>rename existing package OLD_NAME to PACKAGE_NAME.
+
+     <p><a name="index-_002dx-54"></a><a name="index-_002d_002dexport-55"></a><br><dt><span class="option">-x, --export FORMAT FILENAME</span><dd>export package information to FILENAME. 
+<br>
+FORMAT can be xml, txt or lst . The xml format and txt format contain all the package information, while the lst format only exports the installed files list (and thus has only sense when applied to an installed package). 
+<br>
+If a PACKAGE_NAME is specified, then only the information regarding PACKAGE_NAME is exported. If no PACKAGE_NAME is present on the command line, information about all known packages is exported (xml and txt formats only).
+
+     <p><a name="index-_002dp-56"></a><a name="index-_002d_002dpack-57"></a><br><dt><span class="option">-p, --pack FILENAME</span><dd>build binary tarball from the installed package PACKAGE_NAME, and save it as FILENAME. 
+<br>
+Permissions and ownership are preserved. This functionality is experimental, unstable, slow, sketched. You will need to have or acquire root privileges to complete this operation. 
+</dl>
+
+<h3 class="section">3.3 Options</h3>
+
+<p><a name="index-Options-58"></a>Many options can be specified on the command line, but each option can be chosen only once. Options modify specific actions' behaviour. 
+<br>
+Some of these options overlap with the preferences in the sourceinstall configuration file, and could even overlap with the package information. These command line options take precedence in these cases.
+
+     
+<a name="index-_002ds-59"></a>
+<a name="index-_002d_002dsource-60"></a>
+<dl><dt><span class="option">-s, --source</span><dd>apply add or remove action to source only. 
+<br>
+During an <span class="option">--add</span> action, use this option to specify that you do not want the software to be installed, but only want to store the source internally for future needs. You can combine this with the <span class="option">--configure</span> option to prepare a configured source package and then store it for later use. 
+<br>
+During a <span class="option">--remove</span> action, use this option to specify that you want only the source code to be removed. If the package is currently installed, this leaves only the binary installation, without the stored source code that generated it. If you have enough disk space, it is recommended to keep the source code.
+
+     <p><a name="index-_002db-61"></a><a name="index-_002d_002dbinary-62"></a><br><dt><span class="option">-b, --binary</span><dd>apply add or remove action to installation only. 
+<br>
+During an <span class="option">--add</span> action, use this option to skip the &ldquo;store source code&rdquo; phase. If you have enough disk space, it is recommended to keep the source code.
+
+     <p><a name="index-_002dt-63"></a><a name="index-_002d_002dstrip-64"></a><br><dt><span class="option">-t, --strip</span><dd>strip binaries during installation if possible (not recommended)
+
+     <p><a name="index-_002dz-65"></a><a name="index-_002d_002dcompression-66"></a><br><dt><span class="option">-z, --compression FORMAT</span><dd>use FORMAT as compression format for storing source code. Can assume values gz, bz2, Z . 
+<br>
+This overrides the <span class="option">SRC_COMPRESS</span> preference .
+
+     <p><a name="index-_002dC-67"></a><a name="index-_002d_002dconfigure-68"></a><br><dt><span class="option">-C, --configure STRING</span><dd>(re)configure package using STRING. 
+<br>
+First char of STRING cannot be a '-'. This is worth saying because a common usage of the <span class="option">-C</span> option is to override the default installation prefix set in the Preferences. The command line parser will take your &ldquo;&ndash;prefix&rdquo; string for another option and will complain about a missing <span class="option">-C</span> parameter. To avoid this, just prepend your configuration string with a harmless space. 
+<br>
+You can take the habit to prepend a space to every configuration string you submit, and you will be fine. Here is an example:
+
+     <pre class="example">          $ sourceinstall --install -C " --prefix=/home/claudio/usr" unshield-0.5
+     </pre>
+     <p>Note that if you want to submit some environment variables to configure, a nice way to do it is to specify them in the configure STRING. This way they will appear in the package information. For example:
+
+     <pre class="example">          $ sourceinstall --add cmdftp-0.9.2.tar.gz -C " CFLAGS=-Os LDFLAGS=-s"
+     </pre>
+     <p><a name="index-_002dD-69"></a><a name="index-_002d_002dsubdir-70"></a><br><dt><span class="option">-D, --subdir STRING</span><dd>use STRING as build subdirectory for the package. 
+<br>
+Some packages' build system is nested in some subdirectory. Use this option to specify a directory to move to before configuring and building the package. 
+<br>
+This is a real example with tcl source package, that has a unix subdirectory that contains the configure script. Trying to build it normally gives:
+
+     <pre class="example">          $ sourceinstall --add tcl8.4.11-src.tar.gz -C " --enable-shared --disable-threads --enable-symbols"
+          sourceinstall: warning in `Configuration': A configure script for this package has not been found in the top source directory. However, configure scripts have been found in subdirectories
+          
+          unix/configure
+          win/configure
+          tools/configure
+          
+          Use the `--subdir' option to specify a build subdirectory containing one of these configure scripts
+          # configure script not available
+          sourceinstall: warning in `Configuration': configure script not available. Default prefix and configure options will be ignored.
+          # compile software
+          sourceinstall: error in `Install package': Could not compile the code.
+     </pre>
+     <p>In this case, the subdirectory to indicate is of course the unix subdirectory:
+
+     <pre class="example">          $ sourceinstall --add tcl8.4.11-src.tar.gz -C " --enable-shared" -D unix
+     </pre>
+     <p><a name="index-_002df-71"></a><a name="index-_002d_002dforce-72"></a><br><dt><span class="option">-f, --force</span><dd>force execution of the action even when not recommended (Not Implemented Yet). 
+<br>
+Currently this option has absolutely no effect.
+
+     <p><a name="index-_002dU-73"></a><a name="index-_002d_002duser-74"></a><br><dt><span class="option">-U, --user STRING</span><dd>privileged user login to revert to if required [default=root] . 
+<br>
+When running <span class="command">sourceinstall</span> as a regular user, sometimes privileges will be needed, for example to install to a part of the filesystem that belongs to root, or even to prepare binary packages (see <span class="option">--pack</span> action). 
+<br>
+You can choose to use a login different than root in these cases, by specifying this option.
+
+     <p><a name="index-_002dP-75"></a><a name="index-_002d_002dpass-76"></a><br><dt><span class="option">-P, --pass STRING</span><dd>privileged user password to revert to if required [default=] . 
+<br>
+WARNING! USING THIS OPTION IN A MULTIUSER ENVIRONMENT IS VERY INSECURE! 
+<br>
+When running <span class="command">sourceinstall</span> as a regular user, sometimes privileges will be needed, for example to install to a part of the filesystem that belongs to root, or even to prepare binary packages (see <span class="option">--pack</span> action). 
+<br>
+You can use this option to specify the password to use in these cases. 
+Note however that the program invocation, with all its parameters, could be stored in some log files, or in the system running processes list. 
+<br>
+If you want to run <span class="command">sourceinstall</span> from the command line in a multiuser environment, you will probably do best by running sourceinstall as the root user.
+
+     <p><a name="index-_002dq-77"></a><a name="index-_002d_002dquiet-78"></a><br><dt><span class="option">-q, --quiet</span><dd>be very quiet: only indispensable information will be sent to the standard output.
+
+   </dl>
+
+<h3 class="section">3.4 Preferences</h3>
+
+<p><a name="index-Preferences-79"></a>
+Preferences are very much like options, but they are stored in a specific file that is loaded each time sourceinstall starts.
+
+   <p>Every time a command line option and a preference clash, the command line option takes precedence.
+
+   <p>To change the preferences you can edit your
+<span class="file">~/.sourceinstall/sourceinstallrc</span> file. 
+<br>
+Note that each user (root too!) has his own preferences file.
+
+     
+<a name="index-MANUAL_005fCONFIGURE-80"></a>
+<dl><dt><span class="option">MANUAL_CONFIGURE: bool</span><dd>(Tk interface only) This preference controls whether the configuration window should be shown in the Tk interface. It has no effect if you are using the command line interface. 
+<br>
+The <span class="option">bool</span> value can be 0 (do not show configure window) or 1 (do it).
+
+     <p><a name="index-KEEP_005fSOURCE-81"></a><br><dt><span class="option">KEEP_SOURCE: bool</span><dd>This preference controls whether the source code should be stored when adding or installing software. Of course, this preference clashes with options <span class="option">--source</span>, <span class="option">--binary</span>, and their aliases. The <span class="option">bool</span> value can be of course 0 or 1.
+
+     <p><a name="index-INSTALL-82"></a><br><dt><span class="option">INSTALL: bool</span><dd>This preference controls whether the software should be installed when adding software. Of course, this preference clashes with options <span class="option">--source</span>, <span class="option">--binary</span>, and their aliases. The <span class="option">bool</span> value can be again 0 or 1.
+
+     <p><a name="index-ADD_005fDIRECTORY-83"></a><br><dt><span class="option">ADD_DIRECTORY: path</span><dd>(Tk interface only) This preference controls the initial directory <span class="option">PATH</span> to browse when clicking Add.
+
+     <p><a name="index-STRIP-84"></a><br><dt><span class="option">STRIP: bool</span><dd>This preference mimics the <span class="option">--strip</span> option.
+
+     <p><a name="index-PREFIX-85"></a><br><dt><span class="option">PREFIX: path</span><dd>This is the default prefix to use when adding/installing software. Note that you can override this setting by providing a <span class="option">--prefix</span> configure string (see the <span class="option">--configure</span> option). The default value is <span class="file">/usr/local</span>, a safe choice for systemwide installs.
+
+     <p><a name="index-SRC_005fCOMPRESS-86"></a><br><dt><span class="option">SRC_COMPRESS: format</span><dd>This is another preference that mimics an option. In this case it is the <span class="option">--compression</span> option.
+
+   </dl>
 
 <div class="node">
 <p><hr>
@@ -350,25 +586,25 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
 
 <h2 class="chapter">4 Usage for Beginners</h2>
 
-<p><a name="index-Usage-for-Beginners-14"></a>
+<p><a name="index-Usage-for-Beginners-87"></a>
 
 <h3 class="section">4.1 The default setup</h3>
 
-<p><a name="index-The-default-setup-15"></a>
+<p><a name="index-The-default-setup-88"></a>
 For beginners, a default setup known to work well for GNU Source Installer is the following:
 
      <ol type=1 start=1>
 <li>GNU Source Installer is installed system-wide as the root user in a different prefix than your OS distribution. For example <span class="file">/usr/local</span>. 
-<li>You login normally as you always do with your user name, then start the GNU Source Installer using command <span class="command">sourceinstall</span>. You do NOT login as root. 
+<li>You login normally as you always do with your user name, then start the GNU Source Installer using command <span class="command">sourceinstall</span>, which starts the graphical interface. You do NOT login as root. 
 At the appropriate times, during installation, you will be asked for the root password if necessary. 
 <li>The default prefix in your preferences is <span class="file">/usr/local</span>, and thus you install your source packages in <span class="file">/usr/local</span>
 <li>You are the only one on the system that installs source packages, and always do that logging in as the same user. 
-<li>When you need to remove or upgrade <span class="command">sourceinstall</span>, login as root and run the program. You will see GNU Source Installer listed in the root user's packages.
+<li>When you need to remove or upgrade <span class="command">sourceinstall</span>, login as root and run the program. You will see GNU Source Installer listed in the root user's packages and will be able to manage it.
         </ol>
 
 <h3 class="section">4.2 Looking for the right package</h3>
 
-<p><a name="index-Looking-for-the-right-package-16"></a>
+<p><a name="index-Looking-for-the-right-package-89"></a>
 First of all, think about a software you want. It is highly probable that such a software package is available under a Free license somewhere.
 
    <p>You can search by simply using a web search engine.
@@ -384,7 +620,7 @@ Proceed with the download, and mark where the file will be downloaded.
 
 <h3 class="section">4.3 Adding a new source package</h3>
 
-<p><a name="index-Adding-a-new-source-package-17"></a>
+<p><a name="index-Adding-a-new-source-package-90"></a>
 Once you have a new shiny source package, it is time to add it from the Source Installer. Run <span class="command">sourceinstall</span>, then press the <code>Add</code> button.
 
    <p>In the <code>Add</code> dialog that appears, you can choose <code>Browse</code> to locate the package, and finally choose <code>Ok</code> to proceed. Let the other checkboxes be with their default values.
@@ -401,7 +637,7 @@ Once you have a new shiny source package, it is time to add it from the Source I
 
 <h3 class="section">4.4 Changing the Preferences</h3>
 
-<p><a name="index-Changing-the-Preferences-18"></a>
+<p><a name="index-Changing-the-Preferences-91"></a>
 The default prefix to use for your installs can be changed, like other options, in the <code>Preferences</code> from the <code>Edit</code> menu, and it is initially set to <span class="file">/usr/local</span>.
 
    <p>Here are the preferences you can change and their description:
@@ -425,12 +661,12 @@ These are the default values for the checkboxes when you trigger the <code>Add</
 
 <h3 class="section">4.5 Querying package information</h3>
 
-<p><a name="index-Querying-package-information-19"></a>
+<p><a name="index-Querying-package-information-92"></a>
 Clicking on the package will show all available information on that package, and will activate the actions for the installed package: <code>Remove</code> and <code>Reinstall</code>. This will also trigger a quick check to ensure that the package has all its needed files in place.
 
 <h3 class="section">4.6 Removing a package</h3>
 
-<p><a name="index-Removing-a-package-20"></a>
+<p><a name="index-Removing-a-package-93"></a>
 To remove a package, select it from the list and click the <code>Remove</code> button. 
 When you <code>Remove</code> a package, you can decide to uninstall the package but keep it in compressed source form. This way, should you decide to install again later, you have the already configured source, and only need to select it from the list and choose <code>Install</code>.
 
@@ -447,7 +683,7 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
 
 <h2 class="chapter">5 Usage for the Experienced</h2>
 
-<p><a name="index-Usage-for-the-Experienced-21"></a>
+<p><a name="index-Usage-for-the-Experienced-94"></a>
 A package processed by sourceinstall can exist in three forms:
 
      <ol type=1 start=1>
@@ -456,7 +692,7 @@ A package processed by sourceinstall can exist in three forms:
 <li>archived configured source only
         </ol>
 
-   <p>For example, if you are short on space, and you are installing a well-behaved package (you get no warning about DESTDIR not being honoured during installation), you can decide to remove the archived source (losing all the advantages though) to free up some space. Alternatively, you can avoid to store it in the first place when you perform the <code>Add</code> action.
+   <p>For example, if you are short on space, and you are installing a conforming package (so you get a list of installed files in the package details), you can decide to remove the archived source (losing all the advantages though) to free up some space. Alternatively, you can avoid to store it in the first place when you perform the <code>Add</code> action.
 
    <p>On the countrary, you might think that you do not require a certain installed
 program right now, so you select the <code>Remove</code> action for that package, but
@@ -465,26 +701,33 @@ be preserved, you will not need to pass through the configuration window anymore
 
 <h3 class="section">5.1 Consistency checks</h3>
 
-<p><a name="index-Consistency-checks-22"></a>
-Another service that <span class="command">sourceinstall</span> silently offers is a simple set of consistency checks for existing installations. 
-Selecting a package from the list at any time will show all available information about the installed package, and a check will be performed to see if the install looks ok. If some of the files required by the program are missing, you will find a notice and all the missing files will be highlighted and marked with asterisks (*). 
-At this point you can correct the problem by restoring the missing files yourself (for example, you might have accidentally moved them for arcane reasons), or
-just perform a <code>Reinstall</code> action for the package. 
-Additionally, during the uninstallation cross-checks between make uninstall results and internal package information, only independent files (that is, files that are not being claimed by other packages) are proposed for removal. 
+<p><a name="index-Consistency-checks-95"></a>
+Another service that <span class="command">sourceinstall</span> offers is a simple set of consistency checks for existing installations. 
+<br>
+In the Tk interface, selecting a package from the list at any time will show all available information about the installed package, and a check will be performed to see if the install looks ok. If some of the files required by the program are missing, you will find a notice and all the missing files will be highlighted and marked with asterisks (*). 
+<br>
+The same thing can be obtained from the command line interface using the <span class="option">--check</span> action.
+
+   <p>At this point you can correct the problem by restoring the missing files yourself (for example, you might have accidentally moved them for arcane reasons), or
+just reinstall the package, using the <code>Reinstall</code> button of the Tk interface, or the <span class="option">--install</span> action of the command line one.
+
+   <p>Additionally, during the uninstallation cross-checks will be performed between make uninstall results and internal package information; only independent files (that is, files that are not being claimed by other packages) are proposed for removal (Tk interface), or directly removed (command line interface). 
+<br>
 This works better if you avoid installing non-conforming packages, because Source Installer will not be able to know which files a non-conforming package claims.
 
-<h3 class="section">5.2 Conforming and non-conforming packages</h3>
+<h3 class="section">5.2 Conforming packages</h3>
 
-<p><a name="index-Conforming-and-non_002dconforming-packages-23"></a>It is recommended to install only conforming packages using Source Installer. 
-Conforming packages offer a configure script that generates a Makefile, and the Makefile honors the common install targets and environment variables. Generally, packages built (correctly) with the GNU autotools result as conforming packages, and the autotools are also expecially supported: only configure scripts generated with autoconf get the nice configuration window. However, there are also other tools that developers can use which are capable of producing a configure script and a Makefile. Even hand-written configure scripts and Makefiles are ok, as long as they honor the install targets and the environment variables.
+<p><a name="index-Conforming-packages-96"></a>
+It is recommended to install only conforming packages using Source Installer. 
+Conforming packages offer a configure script that generates a Makefile, and the Makefile honors the common install targets and environment variables. Generally, packages built (correctly) with the GNU autotools result as conforming packages, and the autotools are also expecially supported: only configure scripts generated with autoconf get the nice configuration window in the Tk interface. However, there are also other tools that developers can use which are capable of producing a configure script and a Makefile. Even hand-written configure scripts and Makefiles are ok, as long as they honor the install targets and the environment variables.
 
    <p>Conforming packages get better uninstallation, better checks, more information in the Package information window. A single non-conforming package can make uninstallation checks degrade. This is because the program can not detect which files a non-conforming package claims.
 
-   <p>For these reasons, you will be warned when attempting to install a non-conforming package.
+   <p>For these reasons, you will be warned when installing a non-conforming package.
 
 <h3 class="section">5.3 Other package management systems</h3>
 
-<p><a name="index-Other-package-management-systems-24"></a>
+<p><a name="index-Other-package-management-systems-97"></a>
 It is highy probable that you will have many different tools that provide package management. 
 For example, if you are running a GNU/Linux distribution, you probably have your distribution-specific way to handle binary (or even source) packages. 
 What I suggest here is to make a clean separation between your distribution-provided packages (along with any additional packages installed using your distribution-specific tools), and the source packages installed using the distribution-independent GNU Source Installer. 
@@ -494,7 +737,7 @@ This way you ensure that file dependency checks are not tainted by other package
 
 <h3 class="section">5.4 Users</h3>
 
-<p><a name="index-Users-25"></a>
+<p><a name="index-Users-98"></a>
 GNU Source Installer configuration and packages always refer to the particular user that runs it. What follows is a list of possible setups.
 
    <p>As the first example, suppose user Pip wants to install his private packages. He chooses to install in <span class="file">/home/pip/usr</span>, at the same time allowing user Merlin to install his own packages in <span class="file">/home/merlin/usr</span>. Of course, in this case no one steps on anybody's toes and everything runs smooth.
@@ -507,7 +750,7 @@ GNU Source Installer configuration and packages always refer to the particular u
 
 <h3 class="section">5.5 Files and Directories</h3>
 
-<p><a name="index-Files-and-Directories-26"></a>
+<p><a name="index-Files-and-Directories-99"></a>
 If you want to dwell on the internals of sourceinstall, this is an interesting chapter. We will look at all files and directories that together make sourceinstall work.
 
    <p>The <span class="command">sourceinstall</span> executable is in fact a symbolic link to the implementation in use. For example:
@@ -551,7 +794,20 @@ $ tree ~/.sourceinstall
 
    <p>Do not store anything in these directories yourself, because they will be regularily emptied.
 
-   <p>The <span class="file">sourceinstallrc</span> file contains the current user preferences. These are the same options that can be tweaked from the <code>Preferences</code> in the <code>Edit</code> Menu.
+   <p>The <span class="file">sourceinstallrc</span> file contains the current user preferences. These are the same options that can be tweaked from the <code>Preferences</code> in the <code>Edit</code> Menu using the Tk interface.
+
+<h3 class="section">5.6 Export functions</h3>
+
+<p><a name="index-Export-functions-100"></a>
+<span class="command">sourceinstall</span> contains now some experimental export functions, to offer more interface to other programs (and some user functionalities as well).
+
+   <p>Information about a single package (or about all the packages) can be exported through the <dfn>Export package information to XML</dfn> and <dfn>Export package information to plaintext</dfn> features. The XML involved is a simple XML 1.0 format (look at the XML output for the external public DTD address) and is more machine-oriented, while the plaintext is more user-oriented.
+
+   <p>It is also possible to extract just the list of the files claimed by the installed package, in a plaintext, newline-separated list using the <dfn>Export installed files list</dfn> action.
+
+   <p>A whole different story is the <dfn>Export as binary package</dfn> functionality. Information that follows is very unstable and should not be relied upon for the long term. 
+This is a simple function that builds a .tar.gz archive out of the files, directories and links claimed by an installed package. Original file permissions and ownership will be preserved. It should be easy to build OS-specific binary packages out of these simple binary tarballs. However, also consider using the export installed files list functionality instead. 
+If you expected more binary package building functionalities, please remember that this program is source-centered and OS-neutral.
 
 <div class="node">
 <p><hr>
@@ -563,39 +819,69 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
 
 <h2 class="chapter">6 FAQ</h2>
 
-<p>This is a small section in which I try to address the common questions I have gathered until now, in no particular order.
+<p>This is a small section in which I try to address common questions.
 
      <ol type=1 start=1>
-<li>Q: Why doesn't sourceinstall use Checkinstall?
+<li>Q: GNU Source Installer does not install! What should I do?
+
+     <p>A: There are dedicated topics in this manual.
+
+     <p>See <a href="#Introduction-for-Beginners">Installing the Installer</a>. 
+<br>
+See <a href="#Introduction-for-Beginners">Troubleshooting Installation</a>.
+
+     <li>Q: I have found a bug in GNU Source Installer! What should I do?
+
+     <p>A: By all means, do report it. You will get the problem solved, and the software will become better if users report bugs. 
+See <a href="#Reporting-Bugs">Reporting Bugs</a>.
+
+     <li>Q: sourceinstall coud not install Package [:xyz:]. What can I do?
+
+     <p>A: If the package does not provide a build system compatible with <span class="command">sourceinstall</span>, you will get an error message, stating that the program could not compile the code. To get the package supported, you have at least two choices.
+
+     <p>If you are an experienced user, you should contact the original author or maintainer of that package, explaining that you are trying to install it using a new install tool (GNU Source Installer), but it does not work because it does not provide a build system compatible with the idiom:
+
+     <pre class="example">          ./configure
+          make
+          make install
+     </pre>
+     <p>Then provide a quick solution for the author, so he will not need any effort to accept the change. If you are not sure, rely on the <span class="command">sourceinstall</span> people to do this for you.
+
+     <p>If you are a little less experienced and do not know how to help the author of the package, just contact the <span class="command">sourceinstall</span> mailing list at <a href="mailto:bug-sourceinstall@gnu.org">bug-sourceinstall@gnu.org</a>. We will contact the package maintainer, and help him make that package work with <span class="command">sourceinstall</span>.
+
+     <li>Q: Why doesn't sourceinstall use Checkinstall?
 
      <p>A: Checkinstall is a nice program that tracks a source installation using Installwatch, which is Copyright 1998 by Pancrazio `Ezio' de Mauro, and is now part of the Checkinstall distribution. 
 Installwatch is a low-level tool that intercepts calls to file functions in the dynamically linked glibc that alter the file system during 'make install' (or another installation command). Then, Checkinstall builds binary Slackware, RPM or Debian packages based on that information.
 
-     <p>Now I find that the DESTDIR and INSTALL_ROOT (its old, deprecated replacement) way used in <code>sourceinstall</code> is more clean and portable (although slower) than the low level installwatch approach, and is an incentive for developers to correctly support DESTDIR in their custom Makefiles or in their automake hooks. <code>sourceinstall</code> detects if the build system supports DESTDIR or the old INSTALL_ROOT variables, and uses them for the installation tracking.
+     <p>Now I find that the DESTDIR and INSTALL_ROOT (its old, deprecated replacement) way used in <span class="command">sourceinstall</span> is more clean and portable (although slower) than the low level installwatch approach, and is an incentive for developers to correctly support DESTDIR in their custom Makefiles or in their automake hooks. <span class="command">sourceinstall</span> detects if the build system supports DESTDIR or the old INSTALL_ROOT variables, and uses them for the installation tracking.
 
-     <p>As for GNU/Linux distribution-specific binary package building features, GNU Source Installer is again an OS neutral program, so it is not its job to build them. However, a functionality to build simple, neutral binary packages in the form of a tarball archive will arrive soon, along with other, possibly more interesting &ldquo;export&rdquo; functions. From that package, it should be straightforward to build your desired distribution-specific package.
+     <p>As for GNU/Linux distribution-specific binary package building features, GNU Source Installer is again an OS neutral program, so it is not its job to build them. However, a functionality to build simple, neutral binary packages in the form of a tarball archive is available. From that package, it should be straightforward to build your desired distribution-specific package, but again it is not the point of this program.
 
      <li>Q: Does sourceinstall build [:your format:] binary packages ?
 
-     <p>A: (see question above) No, but there are plans for the near future to be able to export a simple tarball containing the installed binaries.
+     <p>A: (see question above) It has been recently reported that <span class="command">sourceinstall</span> simple binary packages happen to be handled correctly by the Slackware GNU/Linux tools. That is simply because both use plain tarballs which contain the needed files with the original owners and permissions. Remember that building binary packages is not the point of this program (but use this as you see fit of course).
 
      <li>Q: There's Gentoo and Portage already. Isn't sourceinstall pointless ?
 
-     <p>A: Surprisingly, I got many (well some) private mails stating that there's already the Gentoo GNU/Linux distribution and its Portage system, so <code>sourceinstall</code> was supposedly pointless. Again, this software is an installer for source packages, targeted at modern Unix systems (these include, but do not end with GNU/Linux). Of course, <code>sourceinstall</code> is not a GNU/Linux distribution and not a package repository.
+     <p>A: Surprisingly, I got many (well some) private mails stating that there's already the Gentoo GNU/Linux distribution and its Portage system, so <span class="command">sourceinstall</span> was supposedly pointless. Again, this software is an installer and source package management tool, targeted at modern Unix systems (these include, but do not end with GNU/Linux). Of course, <span class="command">sourceinstall</span> is not a GNU/Linux distribution and not a package repository.
 
      <li>Q: Why are you using Tk? Why don't you use gtk|Qt|[:yourtoolkit:] ?
 
      <p>A: I do not have any real preference of one toolkit over another. They can all get the job done. However I really wished to use the GNU ToolKit at the beginning (gtk), because it's the GNU ToolKit (talk about tautology). 
-There is one problem: dependencies and dependencies' size. I wanted to provide something that you could install from a bare-bones Unix + X11 system requiring nothing else. 
-With the current tcl/tk/expect implementation I can provide, in 7 MB, a fullpack alternative shell-archive release of <code>sourceinstall</code>, which includes and autobuilds all its dependencies if necessary. The same thing would not be possible with gtk, which is bigger and less straightforward to autobuild.
+There is one problem: dependencies and dependencies' size. I wanted to provide something that you could install from a bare-bones Unix + X11 system requiring nothing else.
+
+     <p>With the current tcl/tk/expect implementation I can provide, in 7 MB, a fullpack alternative shell-archive release of <span class="command">sourceinstall</span>, which includes and autobuilds all its dependencies if necessary. The same thing would not be possible with gtk, which is bigger and less straightforward to autobuild.
+
+     <p>If you want a [:yourtoolkit:] interface to the program badly, you can implement it on top of sourceinstall command line interface (but contact the author so you can get all the help and possibly tweaks to the young interface that you need).
 
      <li>Q: Why are you using Tcl? Why don't you use [:yourlanghere:] ?
 
-     <p>A: Tcl seemed the natural choice having to deal with both Tk and Expect, and it offered simpler Unix portability.
+     <p>A: Tcl seemed the natural choice having to deal with both Tk and Expect, and it offered simpler Unix portability. However this could change. I am not happy with some of the tcl decisions, and some bugs in the implementation do not help either. If the whole project language changes, it will change to C.
 
      <li>Q: I do not care about cross Unix portability, dependencies, building the whole system from scratch or anything like this. Is there an alternative, specific for my already working GNU/Linux desktop system ?
 
-     <p>A: There are these project I have been made aware of:
+     <p>A: There are projects with somewhat similar goals that I have been made aware of:
 
      <p>Kconfigure, QT based, for KDE: <a href="http://kconfigure.sourceforge.net/">http://kconfigure.sourceforge.net/</a>
 
@@ -603,9 +889,11 @@ With the current tcl/tk/expect implementation I can provide, in 7 MB, a fullpack
 
      <p>GPaco, Gtk based, for GNU/Linux and Solaris: <a href="http://paco.sourceforge.net/">http://paco.sourceforge.net/</a>
 
+     <p>I know little about them save their name so you should investigate them yourself.
+
      <li>Q: The manual is not comprensive enough! It does not say anything about [:X:]
 
-     <p>A: The project is still very young, as is the documentation. It will be a lot better; you can speed up things by reporting what exactly is missing.
+     <p>A: The project is still very young, as is the documentation. It will be a lot better; you can speed up things by reporting what exactly is missing, and possibly providing yourself if you have some time.
 
      <li>Q: This program does not deal with dependencies at all!
 
@@ -614,6 +902,12 @@ With the current tcl/tk/expect implementation I can provide, in 7 MB, a fullpack
      <li>Q: I have an older version of sourceinstall, how do I upgrade to the current version?
 
      <p>A: Starting from sourceinstall-0.4, this has been made easier. Just download the regular new version (for example, sourceinstall-0.5.tar.gz), then run sourceinstall, and choose &ldquo;Add&rdquo;; select that new sourceinstall package (sourceinstall-0.5.tar.gz), and confirm with Ok. All your installed packages and preferences will not be harmed.
+
+     <li>Q: The right click popup menu does not work (anymore)!
+
+     <p>A: The Tk popup menus (and consequently sourceinstall prior to v-0.5) were not sticky. This means that in order to keep the menu visible, one had to keep the button always pressed. This has been fixed very recently in a development version of Tk.
+
+     <p>In order to offer a more usable popup menu, starting from 0.5 I use a workaround that involves showing the popup on right click button RELEASE. In short: starting with sourceinstall 0.5, click and release the right button on a list entry, and the popup will appear.
 
      <li>Q: I want to contribute to the project in some way, where do I start?
 
@@ -624,7 +918,7 @@ Even if you are not a programmer, the task list can contain very relevant work t
 
      <li>Q: I want to join the project! Please add me to the project members list.
 
-     <p>A: Great, but please do something for the project. If you make regular contributions, you will be added to the sourceinstall project.
+     <p>A: Great, but please do something for the project. If you make regular contributions, and understand the project goals, you will be added to the sourceinstall project.
 
         </ol>
 
@@ -638,16 +932,14 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
 
 <h2 class="chapter">7 Reporting Bugs</h2>
 
-<p><a name="index-Bugs_002c-reporting-27"></a>Email bug reports to <a href="mailto:bug-sourceinstall@gnu.org">bug-sourceinstall@gnu.org</a>, trying to be as clear and precise as possible. This means that you should provide all useful information that could help to identify the problem, and a detailed way to reproduce it. 
+<p><a name="index-Bugs_002c-reporting-101"></a>Email bug reports to <a href="mailto:bug-sourceinstall@gnu.org">bug-sourceinstall@gnu.org</a>, trying to be as clear and precise as possible. This means that you should provide all useful information that could help to identify the problem, and a detailed way to reproduce it. 
 A good starting point is to specify your OS name and version. If you have no idea about what OS you have, try:
 
 <pre class="example">     $ uname -a
 </pre>
-   <p>Also, please report output of:
-
-<pre class="example">     $ ./configure
-</pre>
-   <p>because it includes your interpreter choice, package versions and tools availability.
+   <p>Also, if you can please specify your tcl, tk, and expect versions. 
+<br>
+If your problem regards GNU Source Installer installation, more information is needed: please read the sections &ldquo;Installing the Installer&rdquo; and &ldquo;Troubleshooting Installation&rdquo;.
 
 <div class="node">
 <p><hr>
@@ -659,7 +951,7 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
 
 <h2 class="chapter">8 Copying</h2>
 
-<p><a name="index-Copying-28"></a>GNU Source Installer (<span class="command">sourceinstall</span>) is Copyright (c) 2005 Claudio Fontana and is licensed under the GNU General Public License (GPL). This is a license that grants and protects freedoms. 
+<p><a name="index-Copying-102"></a>GNU Source Installer (<span class="command">sourceinstall</span>) is Copyright (c) 2005 Claudio Fontana and is licensed under the GNU General Public License (GPL). This is a license that grants and protects freedoms. 
 <span class="command">sourceinstall</span> is thus Free Software. 
 There is an exception in the m4/tcl.m4 file, which is
 Copyright (c) 1999-2000 Ajuba Solution,
@@ -736,7 +1028,7 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Copying">Copying</a>
 <h3 class="section">8.1 GNU General Public License</h3>
 
 <div align="center">Version 2, June 1991</div>
-   <p><a name="index-GPL_002c-GNU-General-Public-License-29"></a>
+   <p><a name="index-GPL_002c-GNU-General-Public-License-103"></a>
 <pre class="display">     Copyright &copy; 1989, 1991 Free Software Foundation, Inc.
      51 Franklin Street - Fifth Floor, Boston, MA 02110-1301, USA
      
@@ -994,7 +1286,7 @@ make exceptions for this.  Our decision will be guided by the two goals
 of preserving the free status of all derivatives of our free software and
 of promoting the sharing and reuse of software generally.
 
-     <p><a name="index-no-warranty-30"></a>
+     <p><a name="index-no-warranty-104"></a>
 <li>BECAUSE THE PROGRAM IS LICENSED FREE OF CHARGE, THERE IS NO WARRANTY
 FOR THE PROGRAM, TO THE EXTENT PERMITTED BY APPLICABLE LAW.  EXCEPT WHEN
 OTHERWISE STATED IN WRITING THE COPYRIGHT HOLDERS AND/OR OTHER PARTIES
@@ -1082,7 +1374,7 @@ Public License instead of this License.
 
 <div class="node">
 <p><hr>
-<a name="GNU-Free-Documentation-License"></a>Next:&nbsp;<a rel="next" accesskey="n" href="#Concept-Index">Concept Index</a>,
+<a name="GNU-Free-Documentation-License"></a>Next:&nbsp;<a rel="next" accesskey="n" href="#Beginners-Concept-Index">Beginners Concept Index</a>,
 Previous:&nbsp;<a rel="previous" accesskey="p" href="#GNU-General-Public-License">GNU General Public License</a>,
 Up:&nbsp;<a rel="up" accesskey="u" href="#Copying">Copying</a>
 <br>
@@ -1091,7 +1383,7 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Copying">Copying</a>
 <h3 class="section">8.2 GNU Free Documentation License</h3>
 
 <div align="center">Version 1.2, November 2002</div>
-   <p><a name="index-FDL_002c-GNU-Free-Documentation-License-31"></a>
+   <p><a name="index-FDL_002c-GNU-Free-Documentation-License-105"></a>
 <pre class="display">     Copyright (C) 2002  Free Software Foundation, Inc.
      51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
      
@@ -1515,63 +1807,149 @@ to permit their use in free software.
 
 <div class="node">
 <p><hr>
-<a name="Concept-Index"></a>Next:&nbsp;<a rel="next" accesskey="n" href="#Index">Index</a>,
+<a name="Beginners-Concept-Index"></a>Next:&nbsp;<a rel="next" accesskey="n" href="#Concept-Index">Concept Index</a>,
 Previous:&nbsp;<a rel="previous" accesskey="p" href="#GNU-Free-Documentation-License">GNU Free Documentation License</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+<br>
+</div>
+
+<h2 class="unnumbered">Beginners Concept Index</h2>
+
+<p>This is an index of the most basic topics and definitions used in this manual. If you are not sure about a notion or term used in the manual, you can try looking for it here.
+
+<ul class="index-be" compact>
+<li><a href="#index-Adding-a-new-source-package-90"><code>Adding a new source package</code></a>: <a href="#Usage-for-Beginners">Usage for Beginners</a></li>
+<li><a href="#index-Changing-the-Preferences-91"><code>Changing the Preferences</code></a>: <a href="#Usage-for-Beginners">Usage for Beginners</a></li>
+<li><a href="#index-configuration-13"><code>configuration</code></a>: <a href="#Introduction-for-Beginners">Introduction for Beginners</a></li>
+<li><a href="#index-console-8"><code>console</code></a>: <a href="#Introduction-for-Beginners">Introduction for Beginners</a></li>
+<li><a href="#index-directory-4"><code>directory</code></a>: <a href="#Introduction-for-Beginners">Introduction for Beginners</a></li>
+<li><a href="#index-folder-5"><code>folder</code></a>: <a href="#Introduction-for-Beginners">Introduction for Beginners</a></li>
+<li><a href="#index-info-18"><code>info</code></a>: <a href="#Introduction-for-Beginners">Introduction for Beginners</a></li>
+<li><a href="#index-link-17"><code>link</code></a>: <a href="#Introduction-for-Beginners">Introduction for Beginners</a></li>
+<li><a href="#index-Looking-for-the-right-package-89"><code>Looking for the right package</code></a>: <a href="#Usage-for-Beginners">Usage for Beginners</a></li>
+<li><a href="#index-man-19"><code>man</code></a>: <a href="#Introduction-for-Beginners">Introduction for Beginners</a></li>
+<li><a href="#index-prefix-11"><code>prefix</code></a>: <a href="#Introduction-for-Beginners">Introduction for Beginners</a></li>
+<li><a href="#index-prompt-9"><code>prompt</code></a>: <a href="#Introduction-for-Beginners">Introduction for Beginners</a></li>
+<li><a href="#index-Querying-package-information-92"><code>Querying package information</code></a>: <a href="#Usage-for-Beginners">Usage for Beginners</a></li>
+<li><a href="#index-Removing-a-package-93"><code>Removing a package</code></a>: <a href="#Usage-for-Beginners">Usage for Beginners</a></li>
+<li><a href="#index-root-10"><code>root</code></a>: <a href="#Introduction-for-Beginners">Introduction for Beginners</a></li>
+<li><a href="#index-root-password-14"><code>root password</code></a>: <a href="#Introduction-for-Beginners">Introduction for Beginners</a></li>
+<li><a href="#index-run-sourceinstall-15"><code>run sourceinstall</code></a>: <a href="#Introduction-for-Beginners">Introduction for Beginners</a></li>
+<li><a href="#index-shell-6"><code>shell</code></a>: <a href="#Introduction-for-Beginners">Introduction for Beginners</a></li>
+<li><a href="#index-shortcut-16"><code>shortcut</code></a>: <a href="#Introduction-for-Beginners">Introduction for Beginners</a></li>
+<li><a href="#index-sourceinstall-1"><code>sourceinstall</code></a>: <a href="#Top">Top</a></li>
+<li><a href="#index-sourceinstall-dependencies-21"><code>sourceinstall dependencies</code></a>: <a href="#Introduction-for-Beginners">Introduction for Beginners</a></li>
+<li><a href="#index-tabulation-12"><code>tabulation</code></a>: <a href="#Introduction-for-Beginners">Introduction for Beginners</a></li>
+<li><a href="#index-terminal-7"><code>terminal</code></a>: <a href="#Introduction-for-Beginners">Introduction for Beginners</a></li>
+<li><a href="#index-The-default-setup-88"><code>The default setup</code></a>: <a href="#Usage-for-Beginners">Usage for Beginners</a></li>
+   </ul><div class="node">
+<p><hr>
+<a name="Concept-Index"></a>Next:&nbsp;<a rel="next" accesskey="n" href="#Functions-Index">Functions Index</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Beginners-Concept-Index">Beginners Concept Index</a>,
 Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
 <br>
 </div>
 
 <h2 class="unnumbered">Concept Index</h2>
 
-<p>This is a general index of all issues discussed in this manual, with the
-exception of the <span class="command">sourceinstall</span> commands and command-line options.
+<p>This is a list of all the relevant topics in the <span class="command">sourceinstall</span> manual.
+
+
 
 <ul class="index-cp" compact>
-<li><a href="#index-Adding-a-new-source-package-17">Adding a new source package</a>: <a href="#Usage-for-Beginners">Usage for Beginners</a></li>
-<li><a href="#index-Bugs_002c-reporting-27">Bugs, reporting</a>: <a href="#Reporting-Bugs">Reporting Bugs</a></li>
-<li><a href="#index-Changing-the-Preferences-18">Changing the Preferences</a>: <a href="#Usage-for-Beginners">Usage for Beginners</a></li>
-<li><a href="#index-Conforming-and-non_002dconforming-packages-23">Conforming and non-conforming packages</a>: <a href="#Usage-for-the-Experienced">Usage for the Experienced</a></li>
-<li><a href="#index-Consistency-checks-22">Consistency checks</a>: <a href="#Usage-for-the-Experienced">Usage for the Experienced</a></li>
-<li><a href="#index-Copying-28">Copying</a>: <a href="#Copying">Copying</a></li>
-<li><a href="#index-FDL_002c-GNU-Free-Documentation-License-31">FDL, GNU Free Documentation License</a>: <a href="#GNU-Free-Documentation-License">GNU Free Documentation License</a></li>
-<li><a href="#index-Files-and-Directories-26">Files and Directories</a>: <a href="#Usage-for-the-Experienced">Usage for the Experienced</a></li>
-<li><a href="#index-GPL_002c-GNU-General-Public-License-29">GPL, GNU General Public License</a>: <a href="#GNU-General-Public-License">GNU General Public License</a></li>
-<li><a href="#index-Installing-the-Installer-2">Installing the Installer</a>: <a href="#Introduction-for-Beginners">Introduction for Beginners</a></li>
-<li><a href="#index-Introduction-for-Beginners-1">Introduction for Beginners</a>: <a href="#Introduction-for-Beginners">Introduction for Beginners</a></li>
-<li><a href="#index-Introduction-for-the-Experienced-4">Introduction for the Experienced</a>: <a href="#Introduction-for-the-Experienced">Introduction for the Experienced</a></li>
-<li><a href="#index-Invoking-7">Invoking</a>: <a href="#Invoking">Invoking</a></li>
-<li><a href="#index-Looking-for-the-right-package-16">Looking for the right package</a>: <a href="#Usage-for-Beginners">Usage for Beginners</a></li>
-<li><a href="#index-no-warranty-30">no warranty</a>: <a href="#GNU-General-Public-License">GNU General Public License</a></li>
-<li><a href="#index-Options-9">Options</a>: <a href="#Invoking">Invoking</a></li>
-<li><a href="#index-Other-package-management-systems-24">Other package management systems</a>: <a href="#Usage-for-the-Experienced">Usage for the Experienced</a></li>
-<li><a href="#index-Querying-package-information-19">Querying package information</a>: <a href="#Usage-for-Beginners">Usage for Beginners</a></li>
-<li><a href="#index-Removing-a-package-20">Removing a package</a>: <a href="#Usage-for-Beginners">Usage for Beginners</a></li>
-<li><a href="#index-Synopsis-8">Synopsis</a>: <a href="#Invoking">Invoking</a></li>
-<li><a href="#index-The-default-setup-15">The default setup</a>: <a href="#Usage-for-Beginners">Usage for Beginners</a></li>
-<li><a href="#index-Troubleshooting-_0040command_007bsourceinstall_007d-Installation-3">Troubleshooting <span class="command">sourceinstall</span> Installation</a>: <a href="#Introduction-for-Beginners">Introduction for Beginners</a></li>
-<li><a href="#index-Usage-for-Beginners-14">Usage for Beginners</a>: <a href="#Usage-for-Beginners">Usage for Beginners</a></li>
-<li><a href="#index-Usage-for-the-Experienced-21">Usage for the Experienced</a>: <a href="#Usage-for-the-Experienced">Usage for the Experienced</a></li>
-<li><a href="#index-Users-25">Users</a>: <a href="#Usage-for-the-Experienced">Usage for the Experienced</a></li>
-<li><a href="#index-Why-should-you-avoid-this-program_003f-6">Why should you avoid this program?</a>: <a href="#Introduction-for-the-Experienced">Introduction for the Experienced</a></li>
-<li><a href="#index-Why-should-you-use-this-program_003f-5">Why should you use this program?</a>: <a href="#Introduction-for-the-Experienced">Introduction for the Experienced</a></li>
+<li><a href="#index-Actions-27">Actions</a>: <a href="#Invoking">Invoking</a></li>
+<li><a href="#index-broken-pipe-34">broken pipe</a>: <a href="#Invoking">Invoking</a></li>
+<li><a href="#index-Bugs_002c-reporting-101">Bugs, reporting</a>: <a href="#Reporting-Bugs">Reporting Bugs</a></li>
+<li><a href="#index-Conforming-packages-96">Conforming packages</a>: <a href="#Usage-for-the-Experienced">Usage for the Experienced</a></li>
+<li><a href="#index-Consistency-checks-95">Consistency checks</a>: <a href="#Usage-for-the-Experienced">Usage for the Experienced</a></li>
+<li><a href="#index-Copying-102">Copying</a>: <a href="#Copying">Copying</a></li>
+<li><a href="#index-Export-functions-100">Export functions</a>: <a href="#Usage-for-the-Experienced">Usage for the Experienced</a></li>
+<li><a href="#index-FDL_002c-GNU-Free-Documentation-License-105">FDL, GNU Free Documentation License</a>: <a href="#GNU-Free-Documentation-License">GNU Free Documentation License</a></li>
+<li><a href="#index-Files-and-Directories-99">Files and Directories</a>: <a href="#Usage-for-the-Experienced">Usage for the Experienced</a></li>
+<li><a href="#index-GPL_002c-GNU-General-Public-License-103">GPL, GNU General Public License</a>: <a href="#GNU-General-Public-License">GNU General Public License</a></li>
+<li><a href="#index-Installing-the-Installer-3">Installing the Installer</a>: <a href="#Introduction-for-Beginners">Introduction for Beginners</a></li>
+<li><a href="#index-Introduction-for-Beginners-2">Introduction for Beginners</a>: <a href="#Introduction-for-Beginners">Introduction for Beginners</a></li>
+<li><a href="#index-Introduction-for-the-Experienced-22">Introduction for the Experienced</a>: <a href="#Introduction-for-the-Experienced">Introduction for the Experienced</a></li>
+<li><a href="#index-Invoking-25">Invoking</a>: <a href="#Invoking">Invoking</a></li>
+<li><a href="#index-more-36">more</a>: <a href="#Invoking">Invoking</a></li>
+<li><a href="#index-no-warranty-104">no warranty</a>: <a href="#GNU-General-Public-License">GNU General Public License</a></li>
+<li><a href="#index-Options-58">Options</a>: <a href="#Invoking">Invoking</a></li>
+<li><a href="#index-Other-package-management-systems-97">Other package management systems</a>: <a href="#Usage-for-the-Experienced">Usage for the Experienced</a></li>
+<li><a href="#index-pager-37">pager</a>: <a href="#Invoking">Invoking</a></li>
+<li><a href="#index-pipe-35">pipe</a>: <a href="#Invoking">Invoking</a></li>
+<li><a href="#index-Preferences-79">Preferences</a>: <a href="#Invoking">Invoking</a></li>
+<li><a href="#index-Synopsis-26">Synopsis</a>: <a href="#Invoking">Invoking</a></li>
+<li><a href="#index-Troubleshooting-Installation-20">Troubleshooting Installation</a>: <a href="#Introduction-for-Beginners">Introduction for Beginners</a></li>
+<li><a href="#index-Usage-for-Beginners-87">Usage for Beginners</a>: <a href="#Usage-for-Beginners">Usage for Beginners</a></li>
+<li><a href="#index-Usage-for-the-Experienced-94">Usage for the Experienced</a>: <a href="#Usage-for-the-Experienced">Usage for the Experienced</a></li>
+<li><a href="#index-Users-98">Users</a>: <a href="#Usage-for-the-Experienced">Usage for the Experienced</a></li>
+<li><a href="#index-Why-should-you-avoid-this-program_003f-24">Why should you avoid this program?</a>: <a href="#Introduction-for-the-Experienced">Introduction for the Experienced</a></li>
+<li><a href="#index-Why-should-you-use-this-program_003f-23">Why should you use this program?</a>: <a href="#Introduction-for-the-Experienced">Introduction for the Experienced</a></li>
    </ul><div class="node">
 <p><hr>
-<a name="Index"></a>Previous:&nbsp;<a rel="previous" accesskey="p" href="#Concept-Index">Concept Index</a>,
+<a name="Functions-Index"></a>Previous:&nbsp;<a rel="previous" accesskey="p" href="#Concept-Index">Concept Index</a>,
 Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
 <br>
 </div>
 
-<h2 class="unnumbered">Index</h2>
-
-<p>This is an alphabetical list of all <span class="command">sourceinstall</span> commands, command-line options, and environment variables.
+   <p>This is an alphabetical list of all <span class="command">sourceinstall</span> functionalities, commands, command-line actions and options, and relevant environment variables.
 
 
 
 <ul class="index-fn" compact>
-<li><a href="#index-_002d_002dhelp-11"><code>--help</code></a>: <a href="#Invoking">Invoking</a></li>
-<li><a href="#index-_002d_002dversion-13"><code>--version</code></a>: <a href="#Invoking">Invoking</a></li>
-<li><a href="#index-_002dh-10"><code>-h</code></a>: <a href="#Invoking">Invoking</a></li>
-<li><a href="#index-_002dV-12"><code>-V</code></a>: <a href="#Invoking">Invoking</a></li>
+<li><a href="#index-_002d_002dadd-39"><code>--add</code></a>: <a href="#Invoking">Invoking</a></li>
+<li><a href="#index-_002d_002dbinary-62"><code>--binary</code></a>: <a href="#Invoking">Invoking</a></li>
+<li><a href="#index-_002d_002dcheck-43"><code>--check</code></a>: <a href="#Invoking">Invoking</a></li>
+<li><a href="#index-_002d_002dcompression-66"><code>--compression</code></a>: <a href="#Invoking">Invoking</a></li>
+<li><a href="#index-_002d_002dconfigure-68"><code>--configure</code></a>: <a href="#Invoking">Invoking</a></li>
+<li><a href="#index-_002d_002ddescription-51"><code>--description</code></a>: <a href="#Invoking">Invoking</a></li>
+<li><a href="#index-_002d_002dexport-55"><code>--export</code></a>: <a href="#Invoking">Invoking</a></li>
+<li><a href="#index-_002d_002dforce-72"><code>--force</code></a>: <a href="#Invoking">Invoking</a></li>
+<li><a href="#index-_002d_002dhelp-29"><code>--help</code></a>: <a href="#Invoking">Invoking</a></li>
+<li><a href="#index-_002d_002dinstall-47"><code>--install</code></a>: <a href="#Invoking">Invoking</a></li>
+<li><a href="#index-_002d_002dlist-33"><code>--list</code></a>: <a href="#Invoking">Invoking</a></li>
+<li><a href="#index-_002d_002dpack-57"><code>--pack</code></a>: <a href="#Invoking">Invoking</a></li>
+<li><a href="#index-_002d_002dpass-76"><code>--pass</code></a>: <a href="#Invoking">Invoking</a></li>
+<li><a href="#index-_002d_002dquiet-78"><code>--quiet</code></a>: <a href="#Invoking">Invoking</a></li>
+<li><a href="#index-_002d_002dremove-41"><code>--remove</code></a>: <a href="#Invoking">Invoking</a></li>
+<li><a href="#index-_002d_002drename-53"><code>--rename</code></a>: <a href="#Invoking">Invoking</a></li>
+<li><a href="#index-_002d_002dsource-60"><code>--source</code></a>: <a href="#Invoking">Invoking</a></li>
+<li><a href="#index-_002d_002dstrip-64"><code>--strip</code></a>: <a href="#Invoking">Invoking</a></li>
+<li><a href="#index-_002d_002dsubdir-70"><code>--subdir</code></a>: <a href="#Invoking">Invoking</a></li>
+<li><a href="#index-_002d_002duninstall-49"><code>--uninstall</code></a>: <a href="#Invoking">Invoking</a></li>
+<li><a href="#index-_002d_002dupdate-45"><code>--update</code></a>: <a href="#Invoking">Invoking</a></li>
+<li><a href="#index-_002d_002duser-74"><code>--user</code></a>: <a href="#Invoking">Invoking</a></li>
+<li><a href="#index-_002d_002dversion-31"><code>--version</code></a>: <a href="#Invoking">Invoking</a></li>
+<li><a href="#index-_002da-38"><code>-a</code></a>: <a href="#Invoking">Invoking</a></li>
+<li><a href="#index-_002db-61"><code>-b</code></a>: <a href="#Invoking">Invoking</a></li>
+<li><a href="#index-_002dC-67"><code>-C</code></a>: <a href="#Invoking">Invoking</a></li>
+<li><a href="#index-_002dc-42"><code>-c</code></a>: <a href="#Invoking">Invoking</a></li>
+<li><a href="#index-_002dD-69"><code>-D</code></a>: <a href="#Invoking">Invoking</a></li>
+<li><a href="#index-_002dd-50"><code>-d</code></a>: <a href="#Invoking">Invoking</a></li>
+<li><a href="#index-_002df-71"><code>-f</code></a>: <a href="#Invoking">Invoking</a></li>
+<li><a href="#index-_002dh-28"><code>-h</code></a>: <a href="#Invoking">Invoking</a></li>
+<li><a href="#index-_002di-46"><code>-i</code></a>: <a href="#Invoking">Invoking</a></li>
+<li><a href="#index-_002dl-32"><code>-l</code></a>: <a href="#Invoking">Invoking</a></li>
+<li><a href="#index-_002dn-52"><code>-n</code></a>: <a href="#Invoking">Invoking</a></li>
+<li><a href="#index-_002dP-75"><code>-P</code></a>: <a href="#Invoking">Invoking</a></li>
+<li><a href="#index-_002dp-56"><code>-p</code></a>: <a href="#Invoking">Invoking</a></li>
+<li><a href="#index-_002dq-77"><code>-q</code></a>: <a href="#Invoking">Invoking</a></li>
+<li><a href="#index-_002dr-40"><code>-r</code></a>: <a href="#Invoking">Invoking</a></li>
+<li><a href="#index-_002ds-59"><code>-s</code></a>: <a href="#Invoking">Invoking</a></li>
+<li><a href="#index-_002dt-63"><code>-t</code></a>: <a href="#Invoking">Invoking</a></li>
+<li><a href="#index-_002dU-73"><code>-U</code></a>: <a href="#Invoking">Invoking</a></li>
+<li><a href="#index-_002du-48"><code>-u</code></a>: <a href="#Invoking">Invoking</a></li>
+<li><a href="#index-_002dv-44"><code>-v</code></a>: <a href="#Invoking">Invoking</a></li>
+<li><a href="#index-_002dV-30"><code>-V</code></a>: <a href="#Invoking">Invoking</a></li>
+<li><a href="#index-_002dx-54"><code>-x</code></a>: <a href="#Invoking">Invoking</a></li>
+<li><a href="#index-_002dz-65"><code>-z</code></a>: <a href="#Invoking">Invoking</a></li>
+<li><a href="#index-ADD_005fDIRECTORY-83"><code>ADD_DIRECTORY</code></a>: <a href="#Invoking">Invoking</a></li>
+<li><a href="#index-INSTALL-82"><code>INSTALL</code></a>: <a href="#Invoking">Invoking</a></li>
+<li><a href="#index-KEEP_005fSOURCE-81"><code>KEEP_SOURCE</code></a>: <a href="#Invoking">Invoking</a></li>
+<li><a href="#index-MANUAL_005fCONFIGURE-80"><code>MANUAL_CONFIGURE</code></a>: <a href="#Invoking">Invoking</a></li>
+<li><a href="#index-PREFIX-85"><code>PREFIX</code></a>: <a href="#Invoking">Invoking</a></li>
+<li><a href="#index-SRC_005fCOMPRESS-86"><code>SRC_COMPRESS</code></a>: <a href="#Invoking">Invoking</a></li>
+<li><a href="#index-STRIP-84"><code>STRIP</code></a>: <a href="#Invoking">Invoking</a></li>
    </ul>
 <div class="contents">
 <h2>Table of Contents</h2>
@@ -1580,7 +1958,7 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
 <li><a name="toc_Introduction-for-Beginners" href="#Introduction-for-Beginners">1 Introduction for Beginners</a>
 <ul>
 <li><a href="#Introduction-for-Beginners">1.1 Installing the Installer</a>
-<li><a href="#Introduction-for-Beginners">1.2 Troubleshooting <span class="command">sourceinstall</span> Installation</a>
+<li><a href="#Introduction-for-Beginners">1.2 Troubleshooting Installation</a>
 </li></ul>
 <li><a name="toc_Introduction-for-the-Experienced" href="#Introduction-for-the-Experienced">2 Introduction for the Experienced</a>
 <ul>
@@ -1590,7 +1968,9 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
 <li><a name="toc_Invoking" href="#Invoking">3 Invoking</a>
 <ul>
 <li><a href="#Invoking">3.1 Synopsis</a>
-<li><a href="#Invoking">3.2 Options</a>
+<li><a href="#Invoking">3.2 Actions</a>
+<li><a href="#Invoking">3.3 Options</a>
+<li><a href="#Invoking">3.4 Preferences</a>
 </li></ul>
 <li><a name="toc_Usage-for-Beginners" href="#Usage-for-Beginners">4 Usage for Beginners</a>
 <ul>
@@ -1604,10 +1984,11 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
 <li><a name="toc_Usage-for-the-Experienced" href="#Usage-for-the-Experienced">5 Usage for the Experienced</a>
 <ul>
 <li><a href="#Usage-for-the-Experienced">5.1 Consistency checks</a>
-<li><a href="#Usage-for-the-Experienced">5.2 Conforming and non-conforming packages</a>
+<li><a href="#Usage-for-the-Experienced">5.2 Conforming packages</a>
 <li><a href="#Usage-for-the-Experienced">5.3 Other package management systems</a>
 <li><a href="#Usage-for-the-Experienced">5.4 Users</a>
 <li><a href="#Usage-for-the-Experienced">5.5 Files and Directories</a>
+<li><a href="#Usage-for-the-Experienced">5.6 Export functions</a>
 </li></ul>
 <li><a name="toc_FAQ" href="#FAQ">6 FAQ</a>
 <li><a name="toc_Reporting-Bugs" href="#Reporting-Bugs">7 Reporting Bugs</a>
@@ -1619,8 +2000,8 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
 <li><a href="#GNU-Free-Documentation-License">8.2 GNU Free Documentation License</a>
 <li><a href="#GNU-Free-Documentation-License">ADDENDUM: How to use this License for your documents</a>
 </li></ul>
+<li><a name="toc_Beginners-Concept-Index" href="#Beginners-Concept-Index">Beginners Concept Index</a>
 <li><a name="toc_Concept-Index" href="#Concept-Index">Concept Index</a>
-<li><a name="toc_Index" href="#Index">Index</a>
 </li></ul>
 </div>
 
