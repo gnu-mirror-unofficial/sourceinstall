@@ -1,0 +1,138 @@
+<html lang="en">
+<head>
+<title>FAQ - GNU Source Installer, a graphical installer for source packages</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="GNU Source Installer, a graphical installer for source packages">
+<meta name="generator" content="makeinfo 4.7">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="prev" href="Usage-for-the-Experienced.html#Usage-for-the-Experienced" title="Usage for the Experienced">
+<link rel="next" href="Reporting-Bugs.html#Reporting-Bugs" title="Reporting Bugs">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc { font-variant:small-caps }
+  span.roman { font-family: serif; font-weight: normal; } 
+--></style>
+</head>
+<body>
+<div class="node">
+<p>
+<a name="FAQ"></a>Next:&nbsp;<a rel="next" accesskey="n" href="Reporting-Bugs.html#Reporting-Bugs">Reporting Bugs</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="Usage-for-the-Experienced.html#Usage-for-the-Experienced">Usage for the Experienced</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="index.html#Top">Top</a>
+<hr><br>
+</div>
+
+<h2 class="chapter">6 FAQ</h2>
+
+<p>This is a small section in which I try to address common questions.
+
+     <ol type=1 start=1>
+<li>Q: GNU Source Installer does not install! What should I do?
+
+     <p>A: There are dedicated topics in this manual.
+
+     <p>See <a href="Introduction-for-Beginners.html#Introduction-for-Beginners">Installing the Installer</a>. 
+<br>
+See <a href="Introduction-for-Beginners.html#Introduction-for-Beginners">Troubleshooting Installation</a>.
+
+     <li>Q: I have found a bug in GNU Source Installer! What should I do?
+
+     <p>A: By all means, do report it. You will get the problem solved, and the software will become better if users report bugs. 
+See <a href="Reporting-Bugs.html#Reporting-Bugs">Reporting Bugs</a>.
+
+     <li>Q: sourceinstall coud not install Package [:xyz:]. What can I do?
+
+     <p>A: If the package does not provide a build system compatible with <span class="command">sourceinstall</span>, you will get an error message, stating that the program could not compile the code. To get the package supported, you have at least two choices.
+
+     <p>If you are an experienced user, you should contact the original author or maintainer of that package, explaining that you are trying to install it using a new install tool (GNU Source Installer), but it does not work because it does not provide a build system compatible with the idiom:
+
+     <pre class="example">          ./configure
+          make
+          make install
+     </pre>
+     <p>Then provide a quick solution for the author, so he will not need any effort to accept the change. If you are not sure, rely on the <span class="command">sourceinstall</span> people to do this for you.
+
+     <p>If you are a little less experienced and do not know how to help the author of the package, just contact the <span class="command">sourceinstall</span> mailing list at <a href="mailto:bug-sourceinstall@gnu.org">bug-sourceinstall@gnu.org</a>. We will contact the package maintainer, and help him make that package work with <span class="command">sourceinstall</span>.
+
+     <li>Q: Why doesn't sourceinstall use Checkinstall?
+
+     <p>A: Checkinstall is a nice program that tracks a source installation using Installwatch, which is Copyright 1998 by Pancrazio `Ezio' de Mauro, and is now part of the Checkinstall distribution. 
+Installwatch is a low-level tool that intercepts calls to file functions in the dynamically linked glibc that alter the file system during 'make install' (or another installation command). Then, Checkinstall builds binary Slackware, RPM or Debian packages based on that information.
+
+     <p>Now I find that the DESTDIR and INSTALL_ROOT (its old, deprecated replacement) way used in <span class="command">sourceinstall</span> is more clean and portable (although slower) than the low level installwatch approach, and is an incentive for developers to correctly support DESTDIR in their custom Makefiles or in their automake hooks. <span class="command">sourceinstall</span> detects if the build system supports DESTDIR or the old INSTALL_ROOT variables, and uses them for the installation tracking.
+
+     <p>As for GNU/Linux distribution-specific binary package building features, GNU Source Installer is again an OS neutral program, so it is not its job to build them. However, a functionality to build simple, neutral binary packages in the form of a tarball archive is available. From that package, it should be straightforward to build your desired distribution-specific package, but again it is not the point of this program.
+
+     <li>Q: Does sourceinstall build [:your format:] binary packages ?
+
+     <p>A: (see question above) It has been recently reported that <span class="command">sourceinstall</span> simple binary packages happen to be handled correctly by the Slackware GNU/Linux tools. That is simply because both use plain tarballs which contain the needed files with the original owners and permissions. Remember that building binary packages is not the point of this program (but use this as you see fit of course).
+
+     <li>Q: There's Gentoo and Portage already. Isn't sourceinstall pointless ?
+
+     <p>A: Surprisingly, I got many (well some) private mails stating that there's already the Gentoo GNU/Linux distribution and its Portage system, so <span class="command">sourceinstall</span> was supposedly pointless. Again, this software is an installer and source package management tool, targeted at modern Unix systems (these include, but do not end with GNU/Linux). Of course, <span class="command">sourceinstall</span> is not a GNU/Linux distribution and not a package repository.
+
+     <li>Q: Why are you using Tk? Why don't you use gtk|Qt|[:yourtoolkit:] ?
+
+     <p>A: I do not have any real preference of one toolkit over another. They can all get the job done. However I really wished to use the GNU ToolKit at the beginning (gtk), because it's the GNU ToolKit (talk about tautology). 
+There is one problem: dependencies and dependencies' size. I wanted to provide something that you could install from a bare-bones Unix + X11 system requiring nothing else.
+
+     <p>With the current tcl/tk/expect implementation I can provide, in 7 MB, a fullpack alternative shell-archive release of <span class="command">sourceinstall</span>, which includes and autobuilds all its dependencies if necessary. The same thing would not be possible with gtk, which is bigger and less straightforward to autobuild.
+
+     <p>If you want a [:yourtoolkit:] interface to the program badly, you can implement it on top of sourceinstall command line interface (but contact the author so you can get all the help and possibly tweaks to the young interface that you need).
+
+     <li>Q: Why are you using Tcl? Why don't you use [:yourlanghere:] ?
+
+     <p>A: Tcl seemed the natural choice having to deal with both Tk and Expect, and it offered simpler Unix portability. However this could change. I am not happy with some of the tcl decisions, and some bugs in the implementation do not help either. If the whole project language changes, it will change to C.
+
+     <li>Q: I do not care about cross Unix portability, dependencies, building the whole system from scratch or anything like this. Is there an alternative, specific for my already working GNU/Linux desktop system ?
+
+     <p>A: There are projects with somewhat similar goals that I have been made aware of:
+
+     <p>Kconfigure, QT based, for KDE: <a href="http://kconfigure.sourceforge.net/">http://kconfigure.sourceforge.net/</a>
+
+     <p>Easinstaller, Ruby and Fox based: <a href="http://easinstaller.sourceforge.net/">http://easinstaller.sourceforge.net/</a>
+
+     <p>GPaco, Gtk based, for GNU/Linux and Solaris: <a href="http://paco.sourceforge.net/">http://paco.sourceforge.net/</a>
+
+     <p>I know little about them save their name so you should investigate them yourself.
+
+     <li>Q: The manual is not comprensive enough! It does not say anything about [:X:]
+
+     <p>A: The project is still very young, as is the documentation. It will be a lot better; you can speed up things by reporting what exactly is missing, and possibly providing yourself if you have some time.
+
+     <li>Q: This program does not deal with dependencies at all!
+
+     <p>A: This manual will be integrated with a detailed explanation on how to deal with dependencies. With some patience, I think almost everyone can learn to live with them.
+
+     <li>Q: I have an older version of sourceinstall, how do I upgrade to the current version?
+
+     <p>A: Starting from sourceinstall-0.4, this has been made easier. Just download the regular new version (for example, sourceinstall-0.5.tar.gz), then run sourceinstall, and choose &ldquo;Add&rdquo;; select that new sourceinstall package (sourceinstall-0.5.tar.gz), and confirm with Ok. All your installed packages and preferences will not be harmed.
+
+     <li>Q: The right click popup menu does not work (anymore)!
+
+     <p>A: The Tk popup menus (and consequently sourceinstall prior to v-0.5) were not sticky. This means that in order to keep the menu visible, one had to keep the button always pressed. This has been fixed very recently in a development version of Tk.
+
+     <p>In order to offer a more usable popup menu, starting from 0.5 I use a workaround that involves showing the popup on right click button RELEASE. In short: starting with sourceinstall 0.5, click and release the right button on a list entry, and the popup will appear.
+
+     <li>Q: I want to contribute to the project in some way, where do I start?
+
+     <p>A: Start with the Bugs and Task list in the Savannah sourceinstall project page: <a href="http://savannah.gnu.org/projects/sourceinstall/">http://savannah.gnu.org/projects/sourceinstall/</a> . 
+Even if you are not a programmer, the task list can contain very relevant work that does not involve programming or reading code at all.
+
+     <p>If you have an interesting idea to share, by all means do so. You can contact the mailing list <a href="mailto:bug-sourceinstall@gnu.org">bug-sourceinstall@gnu.org</a>, or if you prefer you can contact the author directly at <a href="mailto:claudio@gnu.org">claudio@gnu.org</a>. As long as your mail is polite enough, you will not be judged by me in any way by the ideas you express, even if I do not agree with you.
+
+     <li>Q: I want to join the project! Please add me to the project members list.
+
+     <p>A: Great, but please do something for the project. If you make regular contributions, and understand the project goals, you will be added to the sourceinstall project.
+
+        </ol>
+
+   </body></html>
+
