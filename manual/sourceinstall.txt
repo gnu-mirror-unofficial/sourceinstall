@@ -849,10 +849,14 @@ somewhere.
 
    Tip: add GPL or another Free license name to your search, so you are
 sure to find real Free Software, and not freeware, shareware or
-whatelse.  You can also try the term "Open Source" (the Free Software
-movement generally despises the term, but it is less prone to sending
-you to a freeware or even commercial page than trying to enter "Free
-Software" in your engine).
+whatelse.  You can also try the term "Open Source".
+
+   The Free Software and Open Source movements have different goals, but
+search engines tend to find pages with the term "free" as in no-cost,
+while free software is about freedom.
+
+   `http://www.gnu.org/philosophy/free-software-for-freedom.html'
+explains the relationship further.
 
    You can choose another road, and use a Directory instead.  Good
 places to start are the Free Software Directory and Savannah (home to
@@ -2243,8 +2247,8 @@ This is an index of the most basic topics and definitions used in this
 manual. If you are not sure about a notion or term used in the manual,
 you can try looking for it here.
 
-Adding a new source package:                   See 4.3.      (line  870)
-Changing the Preferences:                      See 4.4.      (line  899)
+Adding a new source package:                   See 4.3.      (line  874)
+Changing the Preferences:                      See 4.4.      (line  903)
 configuration:                                 See 1.1.      (line  153)
 console:                                       See 1.1.      (line   71)
 directory:                                     See 1.1.      (line   65)
@@ -2255,8 +2259,8 @@ Looking for the right package:                 See 4.2.      (line  844)
 man:                                           See 1.1.      (line  203)
 prefix:                                        See 1.1.      (line  111)
 prompt:                                        See 1.1.      (line   87)
-Querying package information:                  See 4.5.      (line  942)
-Removing a package:                            See 4.6.      (line  950)
+Querying package information:                  See 4.5.      (line  946)
+Removing a package:                            See 4.6.      (line  954)
 root:                                          See 1.1.      (line   91)
 root password:                                 See 1.1.      (line  166)
 run sourceinstall:                             See 1.1.      (line  174)
@@ -2275,30 +2279,30 @@ This is a list of all the relevant topics in the `sourceinstall' manual.
 
 Actions:                                       See 3.2.      (line  500)
 broken pipe:                                   See 3.2.      (line  535)
-Bugs, reporting:                               See 7.        (line 1388)
-Conforming packages:                           See 5.2.      (line 1015)
-Consistency checks:                            See 5.1.      (line  987)
-Copying:                                       See 8.        (line 1404)
-Export functions:                              See 5.6.      (line 1157)
-FDL, GNU Free Documentation License:           See 8.2.      (line 1826)
-Files and Directories:                         See 5.5.      (line 1095)
-GPL, GNU General Public License:               See 8.1.      (line 1468)
+Bugs, reporting:                               See 7.        (line 1392)
+Conforming packages:                           See 5.2.      (line 1019)
+Consistency checks:                            See 5.1.      (line  991)
+Copying:                                       See 8.        (line 1408)
+Export functions:                              See 5.6.      (line 1161)
+FDL, GNU Free Documentation License:           See 8.2.      (line 1830)
+Files and Directories:                         See 5.5.      (line 1099)
+GPL, GNU General Public License:               See 8.1.      (line 1472)
 Installing the Installer:                      See 1.1.      (line   63)
 Introduction for Beginners:                    See 1.        (line   37)
 Introduction for the Experienced:              See 2.        (line  322)
 Invoking:                                      See 3.        (line  467)
 more:                                          See 3.2.      (line  535)
-no warranty:                                   See 8.1.      (line 1732)
+no warranty:                                   See 8.1.      (line 1736)
 Options:                                       See 3.3.      (line  647)
-Other package management systems:              See 5.3.      (line 1038)
+Other package management systems:              See 5.3.      (line 1042)
 pager:                                         See 3.2.      (line  535)
 pipe:                                          See 3.2.      (line  535)
 Preferences:                                   See 3.4.      (line  765)
 Synopsis:                                      See 3.1.      (line  473)
 Troubleshooting Installation:                  See 1.2.      (line  211)
 Usage for Beginners:                           See 4.        (line  815)
-Usage for the Experienced:                     See 5.        (line  962)
-Users:                                         See 5.4.      (line 1056)
+Usage for the Experienced:                     See 5.        (line  966)
+Users:                                         See 5.4.      (line 1060)
 Why should you avoid this program?:            See 2.2.      (line  419)
 Why should you use this program?:              See 2.1.      (line  344)
    This is an alphabetical list of all `sourceinstall' functionalities,
