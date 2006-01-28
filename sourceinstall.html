@@ -61,7 +61,7 @@
   <li><a href="#documentation" id="TOCdocumentation">Documentation</a></li>
   <li><a href="#lists" id="TOClists">Mailing Lists</a></li>
   <li><a href="#bug" id="TOCbug">Report a Bug</a></li>
-  <li><a href="/software/sourceinstall/sourceinstall-screenshot-6.png">Screenshot</a></li>
+  <li><a href="/software/sourceinstall/screenshot.png">GTK client screenshot</a></li>
   <li><a href="#maintainer" id="TOCmaintainer">Maintainer</a></li>
 </ul>
 </div>
@@ -71,44 +71,46 @@
 </h4>
 
 <p>
-  This web page is about <b>GNU Source Installer</b> (sourceinstall), a source package installer and manager for Unix-likes which provides configuration, compilation, installation, tracking and removal of source packages. It offers both a command line and a graphical interface, and works best with packages prepared by the developers using a recent version of the autotools.
+  <b>GNU Source Installer</b> (sourceinstall) is a source package installer and manager for Unix-likes.
+</p>
+<p>
+ It provides configuration, compilation, installation, upgrade, tracking and removal of packages built from source code. The functionality is reachable using a command line, scriptable front end or a GTK graphical interface.
 </p><p>
-  For an experienced user, this sofware provides a way to centralize source installation, keep track of already installed packages and their relevant files, check installations for consistency, export and reuse installation information and have enhanced uninstallation.
+ This program is meant to install source code as provided by the original developers (.tar.gz, .tar.bz2, no system-specific packages); packages built using the GNU autotools (<a href="/software/autoconf/autoconf.html">autoconf</a>, <a href="/software/automake/automake.html">automake</a>) are the primary target of this tool, but packages supporting the common configure options and makefile conventions are also supported.
 </p><p>
-  For the novice but interested user, this software also offers a way to gain confidence with the command line (yes really), the file system, the traditional Unix commands, and of course with common source configuration and installation procedures and options.
+For an user already experienced with source installations from the plain shell (using the ./configure, make, make install sequence), this sofware provides a way to centralize source installation, have easier access to configure options, keep track of already installed packages and their relevant files, check installations for consistency, export and reuse installation information and have enhanced uninstallation and upgrade functionalities.
+</p><p>
+  For the novice but interested user, this software also offers a way to gain confidence with the shell commands, the file system, the traditional Unix commands, and of course with common source configuration and installation procedures and options.
 </p><p>
   The software is targeted at Unix-like systems, and should work on most of them, with GNU/Linux as the primary target. Please report any portability problem you should encounter.
-</p><p>
-  After completing installation of `sourceinstall' itself, the install procedure becomes:
 </p>
-
-<ul>
-  <li>surf the web, browse a CD or other resource</li>
-  <li>identify a desired source package</li>
-  <li>add it using the installer</li>
-</ul>
-
-<p>There is also a <a href="/software/sourceinstall/article.html">detailed article</a> about GNU Source Installer. Note however that the article address a somewhat old version of the software.</p>
 
 <h4>
   <a href="#TOCdownloading" id="downloading">Downloading GNU Source Installer</a>
 </h4>
 
 <p>
-  You can find GNU Source Installer on 
+  The most recent release is 2.0-rc2, and is an official alpha release.
+  It contains all the main features, and is supposed to be quite stable,
+  but still misses documentation and extensive testing.
+</p><p>
+  The older releases are marked 0.x, and are going to be completely obsolete
+  soon. You can fetch GNU Source Installer using one of the following methods:
 </p>
 <div class="quadro">
-  <p><a href="http://savannah.gnu.org/download/sourceinstall/">http://savannah.gnu.org/download/sourceinstall/</a> [via http]</p>
   <p><a href="ftp://ftp.gnu.org/gnu/sourceinstall/">ftp://ftp.gnu.org/gnu/sourceinstall/</a> [via FTP].</p>
-  <p>cvs -d:ext:anoncvs@savannah.gnu.org:/cvsroot/sourceinstall co sourceinstall [via anonymous CVS].</p>
+  <p>cvs -d:pserver:anonymous@cvs.savannah.gnu.org:/sources/sourceinstall co sourceinstall [via anonymous <a href="http://savannah.gnu.org/cvs/?group=sourceinstall">CVS</a>].</p>
 </div>
 <p>
   It can also be found on one of <a href="/prep/ftp.html">our FTP mirrors</a>.
-  You will find the package available in two flavours: the normal .tar.gz
-  sourceinstall package, and an alternative, behemot, interactive, 
-  self-extracting sourceinstall-fullpack installer, that contains all major
-  dependencies (Tcl, Tk and Expect), which are built if needed.
-  Refer to the available manual for the installation instructions.
+  The full software can be obtained by downloading the fullpack release,
+  called sourceinstall-fullpack.
+
+  Otherwise, its components are available separately:
+  a library, called libsrcinst, which must be installed first, then the
+  command line front end, called sourceinstall, and finally the GTK graphical
+  front end, called sourceinstall-gtk.
+  You can install either of these or both, depending on your taste.
 </p>
 
 <h4>
@@ -117,18 +119,7 @@
 
 <p>
   GNU Source Installer manual, with full and detailed installation instructions can be found at
-  <a href="/software/sourceinstall/manual/manual.html">http://www.gnu.org/software/sourceinstall/manual/manual.html</a>.
-</p><p>
-  Assuming a working sourceinstall installation, you may also find more 
-  information about GNU Source Installer by running
-</p>
-<pre>  $ info sourceinstall</pre>
-<p>
-  for the detailed manual or
-</p>
-<pre>  $ man sourceinstall</pre>
-<p>
-  to look at the man page.
+  <a href="/software/sourceinstall/manual/manual.html">http://www.gnu.org/software/sourceinstall/manual/manual.html</a> [warning! Only for versions 0.x].
 </p>
 
 <h4>
@@ -192,7 +183,7 @@
 <p>
   If you think you have found a bug in sourceinstall, then you should send 
   as complete a report as possible to
-  <a href="mailto:bug-sourceinstall@gnu.org">&lt;bug-sourceinstall@gnu.org&gt;</a>. See the <a href="/software/sourceinstall/manual/manual.html">manual</a> for hints on how to properly report a bug.
+  <a href="mailto:bug-sourceinstall@gnu.org">&lt;bug-sourceinstall@gnu.org&gt;</a>.
 </p>
 
 <h4>
@@ -236,7 +227,7 @@ translations of this article.
 </p>
 
 <p>
-Copyright (C) 2005 Free Software Foundation, Inc.,
+Copyright (C) 2005, 2006 Free Software Foundation, Inc.,
 51 Franklin St, Fifth Floor, Boston, MA 02110, USA
 <br />
 Verbatim copying and distribution of this entire article are
@@ -247,7 +238,7 @@ notice, and the copyright notice, are preserved.
 <p>
 Updated:
 <!-- timestamp start -->
-$Date: 2005/09/16 01:42:04 $ $Author: sick_soul $
+$Date: 2006/01/28 17:34:47 $ $Author: sick_soul $
 <!-- timestamp end -->
 </p>
 </div>
