@@ -110,9 +110,11 @@
   The build systems of GNU packages will be tested, and the results will be
   displayed in the following table.
 </p><p>
-  Currently, many packages on ftp.gnu.org have been tested (but not all),
-  and some additional GNU packages not on ftp.gnu.org have been tested too.
-  This is still a work in progress.
+  Currently, most packages on ftp.gnu.org and alpha.gnu.org have been tested
+  (but not all), and some additional GNU packages not on those sites have
+  been tested too.
+  This is still a work in progress, and if you find your package is missing
+  please contact me (see more about this below).
 </p><p>
   The testing system is a GNU/Linux (kernel 2.6.14), gcc-3.3.4,
   ld 2.15.92.0.2, aclocal and automake 1.9.4, autoconf 2.59, make 3.80.
@@ -209,9 +211,13 @@
 
 <tr><td>automake-1.9</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td></td></tr>
 
+<tr><td>avl-2.0.2a</td><td class="r">No*</td><td class="r">No*</td><td class="g">Ok</td><td class="r">No*</td><td>* this package is not meant for installation</td></tr>
+
 <tr><td>barcode-0.98</td><td class="y">Partial</td><td class="g">Ok</td><td class="g">Ok</td><td class="r">No</td><td></td></tr>
 
 <tr><td>bash-3.1</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td></td></tr>
+
+<tr><td>bayonne2-1.1.6</td><td class="g">Ok*</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td>* however, build phase might require submitting data on standard input, which is not really nice, since it makes sourceinstall (command-line) non scriptable, and in sourceinstall-gtk it is necessary to input data in the controlling terminal.</td></tr>
 
 <tr><td>bc-1.06</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td></td></tr>
 
@@ -223,6 +229,8 @@
 
 <tr><td>ccscript3-1.0.2</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td></td></tr>
 
+<tr><td>ccrtp-1.3.6</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td></td></tr>
+
 <tr><td>cfengine-2.0.6</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td></td></tr>
 
 <tr><td>cflow-1.0</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td></td></tr>
@@ -233,7 +241,20 @@
 
 <tr><td>classpath-0.18</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td class="n">later versions not tested because they require gcc-4.0</td></tr>
 
+<tr><td>clisp-2.38</td><td class="r">No</td><td class="g">Ok</td><td class="r">No*</td><td class="g">Ok</td><td class="n">* unfortunately clisp build system is based on makemake. Also, additional user commands are necessary for the build to succeed. These could be automated, and the flags moved to configure options.</td></tr>
+
+<tr><td>clx-5.02</td><td class="r">No</td><td class="r">No</td><td class="r">No</td><td class="r">No</td><td class="n">File renaming and hand compilation are necessary to install this software.</td></tr>
+
+<tr><td>cons-2.2.0</td><td class="r">No</td><td class="r">No</td><td class="r">No</td><td class="r">No</td><td class="n">This is/has an alternative build system, totally incompatible.</td></tr>
+
+<tr><td>dgs-0.5.9</td><td class="r">No*</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td class="n">* compile-time errors:zdevcal.c:52: storage size of `ltime' isn't known, zdevcal.c:54: dereferencing pointer to incomplete type, zdevcal.c:54: initializer element is not constant.
+</td></tr>
+
+<tr><td>dia-0.94</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td></td></tr>
+
 <tr><td>combine-0.3.4</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td></td></tr>
+
+<tr><td>diction-1.02</td><td class="y">Partial</td><td class="g">Ok</td><td class="g">Ok</td><td class="r">No</td><td></td></tr>
 
 <tr><td>commoncpp2-1.3.22</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td></td></tr>
 
@@ -261,6 +282,8 @@
 
 <tr><td>ed-0.2</td><td class="y">Partial</td><td class="g">Ok</td><td class="g">Ok</td><td class="r">No</td><td></td></tr>
 
+<tr><td>fhp-0.2.0-RC1</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td></td></tr>
+
 <tr><td>emacs-21.4</td><td class="y">Partial</td><td class="g">Ok</td><td class="g">Ok</td><td class="r">No</td><td></td></tr>
 
 <tr><td>enscript-1.6.1</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td></td></tr>
@@ -272,6 +295,8 @@
 <tr><td>finger-1.37</td><td class="r">No*</td><td class="g">Ok</td><td class="g">Ok</td><td>-</td><td class="n">* compile-time errors</td></tr>
 
 <tr><td>fontutils-0.7</td><td class="r">No*</td><td class="g">Ok</td><td class="g">Ok</td><td>-</td><td class="n">* compile-time errors</td></tr>
+
+<tr><td>freedink-0.1.7</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td></td></tr>
 
 <tr><td>g77-0.5.23</td><td class="r">No*</td><td class="g">Ok</td><td class="g">Ok</td><td>-</td><td class="n">* compile-time errors</td></tr>
 
@@ -309,9 +334,13 @@
 
 <tr><td>gnats-4.1.0</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td></td></tr>
 
+<tr><td>gnubg-0.14.3</td><td class="g">Ok*</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td class="n">* I had to manually add -liconv to the LDFLAGS to get a clean compile. Otherwise, I would get undefined symbols during build.</td></tr>
+
 <tr><td>gnucap-0.31</td><td class="r">No*</td><td class="g">Ok</td><td class="g">Ok</td><td>-</td><td class="n">* compile time errors</td></tr>
 
 <tr><td>gnuchess-5.0.7</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td></td></tr>
+
+<tr><td>gnuedma-beta-0.15.7-7</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td></td></tr>
 
 <tr><td>gnugo-3.6</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td></td></tr>
 
@@ -337,7 +366,11 @@
 
 <tr><td>groff-1.19.2</td><td class="y">Partial</td><td class="g">Ok</td><td class="g">Ok</td><td class="r">No</td><td></td></tr>
 
+<tr><td>gsasl-0.2.9</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td></td></tr>
+
 <tr><td>gsl-1.7</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td></td></tr>
+
+<tr><td>gss-0.0.9</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td></td></tr>
 
 <tr><td>gtk+-2.6.9</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td></td></tr>
 
@@ -351,7 +384,7 @@
 
 <tr><td>gvpe-2.0</td><td class="g">Ok</td><td class="g">Ok*</td><td class="g">Ok</td><td class="g">Ok</td><td class="n">* warning:disable-nls is broken and results in compile-time errors</td></tr>
 
-<tr><td>gzip-1.2.4a</td><td class="y">Partial</td><td class="g">Ok</td><td class="g">Ok</td><td class="r">No</td><td></td></tr>
+<tr><td>gzip-1.3.5</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td></td></tr>
 
 <tr><td>hello-2.1.1</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td></td></tr>
 
@@ -381,7 +414,11 @@
 
 <tr><td>libgphoto2-2.1.6</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td></td></tr>
 
+<tr><td>libgsasl-0.2.9</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td></td></tr>
+
 <tr><td>libiconv-1.10</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td></td></tr>
+
+<tr><td>libidn-0.6.1</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td></td></tr>
 
 <tr><td>libmatheval-1.1.2</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td></td></tr>
 
@@ -497,6 +534,8 @@
 
 <tr><td>units-1.85</td><td class="y">Partial</td><td class="g">Ok</td><td class="g">Ok</td><td class="r">No</td><td></td></tr>
 
+<tr><td>unrtf_0.19.9</td><td class="r">No</td><td class="r">No</td><td class="g">Ok</td><td class="y">Broken</td><td class="n">The build system is made by a Makefile, where the meaning of DESTDIR is overloaded.</td></tr>
+
 <tr><td>userv-1.0.1</td><td class="y">Partial</td><td class="g">Ok</td><td class="g">Ok</td><td class="r">No</td><td></td></tr>
 
 <tr><td>uucp-1.07</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td></td></tr>
@@ -522,11 +561,19 @@
 </h4>
 
 <p>
-  If your package is not listed yet, please just wait a little while.
-  I hope to eventually check all GNU packages soon.
+  If your GNU package is not listed yet, it may be because I skipped it
+  by mistake, or because it's not on gnu.org servers (and did not track it jet)
+  or because it requires some huge library dependencies I could not easily
+  build on my system (most notably I do not have gnome, or any other desktop,
+  also I have no Sun Java (only the GNU compiler), and no C++ Boost library).
+
+  If your package requires one of these, and want to help me a bit,
+  please report about its build system state yourself.
+    
 </p><p>
-  If you'd like to have some help with the build system of your package,
-  please contact me, and I will try to help you as soon as I can.
+  If you'd like to have some help fixing, changing, or upgrading your 
+  build system of your package, please contact me,
+  and I will try to help at my best as soon as I can.
 </p>
   Contact me at <a href="mailto:claudio@gnu.org">&lt;claudio@gnu.org&gt;</a>,
   or if your feedback is about the Source Installer itself, write to the
@@ -561,7 +608,7 @@ notice, and the copyright notice, are preserved.
 <p>
 Updated:
 <!-- timestamp start -->
-$Date: 2006/02/02 20:55:22 $ $Author: sick_soul $
+$Date: 2006/02/02 23:00:16 $ $Author: sick_soul $
 <!-- timestamp end -->
 </p>
 </div>
