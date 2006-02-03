@@ -110,14 +110,18 @@
   The build systems of GNU packages will be tested, and the results will be
   displayed in the following table.
 </p><p>
-  Currently, most packages on ftp.gnu.org and alpha.gnu.org have been tested
-  (but not all), and some additional GNU packages not on those sites have
-  been tested too.
-  This is still a work in progress, and if you find your package is missing
-  please contact me (see more about this below).
+  Currently, most packages on ftp.gnu.org, alpha.gnu.org, and referenced
+  by the free software directory have been tested (but not all).
+  I could have missed some, and some have been left out knowingly
+  (see more about this below).
 </p><p>
   The testing system is a GNU/Linux (kernel 2.6.14), gcc-3.3.4,
   ld 2.15.92.0.2, aclocal and automake 1.9.4, autoconf 2.59, make 3.80.
+  Note that every time there's a * compile-time error note, it only means
+  that on my system I got a compile-time error. It could work for everyone
+  else. Note also that sometimes I give hints about possible fixes.
+  KIM that I did not have much time to dedicate to each package so take
+  my suggestions and notes about the package with care.
 </p><p>
   In the following table, <b>&quot;sourceinstall support&quot;</b> indicates how well sourceinstall works on the testing system with that GNU package:
 </p>
@@ -183,11 +187,21 @@
 <table class="test">
 <tr><th>Package name</th><th>sourceinstall support</th><th>configure script</th><th>Makefile</th><th>DESTDIR support</th><th>Notes</th></tr>
 
+<tr><td>3DLDF-1.1.5.1</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td></td></tr>
+
+<tr><td>Checker-0.9.9</td><td class="r">No*</td><td class="g">Ok</td><td class="g">Ok</td><td class="r">No</td><td class="n">* compile-time errors</td></tr>
+
 <tr><td>CSSC-1.0.1</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td></td></tr>
 
 <tr><td>GNUnet-0.7.0b</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td></td></tr>
 
 <tr><td>Ggradebook-0.91</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td></td></tr>
+
+<tr><td>R-2.2.1</td><td class="y">Partial</td><td class="g">Ok</td><td class="g">Ok</td><td class="r">No</td><td></td></tr>
+
+<tr><td>TeXmacs-1.0.6</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td></td></tr>
+
+<tr><td>XaoS-3.1</td><td class="r">No</td><td class="y">Broken*</td><td class="g">Ok</td><td class="y">Broken*</td><td class="n">DESTDIR support is broken because the STICKY variable, set in configure and used in Makefile, does not consider DESTDIR. This can break the build. Fix:add DESTDIR to STICKY in configure.in</td></tr>
 
 <tr><td>Xnee-2.04</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td></td></tr>
 
@@ -197,6 +211,8 @@
 
 <tr><td>adns-1.0</td><td class="y">Partial</td><td class="g">Ok</td><td class="g">Ok</td><td class="r">No</td><td></td></tr>
 
+<tr><td>alive-1.4.0</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td></td></tr>
+
 <tr><td>anubis-4.0</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td></td></tr>
 
 <tr><td>archimedes-0.0.4</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td></td></tr>
@@ -205,13 +221,15 @@
 
 <tr><td>atk-1.9.0</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td></td></tr>
 
+<tr><td>auctex-11.82</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td></td></tr>
+
 <tr><td>autoconf-2.59</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td></td></tr>
 
 <tr><td>autogen-5.5.7</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td></td></tr>
 
 <tr><td>automake-1.9</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td></td></tr>
 
-<tr><td>avl-2.0.2a</td><td class="r">No*</td><td class="r">No*</td><td class="g">Ok</td><td class="r">No*</td><td>* this package is not meant for installation</td></tr>
+<tr><td>avl-2.0.2a</td><td class="r">No*</td><td class="r">No*</td><td class="y">Broken*</td><td class="r">No*</td><td>* this package is probably not meant for installation. The custom Makefile must be hand-edited, and includes no install target</td></tr>
 
 <tr><td>barcode-0.98</td><td class="y">Partial</td><td class="g">Ok</td><td class="g">Ok</td><td class="r">No</td><td></td></tr>
 
@@ -224,6 +242,10 @@
 <tr><td>binutils-2.16</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td></td></tr>
 
 <tr><td>bison-2.1</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td></td></tr>
+
+<tr><td>bool-0.2.1</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td></td></tr>
+
+<tr><td>calc-2.11.11</td><td class="r">No</td><td class="r">No</td><td class="g">Ok</td><td class="r">No</td><td class="n">The provided Makefile must be hand edited.</td></tr>
 
 <tr><td>ccaudio2-0.7.11</td><td class="g">Ok</td><td class="g">Ok</td><td class="r">*</td><td class="g">Ok</td><td class="n">* distributed Makefile.ins contain a serious flaw that can break compilation. Fix:rebuild with a recent version of automake</td></tr>
 
@@ -247,14 +269,9 @@
 
 <tr><td>cons-2.2.0</td><td class="r">No</td><td class="r">No</td><td class="r">No</td><td class="r">No</td><td class="n">This is/has an alternative build system, totally incompatible.</td></tr>
 
-<tr><td>dgs-0.5.9</td><td class="r">No*</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td class="n">* compile-time errors:zdevcal.c:52: storage size of `ltime' isn't known, zdevcal.c:54: dereferencing pointer to incomplete type, zdevcal.c:54: initializer element is not constant.
-</td></tr>
-
-<tr><td>dia-0.94</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td></td></tr>
+<tr><td>cpio-2.6</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td></td></tr>
 
 <tr><td>combine-0.3.4</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td></td></tr>
-
-<tr><td>diction-1.02</td><td class="y">Partial</td><td class="g">Ok</td><td class="g">Ok</td><td class="r">No</td><td></td></tr>
 
 <tr><td>commoncpp2-1.3.22</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td></td></tr>
 
@@ -270,7 +287,12 @@
 
 <tr><td>dejagnu-1.4.4</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td></td></tr>
 
-<tr><td>dgs-0.5.10</td><td class="r">No*</td><td class="g">Ok</td><td class="g">Ok</td><td>-</td><td class="n">* compile-time errors</td></tr>
+<tr><td>denemo-0.7.4</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td></td></tr>
+
+<tr><td>dgs-0.5.9</td><td class="r">No*</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td class="n">* compile-time errors:zdevcal.c:52: storage size of `ltime' isn't known, zdevcal.c:54: dereferencing pointer to incomplete type, zdevcal.c:54: initializer element is not constant.
+</td></tr>
+
+<tr><td>dia-0.94</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td></td></tr>
 
 <tr><td>diction-1.02</td><td class="r">No*</td><td class="g">Ok</td><td class="g">Ok</td><td>-</td><td class="n">* compile-time errors</td></tr>
 
@@ -280,7 +302,13 @@
 
 <tr><td>dominion-2.8.2</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td></td></tr>
 
+<tr><td>drgeo-1.1.0</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td></td></tr>
+
+<tr><td>ecc-0.2.2</td><td class="r">No</td><td class="g">Ok</td><td class="y">Broken</td><td class="r">No</td><td class="n">The build requires a particular objective C compiler that is hard-wired in the custom Makefile.in. Hand editing the file to replace objc (apple's?) with gcc does not work.</td></tr>
+
 <tr><td>ed-0.2</td><td class="y">Partial</td><td class="g">Ok</td><td class="g">Ok</td><td class="r">No</td><td></td></tr>
+
+<tr><td>eprints-2.3.13.1</td><td class="r">No</td><td class="g">Ok</td><td class="r">No</td><td class="r">No</td><td class="n">Custom build, that requires running a perl script after configuration.</td></tr>
 
 <tr><td>fhp-0.2.0-RC1</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td></td></tr>
 
@@ -298,21 +326,29 @@
 
 <tr><td>freedink-0.1.7</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td></td></tr>
 
+<tr><td>freeipmi-0.1.3</td><td class="g">Ok*</td><td class="g">Ok</td><td class="g">Ok*</td><td class="g">Ok</td><td class="n">* however, the --prefix is not honored for the /var/* stuff, forcing installation of those files in a fixed system location. This makes user-mode installation not possible.</td></tr>
+
+<tr><td>fribidi-0.10.7</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td></td></tr>
+
 <tr><td>g77-0.5.23</td><td class="r">No*</td><td class="g">Ok</td><td class="g">Ok</td><td>-</td><td class="n">* compile-time errors</td></tr>
+
+<tr><td>gama-1.8.00</td><td class="r">No</td><td class="r">No</td><td class="y">Broken</td><td class="r">No</td><td class="n">this library has no installation system. Its custom makefile is only used to build.</td></tr>
 
 <tr><td>gawk-3.1.5</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td></td></tr>
 
 <tr><td>gcal-3.01</td><td class="y">Partial</td><td class="g">Ok</td><td class="g">Ok</td><td class="r">No</td><td></td></tr>
 
-<tr><td>gcc-3.4.5</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td class="n">* Could not try versions >= 4.0 since they do not allow srcdir == objdir </td></tr>
+<tr><td>gcc-3.4.5</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td class="n">* Could not try versions >= 4.0 since they do not allow a build directory equal to the source directory (same for glibc).</td></tr>
 
-<tr><td>gcl-2.6.7</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td></td></tr>
+<tr><td>gcl-2.6.7</td><td class="g">Ok*</td><td class="g">Ok*</td><td class="g">Ok*</td><td class="g">Ok</td><td class="n">* note however, that the --prefix is not considered for the installed documentation, that is installed in a fixed system position, making user-mode installation impossible.</td></tr>
 
 <tr><td>gdb-6.4</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td></td></tr>
 
 <tr><td>gdbm-1.8.3</td><td class="g">Ok*</td><td class="g">Ok</td><td class="g">Ok*</td><td class="g">Ok</td><td class="n">* uses old INSTALL_ROOT which is supported. The installation rule contains however a chown to bin:bin for no apparent reason, and this requires privileges, making user-mode installation not possible.</td></tr>
 
 <tr><td>gengetopt-2.15</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td></td></tr>
+
+<tr><td>gerwin-0.6</td><td class="r">No</td><td class="r">No</td><td class="r">No</td><td class="r">No</td><td class="n">no build system is provided. The package is assumed to be extracted on target, and contains the runnable tcl/wish scripts.</td></tr>
 
 <tr><td>gettext-0.14.5</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td></td></tr>
 
@@ -336,6 +372,8 @@
 
 <tr><td>gnubg-0.14.3</td><td class="g">Ok*</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td class="n">* I had to manually add -liconv to the LDFLAGS to get a clean compile. Otherwise, I would get undefined symbols during build.</td></tr>
 
+<tr><td>gnubiff-2.1.9</td><td class="r">No*</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td class="n">* compile-time errors</tr>
+
 <tr><td>gnucap-0.31</td><td class="r">No*</td><td class="g">Ok</td><td class="g">Ok</td><td>-</td><td class="n">* compile time errors</td></tr>
 
 <tr><td>gnuchess-5.0.7</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td></td></tr>
@@ -344,13 +382,19 @@
 
 <tr><td>gnugo-3.6</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td></td></tr>
 
+<tr><td>gnump3d-2.9.8</td><td class="r">No</td><td class="r">No</td><td class="g">Ok</td><td class="r">No</td><td class="n">paths and other information are fixed, and must be edited by hand in the custom Makefile prior to installation.</td></tr>
+
 <tr><td>gnunet-gtk-0.7.0a</td><td class="g">Ok*</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td class="n">For some reason, had to disable gtk test to get it working</td></tr>
+
+<tr><td>gnupg-1.4.2</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td></td></tr>
 
 <tr><td>gnupod</td><td class="y">Partial</td><td class="g">Ok</td><td class="g">Ok</td><td class="r">No</td><td></td></tr>
 
 <tr><td>gnurobots-1.0D</td><td class="y">Partial</td><td class="g">Ok</td><td class="g">Ok</td><td class="r">No</td><td></td></tr>
 
 <tr><td>gnushogi-1.3</td><td class="y">Partial</td><td class="g">Ok</td><td class="g">Ok</td><td class="r">No</td><td></td></tr>
+
+<tr><td>gnutls-1.0.25</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td></td></tr>
 
 <tr><td>goose-0.0.11</td><td class="r">No*</td><td class="g">Ok</td><td class="g">Ok</td><td>-</td><td class="n">* compile-time errors</td></tr>
 
@@ -364,7 +408,11 @@
 
 <tr><td>grep-2.5.1a</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td></td></tr>
 
+<tr><td>gretl-1.5.0</td><td class="r">No*</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td class="n">* compile-time errors</td></tr>
+
 <tr><td>groff-1.19.2</td><td class="y">Partial</td><td class="g">Ok</td><td class="g">Ok</td><td class="r">No</td><td></td></tr>
+
+<tr><td>grub-0.97</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td class="n">could not build newer version (1.92), because my existing shared library installation of lzo-2.02 was not recognized by the configure script.</td></tr>
 
 <tr><td>gsasl-0.2.9</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td></td></tr>
 
@@ -372,25 +420,37 @@
 
 <tr><td>gss-0.0.9</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td></td></tr>
 
+<tr><td>gtick-0.3.7</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td></td></tr>
+
 <tr><td>gtk+-2.6.9</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td></td></tr>
 
+<tr><td>gtkeditor-0.1.8</td><td class="r">No*</td><td class="y">Broken*</td><td class="g">Ok</td><td class="g">Ok</td><td class="n">* configure fails complaining for missing install-sh or install.sh in the distributed tarball</td></tr>
+
 <tr><td>gtkeyboard-1.1.7</td><td class="r">No*</td><td class="g">Ok</td><td class="g">Ok</td><td>-</td><td class="n">* compile-time errors</td></tr>
+
+<tr><td>gts-0.7.4</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td></td></tr>
 
 <tr><td>gtypist-2.7</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td></td></tr>
 
 <tr><td>guile-1.6.7</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td></td></tr>
 
+<tr><td>gurgle-1.53</td><td class="r">No*</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td class="n">* compile-time errors:the program uses the old varargs.h, which is no longer supported by gcc</td></tr>
+
 <tr><td>gv-3.6.1</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td></td></tr>
 
 <tr><td>gvpe-2.0</td><td class="g">Ok</td><td class="g">Ok*</td><td class="g">Ok</td><td class="g">Ok</td><td class="n">* warning:disable-nls is broken and results in compile-time errors</td></tr>
 
-<tr><td>gzip-1.3.5</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td></td></tr>
+<tr><td>gzip-1.3.5</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok*</td><td class="n">* note: older stable versions do not support DESTDIR</td></tr>
 
 <tr><td>hello-2.1.1</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td></td></tr>
 
 <tr><td>help2man-1.36.3</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td></td></tr>
 
+<tr><td>hp2xx-3.4.4</td><td class="r">No</td><td class="r">No</td><td class="r">No</td><td class="r">No</td><td class="n">the installation procedure requires moving files around, file renaming, hand-editing of files</td></tr>
+
 <tr><td>httptunnel-3.3</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td></td></tr>
+
+<tr><td>hyperbole-4.01</td><td class="r">No</td><td class="r">No</td><td class="g">Ok</td><td class="r">No</td><td class="n">the custom makefile requires hand-editing</td></tr>
 
 <tr><td>idutils-4.0</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td></td></tr>
 
@@ -404,7 +464,7 @@
 
 <tr><td>jwhois-3.2.3</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td></td></tr>
 
-<tr><td>less-382</td><td class="y">Partial</td><td class="g">Ok</td><td class="g">Ok</td><td class="r">No</td><td></td></tr>
+<tr><td>less-394</td><td class="y">Partial</td><td class="g">Ok</td><td class="g">Ok</td><td class="r">No</td><td></td></tr>
 
 <tr><td>libcdio-0.76</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td></td></tr>
 
@@ -427,6 +487,8 @@
 <tr><td>libopts-27.0</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td></td></tr>
 
 <tr><td>libosip2-2.2.2</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td></td></tr>
+
+<tr><td>libpolyxmass-0.9.0</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td></td></tr>
 
 <tr><td>libsigsegv-2.2</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td></td></tr>
 
@@ -462,11 +524,17 @@
 
 <tr><td>motti-2.5.0</td><td class="g">Ok*</td><td class="g">Ok</td><td class="g">Ok</td><td class="y">Broken</td><td class="n">* user-mode installation fails, since it wants to write Motti in /etc/X11/app_defaults. In addition, DESTDIR is not considered for that particular file.</td></tr>
 
+<tr><td>mtools-3.9.10</td><td class="y">Partial</td><td class="g">Ok</td><td class="g">Ok</td><td class="r">No</td><td></td></tr>
+
 <tr><td>nano-1.2.3</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td></td></tr>
 
 <tr><td>ncurses-5.5</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td></td></tr>
 
+<tr><td>ngnus-0.3</td><td class="y">Partial</td><td class="g">Ok</td><td class="g">Ok</td><td class="r">No</td><td></td></tr>
+
 <tr><td>ocrad-0.13</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td></td></tr>
+
+<tr><td>octal-0.0.95</td><td class="r">No</td><td class="r">No</td><td class="y">Broken</td><td class="r">No</td><td>This alpha package has a Makefile, but with no install target.</td></tr>
 
 <tr><td>octave-2.0.16</td><td class="r">No*</td><td class="g">Ok</td><td class="g">Ok</td><td>-</td><td class="n">* compile-time errors</td></tr>
 
@@ -496,6 +564,12 @@
 
 <tr><td>recode-3.6</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td></td></tr>
 
+<tr><td>rottlog-0.70beta3</td><td class="y">Partial</td><td class="g">Ok*</td><td class="y">Broken*</td><td>-</td><td class="n">* build system ignores --prefix</td></tr>
+
+<tr><td>sather-1.3-beta-7</td><td class="r">No</td><td class="y">Broken</td><td class="y">Broken</td><td class="r">No</td><td class="n">the configure script behaves in a non-common way. Makefile does not support the install target, and needs hand editing</td></tr>
+
+<tr><td>sauce-0.8.1</td><td class="r">No</td><td class="r">No</td><td class="g">Ok</td><td class="r">No</td><td class="n">sauce provides a Makefile with lots of fixed information, which must be hand-edited to get a clean build</td></tr>
+
 <tr><td>scheme-7.7.1 (mit-scheme)</td><td class="r">No*</td><td class="g">Ok</td><td class="g">Ok</td><td>-</td><td class="n">* compile-time errors</td></tr>
 
 <tr><td>screen-4.0.2</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td></td></tr>
@@ -512,13 +586,21 @@
 
 <tr><td>solfege-3.0.6</td><td class="g">Ok</td><td class="g">Ok*</td><td class="g">Ok</td><td class="g">Ok</td><td class="n">* pkg-config version requirement (>= 0.17) in configure.ac can be relaxed (got a clean build with 0.15)</td></tr>
 
+<tr><td>songanizer-0.8</td><td class="r">No</td><td class="r">No</td><td class="r">No</td><td class="r">No</td><td class="n">does not provide a build system</td></tr>
+
 <tr><td>sourceinstall-2.0-rc2</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td></td></tr>
 
 <tr><td>sourceinstall-gtk-2.0-rc2</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td></td></tr>
 
+<tr><td>speex-1.0.5</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td></td></tr>
+
 <tr><td>spell-1.0</td><td class="y">Partial</td><td class="g">Ok</td><td class="g">Ok</td><td class="r">No</td><td></td></tr>
 
 <tr><td>stow-1.3.3</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td></td></tr>
+
+<tr><td>swbis-0.474</td><td class="y">Partial</td><td class="g">Ok</td><td class="g">Ok</td><td class="r">No</td><td></td></tr>
+
+<tr><td>talkfilters-2.3.4</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td></td></tr>
 
 <tr><td>tar-1.15.1</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td></td></tr>
 
@@ -527,6 +609,10 @@
 <tr><td>texinfo-4.8</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td></td></tr>
 
 <tr><td>textutils-2.1</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td></td></tr>
+
+<tr><td>thales-1.0</td><td class="r">No</td><td class="y">Broken</td><td class="g">Ok</td><td class="g">Ok</td><td class="n">the configure script waits for standard input to get some of the parameters configured. Fix:replace with configure options</td></tr>
+
+<tr><td>tmw-0.0.18.1 (the mana world)</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td></td></tr>
 
 <tr><td>tramp-2.0.52</td><td class="y">Partial</td><td class="g">Ok</td><td class="g">Ok</td><td class="r">No</td><td></td></tr>
 
@@ -553,6 +639,10 @@
 <tr><td>xhippo-3.3</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td></td></tr>
 
 <tr><td>xlogmaster-1.6.1</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td></td></tr>
+
+<tr><td>xmorph_20060107</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td></td></tr>
+
+<tr><td>zebra-0.94</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td></td></tr>
 
 </table>
 
@@ -608,7 +698,7 @@ notice, and the copyright notice, are preserved.
 <p>
 Updated:
 <!-- timestamp start -->
-$Date: 2006/02/02 23:00:16 $ $Author: sick_soul $
+$Date: 2006/02/03 05:32:02 $ $Author: sick_soul $
 <!-- timestamp end -->
 </p>
 </div>
