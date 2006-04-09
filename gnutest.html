@@ -218,6 +218,8 @@
 
 <tr><td>acct-6.3.2</td><td class="y">Partial</td><td class="g">Ok</td><td class="g">Ok</td><td class="r">No</td><td class="n">the coming 6.4 version of acct has been updated with recent versions of the autotools, which support DESTDIR.</td></tr>
 
+<tr><td>acm-5.0</td><td class="y">Partial</td><td class="y">Broken</td><td class="g">Ok</td><td class="r">No</td><td class="n">This package ignored --prefix option in configure, and always installs to /usr/local. Maintainer has to be contacted yet.</td></tr>
+
 <tr><td>adns-1.0</td><td class="y">Partial</td><td class="g">Ok</td><td class="g">Ok</td><td class="r">No</td><td class="n">maintainer has been contacted, but does not appear to be interested in having DESTDIR support.</td></tr>
 
 <tr><td>alive-1.4.0</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td></td></tr>
@@ -347,7 +349,7 @@
 
 <tr><td>gcc-4.1.0</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td class="n">versions 4.0.x do not work with sourceinstall since they require builddir != srcdir, which is hard to detect in a general way, or enforce in all packages. All other versions are ok.</td></tr>
 
-<tr><td>gcl-2.6.7</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td></td></tr>
+<tr><td>gcl-2.6.7</td><td class="g">Ok</td><td class="y">Broken</td><td class="y">Broken</td><td class="g">Ok</td><td class="n">the build system does not honour prefix correctly, resulting in impossible user-mode installation, and reduced installation destination choice for the user.</td></tr>
 
 <tr><td>gdb-6.4</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td></td></tr>
 
@@ -711,7 +713,7 @@ notice, and the copyright notice, are preserved.
 <p>
 Updated:
 <!-- timestamp start -->
-$Date: 2006/04/07 03:52:21 $ $Author: sick_soul $
+$Date: 2006/04/09 15:11:12 $ $Author: sick_soul $
 <!-- timestamp end -->
 </p>
 </div>
