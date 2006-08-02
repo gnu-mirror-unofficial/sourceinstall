@@ -186,6 +186,8 @@
   Supporting DESTDIR makes it possible to make staged installations,
   vital for some functionality of sourceinstall, and generally useful for
   packagers.
+  If sourceinstall does not find either DESTDIR or INSTALL_ROOT, it
+  reverts to using prefix redirection.
 </p>
 <ul><li>
   <span class="g">Ok</span> means that DESTDIR is supported, and works.
@@ -206,7 +208,7 @@
 
 <tr><td>Ggradebook-0.91</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td></td></tr>
 
-<tr><td>R-2.2.1</td><td class="y">Partial</td><td class="g">Ok</td><td class="g">Ok</td><td class="r">No</td><td class="n">maintainment has been contacted, but DESTDIR support is not supported yet.</td></tr>
+<tr><td>R-2.3.1</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td class="r">No</td><td class="n">maintainment has been contacted about DESTDIR, but it is not supported yet.</td></tr>
 
 <tr><td>TeXmacs-1.0.6</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td></td></tr>
 
@@ -216,11 +218,11 @@
 
 <tr><td>a2ps-4.13</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td></td></tr>
 
-<tr><td>acct-6.3.2</td><td class="y">Partial</td><td class="g">Ok</td><td class="g">Ok</td><td class="r">No</td><td class="n">the coming 6.4 version of acct has been updated with recent versions of the autotools, which support DESTDIR.</td></tr>
+<tr><td>acct-6.3.2</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td class="r">No</td><td class="n">the coming 6.4 version of acct has been updated with recent versions of the autotools, which support DESTDIR.</td></tr>
 
-<tr><td>acm-5.0</td><td class="y">Partial</td><td class="y">Broken</td><td class="g">Ok</td><td class="r">No</td><td class="n">This package ignored --prefix option in configure, and always installs to /usr/local. Maintainer has been sent a fix, but did not answer yet.</td></tr>
+<tr><td>acm-5.0</td><td class="r">No</td><td class="y">Broken</td><td class="g">Ok</td><td class="r">No</td><td class="n">This package ignored --prefix option in configure, and always installs to /usr/local. Broken permissions in the package. Maintainer has been sent a fix, but did not answer yet.</td></tr>
 
-<tr><td>adns-1.0</td><td class="y">Partial</td><td class="g">Ok</td><td class="g">Ok</td><td class="r">No</td><td class="n">maintainer has been contacted, but does not appear to be interested in having DESTDIR support.</td></tr>
+<tr><td>adns-1.3</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td class="r">No</td><td class="n">maintainer has been contacted, but does not appear to be interested in having DESTDIR support.</td></tr>
 
 <tr><td>alive-1.4.0</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td></td></tr>
 
@@ -242,7 +244,7 @@
 
 <tr><td>avl-2.0.2a</td><td>-</td><td>-</td><td>-</td><td>-</td><td class="n">This package is not meant for installation.</td></tr>
 
-<tr><td>barcode-0.98</td><td class="y">Partial</td><td class="g">Ok</td><td class="g">Ok</td><td class="r">No</td><td class="n">maintainer has been offered a fix, which should be available in the next version due to be released next month.</td></tr>
+<tr><td>barcode-0.98</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td class="r">No</td><td class="n">maintainer has been offered a fix to add DESTDIR support, which should be available in the next release.</td></tr>
 
 <tr><td>bash-3.1</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td></td></tr>
 
@@ -256,7 +258,7 @@
 
 <tr><td>bool-0.2.1</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td></td></tr>
 
-<tr><td>calc-2.11.11</td><td class="r">No</td><td class="r">No</td><td class="g">Ok</td><td class="r">No</td><td class="n">The provided Makefile must be hand edited. The maintainer has been contacted, and will be available to discuss the matter end of April.</td></tr>
+<tr><td>calc-2.11.11</td><td class="r">No</td><td class="r">No</td><td class="g">Ok</td><td class="r">No</td><td class="n">The provided Makefile must be hand edited. The maintainer has been contacted, and said he will be available to discuss the matter end of April. Must ping.</td></tr>
 
 <tr><td>ccaudio2-0.9.0</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td></td></tr>
 
@@ -274,7 +276,7 @@
 
 <tr><td>classpath-0.18</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td class="n">later versions (0.19,0.20,0.90) not tested because they require gcc >= 4.0</td></tr>
 
-<tr><td>clisp-2.38</td><td class="r">No</td><td class="g">Ok</td><td class="r">No</td><td class="g">Ok</td><td class="n">unfortunately clisp build system is based on makemake. Also, additional user commands are necessary for the build to succeed. These could be automated, and the flags moved to configure options. Maintainers have been contacted, but work to improve the situation is stale. No time to work on a patch myself.</td></tr>
+<tr><td>clisp-2.39</td><td class="r">No</td><td class="y">Broken</td><td class="r">No</td><td class="g">Ok</td><td class="n">unfortunately clisp build system is based on makemake. Configure script returns a non-zero return value on success for some reason. Also, additional user commands are necessary for the build to succeed. These could be automated, and the flags moved to configure options. Maintainers have been contacted, but work to improve the situation is stale. No time to work on a patch myself.</td></tr>
 
 <tr><td>clx-5.02</td><td class="r">No</td><td class="r">No</td><td class="r">No</td><td class="r">No</td><td class="n">File renaming and hand compilation are necessary to install this software. This ancient project is probably dead beef.</td></tr>
 
@@ -298,16 +300,14 @@
 
 <tr><td>denemo-0.7.4</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td></td></tr>
 
-<tr><td>dgs-0.5.9</td><td class="r">No</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td class="n">compile-time errors:zdevcal.c:52: storage size of `ltime' isn't known, zdevcal.c:54: dereferencing pointer to incomplete type, zdevcal.c:54: initializer element is not constant.
+<tr><td>dgs-0.5.9.1</td><td class="r">No</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td class="n">multiple compile-time errors:zdevcal.c:52: storage size of `ltime' isn't known, zdevcal.c:54: dereferencing pointer to incomplete type, zdevcal.c:54: initializer element is not constant.
 </td></tr>
 
 <tr><td>dia-0.94</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td></td></tr>
 
-<tr><td>diction-1.02</td><td class="y">Partial</td><td class="g">Ok</td><td class="g">Ok</td><td class="r">No</td><td class="n">the diction-1.10rc1 test release already contains working support for DESTDIR.</td></tr>
+<tr><td>diction-1.02</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td class="r">No</td><td class="n">the diction-1.10rc1 test release already contains working support for DESTDIR.</td></tr>
 
 <tr><td>diffutils-2.8.1</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td></td></tr>
-
-<tr><td>dld-3.3</td><td class="y">Partial</td><td class="g">Ok</td><td class="g">Ok</td><td class="r">No</td><td class="n">project is dead and considered obsolete by its maintainers; supporting DESTDIR is a matter of regenerating with more recent versions of the autotools.</td></tr>
 
 <tr><td>dominion-2.8.2</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td></td></tr>
 
@@ -315,9 +315,9 @@
 
 <tr><td>ecc-0.2.2</td><td class="r">No</td><td class="g">Ok</td><td class="y">Broken</td><td class="r">No</td><td class="n">The build requires a particular objective C compiler that is hard-wired in the custom Makefile.in. Hand editing the file to replace objc (apple's?) with gcc does not work.</td></tr>
 
-<tr><td>ed-0.2</td><td class="y">Partial</td><td class="g">Ok</td><td class="g">Ok</td><td class="r">No</td><td class="n">a patch has been already sent to the maintainer, and will appear in the next release.</td></tr>
+<tr><td>ed-0.2</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td class="r">No</td><td class="n">a patch for DESTDIR has been already sent to the maintainer, and will appear in the next release.</td></tr>
 
-<tr><td>emacs-21.4</td><td class="y">Partial</td><td class="g">Ok</td><td class="y">Broken</td><td class="r">No</td><td class="n">'uninstall' rule contains a serious bug that can remove info files unrelated to emacs.  Never use make uninstall. A fix for this bug and another patch to add DESTDIR support have already been sent to emacs developers, and will appear in the next version.</td></tr>
+<tr><td>emacs-21.4</td><td class="g">Ok</td><td class="g">Ok</td><td class="y">Broken</td><td class="r">No</td><td class="n">'uninstall' rule contains a serious bug that can remove info files unrelated to emacs.  Never use make uninstall. A fix for this bug and another patch to add DESTDIR support have already been sent to emacs developers, and will appear in the next version.</td></tr>
 
 <tr><td>enscript-1.6.1</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td></td></tr>
 
@@ -343,7 +343,7 @@
 
 <tr><td>gawk-3.1.5</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td></td></tr>
 
-<tr><td>gcal-3.01</td><td class="y">Partial</td><td class="g">Ok</td><td class="g">Ok</td><td class="r">No</td><td class="n">DESTDIR support is already in the coming gcal-4.00 version.</td></tr>
+<tr><td>gcal-3.01</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td class="r">No</td><td class="n">DESTDIR support is already in the coming gcal-4.00 version.</td></tr>
 
 <tr><td>gcc-4.1.0</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td class="n">versions 4.0.x do not work with sourceinstall since they require builddir != srcdir, which is hard to detect in a general way, or enforce in all packages. All other versions are ok.</td></tr>
 
@@ -359,7 +359,7 @@
 
 <tr><td>gettext-0.14.5</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td></td></tr>
 
-<tr><td>gforth-0.6.2</td><td class="y">Partial</td><td class="g">Ok</td><td class="g">Ok</td><td class="r">No</td><td class="n">DESTDIR support is provided in the latest development code. Will be available in the next release.</td></tr>
+<tr><td>gforth-0.6.2</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td class="r">No</td><td class="n">DESTDIR support is provided in the latest development code. Will be available in the next release.</td></tr>
 
 <tr><td>gift-0.1.15b</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td></td></tr>
 
@@ -383,9 +383,9 @@
 
 <tr><td>gnubg-0.14.3</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td class="n">I had to manually add -liconv to the LDFLAGS to get a clean compile. Otherwise, I would get undefined symbols during build. Could not reach maintainment.</td></tr>
 
-<tr><td>gnubiff-2.1.9</td><td class="r">No</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td class="n">compile-time errors; a fix has been suggested to the GNU biff developers, which has been included in current CVS and will be available in the next release.</td></tr>
+<tr><td>gnubiff-2.2.1</td><td class="r">No</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td class="n">gnubiff configuration does not find installed fam.h. However, it is mainly a problem of gamin (get latest development code from gamin to make it work).</td></tr>
 
-<tr><td>gnucap-0.34</td><td class="r">No</td><td class="y">Broken</td><td class="g">Ok</td><td>-</td><td class="n">the maintainer plans to add a GNU compliant configure script in the next stable release (0.35).</td></tr>
+<tr><td>gnucap-2006-07-08</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td class="n">maintainment should be contacted again to ask to move releases to ftp.gnu.org or at least make releases more easy to find.</td></tr>
 
 <tr><td>gnuchess-5.0.7</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td></td></tr>
 
@@ -399,11 +399,11 @@
 
 <tr><td>gnupg-1.4.4</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td></td></tr>
 
-<tr><td>gnupod-0.98.3</td><td class="y">Partial</td><td class="g">Ok</td><td class="g">Ok</td><td class="r">No</td><td class="n">support for DESTDIR is scheduled for the next release. Current CVS code already supports DESTDIR correctly.</td></tr>
+<tr><td>gnupod-0.99</td><td class="y">Partial</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td class="n">Package does not allow user-mode installation.</td></tr>
 
-<tr><td>gnurobots-1.0D</td><td class="y">Partial</td><td class="g">Ok</td><td class="g">Ok</td><td class="r">No</td><td class="n">Maintainment needs to be contacted yet. Previous attempts failed possibly due to GNU mailing lists problems.</td></tr>
+<tr><td>gnurobots-1.0D</td><td class="r">No</td><td class="y">Broken</td><td class="y">broken</td><td class="r">No</td><td class="n">Package ignores --prefix and has no install rule. Maintainment could not be reached.</td></tr>
 
-<tr><td>gnushogi-1.3</td><td class="y">Partial</td><td class="g">Ok</td><td class="g">Ok</td><td class="r">No</td><td class="n">Could not contact maintainer. More tries are scheduled.</td></tr>
+<tr><td>gnushogi-1.3</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td class="r">No</td><td class="n">Could not contact maintainer about DESTDIR support.</td></tr>
 
 <tr><td>gnutls-1.2.10</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td></td></tr>
 
@@ -413,15 +413,15 @@
 
 <tr><td>gphoto2-2.1.6</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td></td></tr>
 
-<tr><td>gprolog-1.2.16</td><td class="y">Partial</td><td class="g">Ok</td><td class="g">Ok</td><td class="r">No</td><td class="n">Maintainment could not be contacted because of GNU mailing list problems. More tries are scheduled.</td></tr>
+<tr><td>gprolog-1.2.16</td><td class="r">No</td><td class="y">Broken</td><td class="y">Broken</td><td class="r">No</td><td class="n">gprolog does not honor --prefix, and always install in an arbitrary location. This is a show stopper for sourceinstall. Maintainment could not be contacted because of GNU mailing list problems. More tries should be scheduled.</td></tr>
 
-<tr><td>greg-1.4</td><td class="y">Partial</td><td class="g">Ok</td><td class="g">Ok</td><td class="r">No</td><td></td></tr>
+<tr><td>greg-1.4</td><td class="r">No</td><td class="g">Ok</td><td class="g">Ok</td><td class="r">No</td><td class = "n">could not build ('/usr/bin/texi2dvi: texinfo.tex appears to be broken, quitting.')</td></tr>
 
 <tr><td>grep-2.5.1a</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td></td></tr>
 
 <tr><td>gretl-1.5.0</td><td class="r">No</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td class="n">compile-time errors - must contact maintainment/developers.</td></tr>
 
-<tr><td>groff-1.19.2</td><td class="y">Partial</td><td class="g">Ok</td><td class="g">Ok</td><td class="r">No</td><td class="n">a fix has been sent to the project, and it's already included in current CVS.</td></tr>
+<tr><td>groff-1.19.2</td><td class="y">Partial</td><td class="g">Ok</td><td class="g">Ok</td><td class="r">No</td><td class="n">a fix for DESTDIR has been sent to the project, and is already included in current CVS. User mode installation is not possible, since the installation phase wants to create the fixed path /usr/X11/lib/X11/app-defaults/GXditview .</td></tr>
 
 <tr><td>grub-0.97</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td class="n">could not build newer alpha version (1.92), because my existing shared library installation of lzo-2.02 was not recognized by the configure script.</td></tr>
 
@@ -469,11 +469,11 @@
 
 <tr><td>inetutils-1.4.2</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td></td></tr>
 
-<tr><td>intlfonts-1.2.1</td><td class="y">Partial</td><td class="g">Ok</td><td class="g">Ok</td><td class="r">No</td><td class="n">a fix has been sent to the project maintainer. Waiting for an answer.</td></tr>
+<tr><td>intlfonts-1.2.1</td><td class="r">No</td><td class="y">Broken</td><td class="y">Broken</td><td class="r">No</td><td class="n">Many problems in the build system (prefix not recognized, installation, ...). Waiting for an answer from the maintainer.</td></tr>
 
 <tr><td>jwhois-3.2.3</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td></td></tr>
 
-<tr><td>less-394</td><td class="y">Partial</td><td class="g">Ok</td><td class="g">Ok</td><td class="r">No</td><td class="n">a DESTDIR support patch has been handed to the less maintainer, and is going to appear in the next release.<td></tr>
+<tr><td>less-394</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td class="r">No</td><td class="n">a DESTDIR support patch has been handed to the less maintainer, and is going to appear in the next release.<td></tr>
 
 <tr><td>libcdio-0.76</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td></td></tr>
 
@@ -531,9 +531,9 @@
 
 <tr><td>moe-0.7</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td></td></tr>
 
-<tr><td>motti-2.5.0</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td class="y">Broken</td><td class="n">user-mode installation fails, since it wants to write Motti in /etc/X11/app_defaults. In addition, DESTDIR is not considered for that particular file. Working with the project maintainer lead to a fix that should appear in the next version.</td></tr>
+<tr><td>motti-2.5.0.4</td><td class="y">Partial</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td class="n">user-mode installation fails, since it wants to unconditionally write /usr/X11R6/lib/X11/app-defaults/Motti</td></tr>
 
-<tr><td>mtools-3.9.10</td><td class="y">Partial</td><td class="g">Ok</td><td class="g">Ok</td><td class="r">No</td><td class="n">the mtools maintainer provided a patch that will be included in the next version.</td></tr>
+<tr><td>mtools-3.9.10</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td class="r">No</td><td class="n">the mtools maintainer provided a patch for DESTDIR that will be included in the next version.</td></tr>
 
 <tr><td>nano-1.2.3</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td></td></tr>
 
@@ -551,7 +551,7 @@
 
 <tr><td>parted-1.7.1</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td></td></tr>
 
-<tr><td>patch-2.5.4</td><td class="y">Partial</td><td class="g">Ok</td><td class="g">Ok</td><td class="r">No</td><td class="n">project is undergoing management changes.</td></tr>
+<tr><td>patch-2.5.4</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td class="r">No</td><td class="n">project is undergoing management changes. DESTDIR support could be added.</td></tr>
 
 <tr><td>plotutils-2.4.1</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td></td></tr>
 
@@ -565,7 +565,7 @@
 
 <tr><td>radius-1.3</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td></td></tr>
 
-<tr><td>rcs-5.7</td><td class="y">Partial</td><td class="g">Ok</td><td class="g">Ok</td><td class="r">No</td><td class="n">project not contacted yet.</td></tr>
+<tr><td>rcs-5.7</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td class="r">No</td><td class="n">missing DESTDIR support. Not contacted yet.</td></tr>
 
 <tr><td>readline-5.1</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td></td></tr>
 
@@ -595,7 +595,7 @@
 
 <tr><td>solfege-3.0.6</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td class="n">pkg-config version requirement (>= 0.17) in configure.ac could be relaxed (got a clean build with 0.15)</td></tr>
 
-<tr><td>songanizer-0.8</td><td class="r">No</td><td class="r">No</td><td class="r">No</td><td class="r">No</td><td class="n">does not provide a build system</td></tr>
+<tr><td>songanizer-0.8</td><td class="r">No</td><td class="r">No</td><td class="r">No</td><td class="r">No</td><td class="n">does not provide a build system. However, some movement towards a gnu-compliant build system can be seen in CVS.</td></tr>
 
 <tr><td>source-highlight-2.3</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td class="n">missing check for exuberant ctags. Breaks the build on a system with emacs ctags. Problem has been reported to the author/maintainer.</td></tr>
 
@@ -607,21 +607,21 @@
 
 <tr><td>stow-1.3.3</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td></td></tr>
 
-<tr><td>swbis-0.483</td><td class="y">Partial</td><td class="g">Ok</td><td class="g">Ok</td><td class="r">No</td><td class="n">a patch with DESTDIR support has been handed to the project, and should appear in the next release.</td></tr>
+<tr><td>swbis-0.483</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td class="r">No</td><td class="n">a patch with DESTDIR support has been handed to the project, and should appear in the next release.</td></tr>
 
 <tr><td>talkfilters-2.3.4</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td></td></tr>
 
 <tr><td>tar-1.15.1</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td></td></tr>
 
-<tr><td>termcap-1.3.1</td><td class="y">Partial</td><td class="g">Ok</td><td class="g">Ok</td><td class="r">No</td><td class="n">could not contact maintainer yet.</td></tr>
+<tr><td>termcap-1.3.1</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td class="r">No</td><td class="n">could not contact maintainer yet about DESTDIR.</td></tr>
 
 <tr><td>texinfo-4.8</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td></td></tr>
 
-<tr><td>thales-1.0</td><td class="r">No</td><td class="y">Broken</td><td class="g">Ok</td><td class="g">Ok</td><td class="n">the configure script waits for standard input to get some of the parameters configured. Fix:replace with configure options. Current official maintainer has lost interest in the project, and thus the project is now unmaintained.</td></tr>
+<tr><td>thales-1.0</td><td class="r">No</td><td class="y">Broken</td><td class="g">Ok</td><td class="g">Ok</td><td class="n">the configure script waits for standard input to get some of the parameters configured. Fix:replace with configure options. Project is undergoing maintainer change.</td></tr>
 
 <tr><td>tmw-0.0.18.1 (the mana world)</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td></td></tr>
 
-<tr><td>tramp-2.0.52</td><td class="y">Partial</td><td class="g">Ok</td><td class="g">Ok</td><td class="r">No</td><td class="n">current maintainer has completed changes to include DESTDIR support. They are available as latest CVS, and will appear in the next releases.</td></tr>
+<tr><td>tramp-2.0.53</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td>Current maintainer has recently completed changes to include DESTDIR support. Thanks!</td></tr>
 
 <tr><td>trueprint-5.3</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td></td></tr>
 
@@ -629,7 +629,7 @@
 
 <tr><td>unrtf_0.19.9</td><td class="r">No</td><td class="r">No</td><td class="g">Ok</td><td class="y">Broken</td><td class="n">a complete new build system has been handed to the project. It will be included in the next release.</td></tr>
 
-<tr><td>userv-1.0.1</td><td class="y">Partial</td><td class="g">Ok</td><td class="g">Ok</td><td class="r">No</td><td class="n">could not contact maintainment successfully.</td></tr>
+<tr><td>userv-1.0.3</td><td class="r">No</td><td class="g">Ok</td><td class="y">Broken</td><td class="r">No</td><td class="n">The installation procedure does not ensure that the destination directories exist (mkinstalldir, mkdir -p, ...). Could not contact maintainment.</td></tr>
 
 <tr><td>uucp-1.07</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td></td></tr>
 
@@ -641,7 +641,7 @@
 
 <tr><td>which-2.16</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td></td></tr>
 
-<tr><td>xboard-4.2.7</td><td class="y">Partial</td><td class="g">Ok</td><td class="g">Ok</td><td class="r">No</td><td class="n">mails to the project have been lost due to GNU mailing lists issues. Will try again.</td></tr>
+<tr><td>xboard-4.2.7</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td class="r">No</td><td class="n">mails to the project about DESTDIR have been lost due to GNU mailing lists issues. Will need to try again.</td></tr>
 
 <tr><td>xhippo-3.3</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td class="g">Ok</td><td></td></tr>
 
@@ -709,7 +709,7 @@ notice, and the copyright notice, are preserved.
 <p>
 Updated:
 <!-- timestamp start -->
-$Date: 2006/08/01 22:56:57 $ $Author: sick_soul $
+$Date: 2006/08/02 04:44:54 $ $Author: sick_soul $
 <!-- timestamp end -->
 </p>
 </div>
