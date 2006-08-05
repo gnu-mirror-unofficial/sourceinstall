@@ -49,9 +49,7 @@
 
 <!-- Put your content here -->
 
-<h4>
-  Table of Contents
-</h4>
+<h4>Table of Contents</h4>
 
 <div class="quadro">
 <ul>
@@ -71,12 +69,10 @@
 </h4>
 
 <p>
-  <b>GNU Source Installer</b> (sourceinstall) is a source package installer and manager for Unix-likes.
+  <b>GNU Source Installer</b> is a source package manager for Unix-likes.
 </p>
 <p>
- It provides configuration, compilation, installation, upgrade, tracking and removal of packages built from source code. The functionality is reachable using a command line, scriptable front end or a GTK graphical interface.
-</p><p>
- This program is meant to install source code as provided by the original developers (.tar.gz, .tar.bz2, no system-specific packages); packages built using the GNU autotools (<a href="/software/autoconf/autoconf.html">autoconf</a>, <a href="/software/automake/automake.html">automake</a>, <a href="/software/libtool/libtool.html">libtool</a>, ...) are the primary target of this tool, but packages supporting the common configure options and makefile conventions are also supported.
+ It provides configuration, compilation, installation, upgrade, tracking and removal of packages built from source code following the GNU coding standards. The functionality is reachable using a command line, scriptable front end or a GTK graphical interface.
 </p><p>
 For an user already experienced with source installations from the plain shell (using the ./configure, make, make install sequence), this software provides a way to centralize source installation, have easier access to configure options, keep track of already installed packages and their relevant files, check installations for consistency, export and reuse installation information and have enhanced uninstallation and upgrade functionalities.
 </p><p>
@@ -90,23 +86,27 @@ The software is targeted at Unix-like systems, and should work on most of them, 
 </h4>
 
 <p>
-  The most recent release is 2.1, and is an official alpha release.
-  It contains most of the main features, but still misses documentation and 
-  extensive testing. Please consider helping the project in this regard.
+  The most recent release is 2.2, and is an official alpha release.
+  It contains most of the main features, but still misses extensive
+  documentation and testing. Please consider helping the project
+  in this regard.
 </p><p>
-  All sourceinstall 2.1 components are available separately:
-  a library, called libsrcinst-2.1, which must be installed first, then the
-  command line front end, called sourceinstall-2.1, and finally the 
-  GTK graphical front end, called sourceinstall-gtk-2.1.
+  All sourceinstall 2.2 components are available separately:
+  a library, called libsrcinst-2.2, which must be installed first, then the
+  command line front end, called sourceinstall-2.2, and finally the 
+  GTK graphical front end, called sourceinstall-gtk-2.2.
   You can install either of these front-ends or both, depending on your taste.
 </p>
 <p>
-  The older releases are marked 0.x, and are going to be completely obsolete
-  soon. You can fetch GNU Source Installer using one of the following methods:
+  You can fetch GNU Source Installer using one of the following methods:
 </p>
 <div class="quadro">
+  <p><a href="http://ftp.gnu.org/gnu/sourceinstall/">http://ftp.gnu.org/gnu/sourceinstall/</a> [via HTTP].</p>
   <p><a href="ftp://ftp.gnu.org/gnu/sourceinstall/">ftp://ftp.gnu.org/gnu/sourceinstall/</a> [via FTP].</p>
   <p>cvs -d:pserver:anonymous@cvs.savannah.gnu.org:/sources/sourceinstall co sourceinstall [via anonymous <a href="http://savannah.gnu.org/cvs/?group=sourceinstall">CVS</a>].</p>
+
+  <p>A recent CVS build is also available on GNU sites and mirrors.</p>
+
 </div>
 <p>
   It can also be found on one of <a href="/prep/ftp.html">our FTP mirrors</a>.
@@ -117,9 +117,8 @@ The software is targeted at Unix-like systems, and should work on most of them, 
 </h4>
 
 <p>
-  Unfortunately, a complete updated manual for 2.1 is still not available,
-  and help is needed in this sense. For 0.x the full manual can be obtained at
-  <a href="/software/sourceinstall/manual/manual.html">http://www.gnu.org/software/sourceinstall/manual/manual.html</a> [warning! Only for versions 0.x].
+  Unfortunately, a complete updated texinfo manual for 2.2 is still not 
+  available, and help is needed in this sense. 
 </p>
 
 <h4>
@@ -235,7 +234,7 @@ notice, and the copyright notice, are preserved.
 <p>
 Updated:
 <!-- timestamp start -->
-$Date: 2006/07/24 23:30:46 $ $Author: sick_soul $
+$Date: 2006/08/05 07:34:43 $ $Author: sick_soul $
 <!-- timestamp end -->
 </p>
 </div>
